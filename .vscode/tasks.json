@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Convert Markdown to PDF",
+      "type": "shell",
+      "command": "node",
+      "args": [
+        "${workspaceFolder}/scripts/markdown-preprocessor.js",
+        "${file}"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      },
+      "problemMatcher": [],
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    }
+  ]
+}

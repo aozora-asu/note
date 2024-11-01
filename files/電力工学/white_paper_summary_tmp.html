@@ -1,0 +1,186 @@
+<!--mdファイルにKaTexを使用した時のレンダリングフォーマットを定めるhtmlファイル-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>white_paper_summary.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+<link rel="stylesheet" href="file:///Users/yazawashun/documents/markdown/github-markdown-css/github-markdown.css" type="text/css"><link rel="stylesheet" href="file:///Users/yazawashun/documents/markdown/github-markdown-css/github-markdown-dark.css" type="text/css"><link rel="stylesheet" href="file:///Users/yazawashun/documents/markdown/github-markdown-css/github-markdown-light.css" type="text/css"> <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+  </head>
+
+  <script
+    type="text/javascript"
+    async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"
+  ></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [['$', '$']],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+    },
+    messageStyle: "none",
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      }
+    });
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* MathJax の数式サイズを調整 */
+    .MathJax_Display {
+      text-align: center; /* 数式ブロックを中央揃えに */
+      margin: 1em 0; /* ブロック数式の余白を調整 */
+    }
+
+    /* 数式のサイズ調整 */
+    .MathJax {
+      font-size: 1.05em; /* 数式のフォントサイズを微調整 */
+    }
+  </style>
+
+  <body>
+    <script>
+      mermaid.initialize({
+        startOnLoad: true,
+        theme:
+          document.body.classList.contains("vscode-dark") ||
+          document.body.classList.contains("vscode-high-contrast")
+            ? "dark"
+            : "default",
+      });
+    </script>
+
+    <!-- 改ページ用スタイル -->
+    <style>
+      hr {
+        opacity: 0;
+        break-after: page;
+      }
+    </style>
+
+    <h1 id="ipcc-%E7%AC%AC6%E6%AC%A1%E8%A9%95%E4%BE%A1%E5%A0%B1%E5%91%8A%E6%9B%B8-ar6---%E6%94%BF%E7%AD%96%E6%B1%BA%E5%AE%9A%E8%80%85%E5%90%91%E3%81%91%E8%A6%81%E7%B4%84">IPCC 第6次評価報告書 (AR6) - 政策決定者向け要約</h1>
+<h2 id="%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">はじめに</h2>
+<p>この報告書は気候変動に関する現状とその影響、今後のリスクおよび長期的な対応策についてまとめられたもの。</p>
+<hr>
+<h2 id="%E7%AC%AC1%E7%AB%A0-%E7%8F%BE%E7%8A%B6%E3%81%A8%E5%8B%95%E5%90%91">第1章: 現状と動向</h2>
+<h3 id="%E8%A6%B3%E6%B8%AC%E3%81%95%E3%82%8C%E3%81%9F%E6%B8%A9%E6%9A%96%E5%8C%96%E3%81%A8%E3%81%9D%E3%81%AE%E5%8E%9F%E5%9B%A0">観測された温暖化とその原因</h3>
+<ul>
+<li><strong>現状</strong>: 1850年から1900年と比較して、2011年から2020年の地表気温は約1.1°C上昇。</li>
+<li><strong>原因</strong>: 主に温室効果ガスの排出によるもの（高い確信度）で、特に産業、エネルギー、輸送、農業の影響が大きい。</li>
+</ul>
+<h3 id="%E6%B0%97%E5%80%99%E5%A4%89%E5%8B%95%E3%81%AE%E5%BD%B1%E9%9F%BF">気候変動の影響</h3>
+<ul>
+<li><strong>影響</strong>: 気候変動はすでに多くの生態系と人々に悪影響を与えており、脆弱な地域や貧困層が最大の影響を受けている。</li>
+<li><strong>適応の進捗と課題</strong>: 各国で適応策が進められているが、不足やギャップがあり、特に発展途上国で問題が顕著。</li>
+</ul>
+<hr>
+<h2 id="%E7%AC%AC2%E7%AB%A0-%E6%9C%AA%E6%9D%A5%E3%81%AE%E6%B0%97%E5%80%99%E5%A4%89%E5%8B%95%E3%81%A8%E3%83%AA%E3%82%B9%E3%82%AF">第2章: 未来の気候変動とリスク</h2>
+<h3 id="%E6%B8%A9%E5%AE%A4%E5%8A%B9%E6%9E%9C%E3%82%AC%E3%82%B9%E6%8E%92%E5%87%BA%E3%81%AE%E5%BD%B1%E9%9F%BF">温室効果ガス排出の影響</h3>
+<ul>
+<li><strong>リスク増大</strong>: 現状の排出が続くと2100年までに1.5°Cを超える可能性が高く、複数のリスクが同時発生しやすくなる。</li>
+</ul>
+<h3 id="%E7%89%B9%E3%81%AB%E6%B7%B1%E5%88%BB%E3%81%AA%E5%BD%B1%E9%9F%BF">特に深刻な影響</h3>
+<ul>
+<li>沿岸部の海面上昇リスク</li>
+<li>食糧生産や健康への影響の増大が予測される。</li>
+</ul>
+<hr>
+<h2 id="%E7%AC%AC3%E7%AB%A0-%E7%9F%AD%E6%9C%9F%E7%9A%84%E3%81%AA%E5%AF%BE%E5%BF%9C%E7%AD%96">第3章: 短期的な対応策</h2>
+<h3 id="%E7%B7%A9%E5%92%8C%E7%AD%96%E3%81%A8%E9%81%A9%E5%BF%9C%E7%AD%96%E3%81%AE%E9%87%8D%E8%A6%81%E6%80%A7">緩和策と適応策の重要性</h3>
+<ul>
+<li><strong>緩和策</strong>: 再生可能エネルギーの普及、エネルギー効率改善が進んでいるが、現実と2030年目標にはギャップがある。</li>
+<li><strong>適応策</strong>: 特に水不足や食糧不安を解消するための対策が求められる。</li>
+</ul>
+<hr>
+<h2 id="%E6%89%80%E8%A6%8B">所見</h2>
+<h3 id="%E6%B0%97%E5%80%99%E5%A4%89%E5%8B%95%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E7%B7%8A%E6%80%A5%E6%80%A7%E3%81%A8%E8%A1%8C%E5%8B%95%E3%81%AE%E5%BF%85%E8%A6%81%E6%80%A7">気候変動に対する緊急性と行動の必要性</h3>
+<p>気候変動はますます深刻な課題となり、特に温室効果ガスの削減が急務である。また、適応策が不十分な地域や脆弱なコミュニティが影響を受けやすいため、支援の強化が不可欠である。</p>
+<hr>
+<h2 id="%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">参考文献</h2>
+<p>用いた生成AIのスレッドリンク<br>
+<a href=""></a></p>
+
+  </body>
+</html>
