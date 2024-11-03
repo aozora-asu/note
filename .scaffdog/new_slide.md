@@ -18,10 +18,11 @@ info: |
   ## {{ inputs.name }}
   Presentation slides for {{ inputs.name }}.
 transition: slide-left
-title: { { inputs.name } }
+title: \{{ inputs.name }}
 mdc: true
 githubPages:
   ogp: true
+componentsDir: "@components"
 ---
 
 # Welcome to Slidev
@@ -54,3 +55,10 @@ The last comment block of each slide will be treated as slide notes. It will be 
 ```
 
 ```
+
+<!--コンポーネントをインポート-->
+<script setup>
+import MyComponent  from '../../components/MyComponent.vue'  
+</script>
+
+<MyComponent />

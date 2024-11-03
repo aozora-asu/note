@@ -4,16 +4,27 @@ background: https://source.unsplash.com/collection/94734566/1920x1080
 class: text-center
 highlighter: shiki
 info: |
-  ## group
   Presentation slides for group.
 transition: slide-left
-title: group
+title: \group
 mdc: true
 githubPages:
-  ogp: true
+ogp: true
 ---
 
-# Welcome to Slidev
+---
+
+# 群論
+
+---
+
+<light
+
+<RandomFalls
+:speed="100"
+:max="150"
+:interval="600"
+class="text-2xl opacity-50">❄</RandomFalls>
 
 Presentation slides for developers
 
@@ -33,6 +44,6 @@ Presentation slides for developers
   </a>
 </div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
+---
+
+# ... 他の設定 ...
