@@ -1,6 +1,7 @@
 const glob = require("glob");
 const path = require("path");
 const { execSync } = require("child_process");
+const fs = require("fs-extra");
 
 async function buildSlides() {
   try {
@@ -11,18 +12,28 @@ async function buildSlides() {
         const slideName = path.dirname(file).split("/").pop();
         console.log(`Building ${slideName}...`);
 
-        // ベースパスに /note/ を含める
+        // カレントディレクトリを変更してビルド
+        process.chdir(`docs/${slideName}`);
+
+        // 相対パスでdistディレクトリを指定
         execSync(
-          `npx slidev build "${file}" --out "docs/${slideName}" --base "/note/${slideName}/"`,
+          `npx slidev build slides.md --out dist --base "/note/${slideName}/dist/"`,
           {
             stdio: "inherit",
             encoding: "utf-8",
           }
         );
 
+        // カレントディレクトリを元に戻す
+        process.chdir("../../");
+
         console.log(`Successfully built ${slideName}`);
       } catch (err) {
         console.error(`Error building ${file}:`, err.message);
+        // エラーが発生した場合もカレントディレクトリを戻す
+        if (process.cwd().includes("/docs/")) {
+          process.chdir("../../");
+        }
         continue;
       }
     }
