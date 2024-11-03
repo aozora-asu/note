@@ -18,8 +18,6 @@ ogp: true
 
 ---
 
-<light
-
 <RandomFalls
 :speed="100"
 :max="150"

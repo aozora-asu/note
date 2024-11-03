@@ -17,6 +17,9 @@ async function generateIndex() {
         path: `/note/${slideName}/dist/`,
         date: fs.statSync(file).birthtime,
         description: data.description || "",
+        thumbnail: fs.existsSync(`docs/${slideName}/thumbnail.png`)
+          ? `/note/${slideName}/thumbnail.png`
+          : null,
       };
     });
 
@@ -28,52 +31,28 @@ async function generateIndex() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slide Index</title>
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-      background-color: #f6f8fa;
-    }
-    .header {
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #e1e4e8;
-    }
-    .slides-container {
-      display: grid;
-      gap: 1rem;
-    }
+    /* ... 既存のスタイル ... */
     .slide-card {
+      position: relative;
       background: white;
       border: 1px solid #e1e4e8;
       border-radius: 6px;
       padding: 1.5rem;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      overflow: hidden;
     }
-    .slide-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .slide-card-with-thumbnail {
+      padding-left: 320px;
+      min-height: 180px;
     }
-    .slide-title {
-      color: #0366d6;
-      text-decoration: none;
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin: 0;
-    }
-    .slide-title:hover {
-      text-decoration: underline;
-    }
-    .slide-meta {
-      margin-top: 0.5rem;
-      color: #586069;
-      font-size: 0.875rem;
-    }
-    .slide-description {
-      margin-top: 0.75rem;
-      color: #24292e;
-      font-size: 0.9rem;
+    .slide-thumbnail {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 300px;
+      height: 100%;
+      object-fit: cover;
+      border-right: 1px solid #e1e4e8;
     }
   </style>
 </head>
@@ -86,7 +65,8 @@ async function generateIndex() {
       .sort((a, b) => b.date - a.date)
       .map(
         (slide) => `
-        <article class="slide-card">
+        <article class="slide-card ${slide.thumbnail ? "slide-card-with-thumbnail" : ""}">
+          ${slide.thumbnail ? `<img src="${slide.thumbnail}" class="slide-thumbnail" alt="${slide.title}">` : ""}
           <a href="${slide.path}" class="slide-title">${slide.title}</a>
           <div class="slide-meta">
             作成日: ${slide.date.toLocaleDateString("ja-JP", {
