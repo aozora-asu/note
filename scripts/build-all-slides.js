@@ -14,7 +14,7 @@ async function buildSlides() {
 
         // npx を使用してslidevを実行
         execSync(
-          `npx slidev build "${file}" --base "/note/docs/${slideName}/"`,
+          `npx slidev build "${file}" --base "/note/docs/${slideName}/dist"`,
           {
             stdio: "inherit",
             encoding: "utf-8",
