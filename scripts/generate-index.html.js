@@ -13,7 +13,7 @@ const slides = slideFiles.map((file) => {
 
   return {
     title: data.title || slideName,
-    path: `./${slideName}/dist`,
+    path: `${slideName}/dist`,
     date: fs.statSync(file).birthtime,
   };
 });

@@ -13,10 +13,13 @@ async function buildSlides() {
         console.log(`Building ${slideName}...`);
 
         // npx を使用してslidevを実行
-        execSync(`npx slidev build "${file}" --base "./"`, {
-          stdio: "inherit",
-          encoding: "utf-8",
-        });
+        execSync(
+          `npx slidev build "${file}" --base "/note/docs/${slideName}/dist"`,
+          {
+            stdio: "inherit",
+            encoding: "utf-8",
+          }
+        );
 
         console.log(`Successfully built ${slideName}`);
       } catch (err) {
