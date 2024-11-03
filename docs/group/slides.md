@@ -1,16 +1,18 @@
 ---
 theme: seriph
 background: https://source.unsplash.com/collection/94734566/1920x1080
-class: text-center
+class: text-left
 highlighter: shiki
 info: |
   Presentation slides for group.
 transition: slide-left
-title: \group
+title: 群論まとめ
 mdc: true
 githubPages:
 ogp: true
 ---
+
+# 群論
 
 ---
 
