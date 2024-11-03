@@ -11,11 +11,14 @@ async function buildSlides() {
         const slideName = path.dirname(file).split("/").pop();
         console.log(`Building ${slideName}...`);
 
-        // 相対パスを使用
-        execSync(`npx slidev build "${file}" --base "./"`, {
-          stdio: "inherit",
-          encoding: "utf-8",
-        });
+        // ベースパスに /note/ を含める
+        execSync(
+          `npx slidev build "${file}" --out "docs/${slideName}" --base "/note/${slideName}/"`,
+          {
+            stdio: "inherit",
+            encoding: "utf-8",
+          }
+        );
 
         console.log(`Successfully built ${slideName}`);
       } catch (err) {

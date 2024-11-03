@@ -12,8 +12,8 @@ const slides = slideFiles.map((file) => {
 
   return {
     title: data.title || slideName,
-    // 相対パスを使用
-    path: `./${slideName}/index.html`,
+    // パスに /note/ を含める
+    path: `/note/${slideName}/`,
     date: fs.statSync(file).birthtime,
   };
 });
