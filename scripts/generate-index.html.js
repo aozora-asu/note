@@ -5,7 +5,7 @@ const matter = require("gray-matter");
 
 async function generateIndex() {
   try {
-    const slideFiles = glob.sync("docs/*/slides.md");
+    const slideFiles = glob.sync("docs/*/*.md");
 
     const slides = slideFiles.map((file) => {
       const content = fs.readFileSync(file, "utf-8");
@@ -14,7 +14,9 @@ async function generateIndex() {
 
       return {
         title: data.title || slideName,
-        path: `/note/${slideName}/dist/`,
+        path: fs.existsSync(`/docs/${slideName}/dist`)
+          ? `/note/${slideName}/dist/`
+          : `/note/${slideName}/${slideName}.html`,
         date: fs.statSync(file).birthtime,
         description: data.description || "",
         thumbnail: fs.existsSync(`docs/${slideName}/thumbnail.png`)
