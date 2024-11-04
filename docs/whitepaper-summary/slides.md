@@ -70,11 +70,13 @@ class: 'text-white'
 これはいかなる追加のメタデータもない、デフォルトのページです。
 
 ---
+
 <RandomFalls
 :speed="100"
 :max="150"
 :interval="600"
-class="text-2xl opacity-50">❄</RandomFalls>
+class="text-2xl opacity-50">
+❄</RandomFalls>
 
 # Thank You
 
