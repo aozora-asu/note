@@ -22,7 +22,13 @@ title: \{{ inputs.name }}
 mdc: true
 githubPages:
   ogp: true
-componentsDir: "@components"
+info: true
+lineNumbers: true
+aspectRatio: 16/9
+exportFilename: ''
+favicon: https://cdn.jsdelivr.net/gh/slidevjs/slidev/assets/favicon.png
+css: windicss
+
 ---
 
 # Welcome to Slidev

@@ -59,7 +59,6 @@ async function generateIndex() {
       background: white;
       border: 1px solid #e1e4e8;
       border-radius: 6px;
-      padding: 1.5rem;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       overflow: hidden;
@@ -71,8 +70,6 @@ async function generateIndex() {
       transform: translateY(5px); /* カードが浮かぶ効果 */
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     }
-    
-    /* サムネイルと説明文 */
     .slide-thumbnail {
       width: 100%;
       height: auto;
@@ -119,6 +116,8 @@ async function generateIndex() {
               month: "long",
               day: "numeric",
             })}
+            <br>
+            スライドpdf:<a href="${slide.pdf}" class="slide-title">スライドpdfリンク</a>
           </div>
           ${
             slide.description
@@ -129,12 +128,6 @@ async function generateIndex() {
           `
               : ""
           }
-        <div class="slide-meta">
-          スライドpdf:<a href="${slide.pdf}" class="slide-title">スライドpdfリンク</a>
-        </div>
-        <div class="slide-meta">
-          plain pdf:<a href="${slide.pdf}" class="slide-title">plain-pdfリンク</a>
-        </div>
         </article>
       `
       )

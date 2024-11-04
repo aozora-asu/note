@@ -11,7 +11,6 @@ title: エネルギー白書(R5)
 mdc: true
 githubPages:
   ogp: true
-componentsDir: "@components"
 ---
 
 # エネルギー白書(R5)要約
@@ -42,27 +41,17 @@ Presentation slides for developers
 ---
 
 # 要約範囲
+***
 
----
 
-# 要約範囲
 
----
-
----
-
----
-
----
-
-layout: cover
 
 ---
 
 # Slidev
 
 これはカバーページです。
-
+cvg
 ---
 
 layout: center
@@ -79,6 +68,16 @@ class: 'text-white'
 # Page 3
 
 これはいかなる追加のメタデータもない、デフォルトのページです。
+
+---
+<RandomFalls
+:speed="100"
+:max="150"
+:interval="600"
+class="text-2xl opacity-50">❄</RandomFalls>
+
+# Thank You
+
 
 <!--
 The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
