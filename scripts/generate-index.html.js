@@ -14,7 +14,7 @@ async function generateIndex() {
 
       return {
         title: data.title || slideName,
-        path: fs.existsSync(`/docs/${slideName}/dist`)
+        path: fs.existsSync(`docs/${slideName}/dist`)
           ? `/note/${slideName}/dist/`
           : `/note/${slideName}/${slideName}.html`,
         date: fs.statSync(file).birthtime,
