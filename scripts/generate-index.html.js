@@ -75,12 +75,11 @@ async function generateIndex() {
       height: auto;
       object-fit: cover;
       border-radius: 6px;
-      margin-bottom: 1rem;
     }
     .slide-title {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: bold;
-      margin: 0.5rem 0;
+      margin: 0.5rem;
       color: #0366d6;
       text-decoration: none;
     }
@@ -108,7 +107,7 @@ async function generateIndex() {
       .map(
         (slide) => `
         <article class="slide-card">
-          ${slide.thumbnail ? `<img src="${slide.thumbnail}" class="slide-thumbnail" alt="${slide.title}">` : ""}
+          ${slide.thumbnail ? `<a href="${slide.path}"><img src="${slide.thumbnail}" class="slide-thumbnail" alt="${slide.title}"></a>` : ""}
           <a href="${slide.path}" class="slide-title">${slide.title}</a>
           <div class="slide-meta">
             作成日: ${slide.date.toLocaleDateString("ja-JP", {
@@ -117,7 +116,7 @@ async function generateIndex() {
               day: "numeric",
             })}
             <br>
-            スライドpdf:<a href="${slide.pdf}" class="slide-title">スライドpdfリンク</a>
+            スライドpdf:<a href="${slide.pdf}">スライドpdfリンク</a>
           </div>
           ${
             slide.description
