@@ -41,6 +41,12 @@ async function generateIndex() {
       padding: 2rem;
       margin: 0;
     }
+    a {
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
     .header {
       text-align: left;
       margin-bottom: 2rem;
@@ -81,10 +87,6 @@ async function generateIndex() {
       font-weight: bold;
       margin: 0.5rem;
       color: #0366d6;
-      text-decoration: none;
-    }
-    .slide-title:hover {
-      text-decoration: underline;
     }
     .slide-meta, .slide-description {
       font-size: 0.9rem;
@@ -93,7 +95,6 @@ async function generateIndex() {
     }
     .slide-meta {
       margin-bottom: 0.5rem;
-      
     }
   </style>
 </head>
@@ -132,6 +133,7 @@ async function generateIndex() {
       )
       .join("")}
   </div>
+  
 </body>
 </html>
 

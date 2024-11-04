@@ -13,6 +13,12 @@
       padding: 2rem;
       margin: 0;
     }
+    a {
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
     .header {
       text-align: left;
       margin-bottom: 2rem;
@@ -53,10 +59,6 @@
       font-weight: bold;
       margin: 0.5rem;
       color: #0366d6;
-      text-decoration: none;
-    }
-    .slide-title:hover {
-      text-decoration: underline;
     }
     .slide-meta, .slide-description {
       font-size: 0.9rem;
@@ -65,7 +67,6 @@
     }
     .slide-meta {
       margin-bottom: 0.5rem;
-      
     }
   </style>
 </head>
@@ -75,6 +76,17 @@
   </div>
   <div class="slides-container">
     
+        <article class="slide-card">
+          <a href="/note/intensive-lecture/dist/"><img src="/note/intensive-lecture/thumbnail.png" class="slide-thumbnail" alt="集中講義"></a>
+          <a href="/note/intensive-lecture/dist/" class="slide-title">集中講義</a>
+          <div class="slide-meta">
+            作成日: 2024年11月4日
+            <br>
+            スライドpdf:<a href="/note/intensive-lecture/slides.pdf">スライドpdfリンク</a>
+          </div>
+          
+        </article>
+      
         <article class="slide-card">
           <a href="/note/whitepaper-summary/dist/"><img src="/note/whitepaper-summary/thumbnail.png" class="slide-thumbnail" alt="エネルギー白書(R5)"></a>
           <a href="/note/whitepaper-summary/dist/" class="slide-title">エネルギー白書(R5)</a>
@@ -120,6 +132,7 @@
         </article>
       
   </div>
+  
 </body>
 </html>
 
