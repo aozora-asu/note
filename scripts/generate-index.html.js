@@ -91,7 +91,7 @@ async function generateIndex() {
     .slide-title {
       font-size: 1.1rem;
       font-weight: bold;
-      margin: 0.5rem;
+      margin: 0.5rem 1rem;
       color: #0366d6;
     }
     .slide-meta, .slide-description {
@@ -117,16 +117,20 @@ async function generateIndex() {
           ${slide.thumbnail ? `<a href="${slide.path}"><img src="${slide.thumbnail}" class="slide-thumbnail" alt="${slide.title}"></a>` : ""}
           <a href="${slide.path}" class="slide-title">${slide.title}</a>
           <div class="slide-meta">
-            作成日: ${new Date(slide.createdDate).toLocaleDateString("ja-JP", {
+            作成日: ${new Date(slide.createdDate).toLocaleString("ja-JP", {
               year: "numeric",
               month: "long",
               day: "numeric",
+              hour: "numeric",
+              minute: "2-digit",
             })}
             <br>
-            更新日: ${new Date(slide.updatedDate).toLocaleDateString("ja-JP", {
+            更新日: ${new Date(slide.updatedDate).toLocaleString("ja-JP", {
               year: "numeric",
               month: "long",
               day: "numeric",
+              hour: "numeric",
+              minute: "2-digit",
             })}
             <br>
             ${slide.pdf ? `<a href="${slide.pdf}">スライドpdfリンク</a>` : ""}
