@@ -12,12 +12,18 @@ async function generateIndex() {
       const { data } = matter(content);
       const slideName = path.dirname(file).split("/").pop();
 
+      // 作成日と更新日を取得
+      const stats = fs.statSync(file);
+      const createdDate = stats.birthtimeMs;
+      const updatedDate = stats.mtimeMs;
+
       return {
         title: data.title || slideName,
         path: fs.existsSync(`docs/${slideName}/dist`)
           ? `/note/${slideName}/dist/`
           : `/note/${slideName}/${slideName}.html`,
-        date: fs.statSync(file).birthtimeMs,
+        createdDate,
+        updatedDate,
         description: data.description || "",
         thumbnail: fs.existsSync(`docs/${slideName}/thumbnail.png`)
           ? `/note/${slideName}/thumbnail.png`
@@ -38,7 +44,7 @@ async function generateIndex() {
   <style>
     /* 全体レイアウト */
     body {
-      font-family: Arial, sans-serif;
+      font-family: Hiragino Sans;
       background-color: #f6f8fa;
       padding: 2rem;
       margin: 0;
@@ -55,13 +61,11 @@ async function generateIndex() {
     }
     .slides-container {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2列のグリッド */
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
       max-width: 1200px;
       width: 100%;
     }
-    
-    /* カードデザイン */
     .slide-card {
       position: relative;
       background: white;
@@ -75,7 +79,7 @@ async function generateIndex() {
       align-items: center;
     }
     .slide-card:hover {
-      transform: translateY(5px); /* カードが浮かぶ効果 */
+      transform: translateY(5px);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     }
     .slide-thumbnail {
@@ -106,22 +110,26 @@ async function generateIndex() {
   </div>
   <div class="slides-container">
     ${slides
-      .sort((a, b) => b.date - a.date)
+      .sort((a, b) => b.createdDate - a.createdDate)
       .map(
         (slide) => `
         <article class="slide-card">
           ${slide.thumbnail ? `<a href="${slide.path}"><img src="${slide.thumbnail}" class="slide-thumbnail" alt="${slide.title}"></a>` : ""}
           <a href="${slide.path}" class="slide-title">${slide.title}</a>
           <div class="slide-meta">
-            作成日: ${slide.date.toLocaleDateString("ja-JP", {
+            作成日: ${new Date(slide.createdDate).toLocaleDateString("ja-JP", {
               year: "numeric",
               month: "long",
               day: "numeric",
-              hour: "long",
-              minute: "long",
             })}
             <br>
-            スライドpdf:<a href="${slide.pdf}">スライドpdfリンク</a>
+            更新日: ${new Date(slide.updatedDate).toLocaleDateString("ja-JP", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+            <br>
+            ${slide.pdf ? `<a href="${slide.pdf}">スライドpdfリンク</a>` : ""}
           </div>
           ${
             slide.description
@@ -137,10 +145,8 @@ async function generateIndex() {
       )
       .join("")}
   </div>
-  
 </body>
 </html>
-
     `;
 
     fs.writeFileSync("docs/index.html", html);
