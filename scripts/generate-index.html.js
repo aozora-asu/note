@@ -17,7 +17,7 @@ async function generateIndex() {
         path: fs.existsSync(`docs/${slideName}/dist`)
           ? `/note/${slideName}/dist/`
           : `/note/${slideName}/${slideName}.html`,
-        date: fs.statSync(file).birthtime,
+        date: fs.statSync(file).birthtimeMs,
         description: data.description || "",
         thumbnail: fs.existsSync(`docs/${slideName}/thumbnail.png`)
           ? `/note/${slideName}/thumbnail.png`
@@ -117,6 +117,8 @@ async function generateIndex() {
               year: "numeric",
               month: "long",
               day: "numeric",
+              hour: "long",
+              minute: "long",
             })}
             <br>
             スライドpdf:<a href="${slide.pdf}">スライドpdfリンク</a>

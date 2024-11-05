@@ -15,7 +15,7 @@ githubPages:
 
 # エネルギー白書(R5)要約
 
-Presentation slides for developers
+国際エネルギーの動向と
 
 <p class="text-xl">
 1Y22F152 <br>
@@ -40,11 +40,15 @@ Presentation slides for developers
 
 ---
 
-# 要約範囲
+# 要約範囲 目次
 ***
 
+P142((イ)から)-151(第3節前まで)
 
-
+0. 米国の原子力発電
+1. 欧州・アジアの原子力発電
+2. 核燃料サイクルの現状
+3. 再生可能エネルギーについて
 
 ---
 
@@ -69,6 +73,10 @@ class: 'text-white'
 
 これはいかなる追加のメタデータもない、デフォルトのページです。
 
+---
+# 参考文献
+
+[エネルギー白書2024](https://www.enecho.meti.go.jp/about/whitepaper/2024/pdf/whitepaper2024_all.pdf)
 ---
 
 <RandomFalls
