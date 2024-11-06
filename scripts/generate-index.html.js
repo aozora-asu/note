@@ -29,7 +29,7 @@ async function generateIndex() {
           ? `/note/${slideName}/thumbnail.png`
           : null,
         pdf: fs.existsSync(`docs/${slideName}/slides.pdf`)
-          ? `/note/${slideName}/slides.pdf`
+          ? `/note/${slideName}/${slideName}.pdf`
           : null,
       };
     });
