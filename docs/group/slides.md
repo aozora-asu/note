@@ -66,7 +66,7 @@ css: unocss
 ---
 
 
-<img src="/flowchart.png" style="width: 100%;height: 100%">
+<img src="./public/flowchart.png" style="width: 100%;height: 100%">
 
 ---
 

@@ -22,7 +22,6 @@ title: \{{ inputs.name }}
 mdc: true
 githubPages:
   ogp: true
-info: true
 lineNumbers: true
 aspectRatio: 16/9
 exportFilename: ''
