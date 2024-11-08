@@ -5,6 +5,16 @@ background: /cover.jpg
 
 # 第一回 シュレディンガー方程式の変分法による解法
 
+ハミルトニアン$\mathscr{H}$は古典的なエネルギー$E(\boldsymbol{r},\boldsymbol{p})$に対応原理を施したもの
+:::note 対応原理
+$$
+\begin{align*}
+    \boldsymbol{p} &\leftrightarrows -i\hbar\nabla \\
+    E&\leftrightarrows -\frac{\hbar}{2m}\nabla^2
+\end{align*}
+$$
+:::
+
 ## 目的
 
 シュレディンガー方程式
@@ -468,3 +478,182 @@ $$
 $\mathbb{C}$の数分だけ、結合軌道と半結合軌道が生まれる。というとこまでわかった。
 
 次回以降はどことどこの軌道が混成軌道を作るのかを決定できるようになる...らしい。(群論の知識が必要)
+
+---
+
+## 例題
+一次元系で無限の井戸型ポテンシャルの中にいる電子の波動関数を変分法で求める。
+$$
+    \mathscr{H}=\left\{ 
+        \begin{align*}
+            &\frac{|\boldsymbol{p}|^2}{2m} \space &(|x|<\frac{L}{2})\\
+            &\infty \space &(\frac{L}{2}<|x|)
+        \end{align*}
+        \right.
+$$
+### まず直接解いてみる
+井戸の中におけるシュレディンガー方程式は以下のようになる。
+$$
+\begin{equation}
+    -\frac{\hbar}{2m}\frac{\partial^2}{\partial x^2}\Psi=E\Psi
+\end{equation}
+$$
+これはただの二階常微分方程式であるため、特殊解を$\Psi_0=e^{ikx}$とおけば
+$$
+\frac{\hbar}{2m}k^2=E \,\,\,\, \therefore k=\pm \sqrt{\frac{2mE}{\hbar}}
+$$
+よって一般解は特殊解の線型結合であるため
+$$
+\Psi=C_1e^{i\sqrt{\frac{2mE}{\hbar}}x}+C_2e^{-i\sqrt{\frac{2mE}{\hbar}}x}
+$$
+これはさらにオイラーの公式を使えば
+$$
+\Psi=C_1(\cos kx+i\sin kx)+C_2(\cos kx-i\sin kx)=(C_1+C_2)\cos kx+(C_1-C_2)i\sin kx
+$$
+これは適切に定数を置き直せば
+$$
+\Psi=A\cos\left( \sqrt{\frac{2mE}{\hbar}}x\right)+B\sin\left( \sqrt{\frac{2mE}{\hbar}}x\right)
+$$
+
+となる。
+境界条件とは
+$$
+\begin{align}
+    \Psi(\pm\frac{L}{2})=0
+\end{align}
+$$
+
+
+$$
+\Psi(\pm\frac{L}{2})=A\cos\left( \sqrt{\frac{2mE}{\hbar}}\frac{L}{2}\right)\pm B\sin\left( \sqrt{\frac{2mE}{\hbar}}\frac{L}{2}\right)=0
+$$
+これら二つを足し合わせたものと、引き算したものから
+$$
+\begin{align*}
+    A\cos\left( \sqrt{\frac{2mE}{\hbar}}\frac{L}{2}\right)&=0 &\therefore & \,\,\,A=0 \,\,or\,\,  \sqrt{\frac{2mE}{\hbar}}\frac{L}{2} =\frac{2n-1}{2}\pi\\
+    B\sin\left( \sqrt{\frac{2mE}{\hbar}}\frac{L}{2}\right)&=0 &\therefore &\,\,\,B=0 \,\,or\,\,  \sqrt{\frac{2mE}{\hbar}}\frac{L}{2} =n\pi
+\end{align*}
+$$
+$A,B$が同時に0になってしまうと、$\Psi$が物理的意味を持たないため、境界条件からは以下の二つの条件が得られる
+
+$$
+\begin{equation}
+    \left\{
+        \begin{align*}
+            A&=0\\
+            \sqrt{\frac{2mE}{\hbar}}\frac{L}{2} &=n\pi
+        \end{align*}    
+    \right.
+\end{equation}
+\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,
+\begin{equation}
+     \left\{
+        \begin{align*}
+            B&=0\\
+            \sqrt{\frac{2mE}{\hbar}}\frac{L}{2} &=\frac{2n-1}{2}\pi
+        \end{align*}    
+    \right.
+\end{equation}
+$$
+
+よって波動関数$\Psi$は
+$$
+\begin{equation}
+   \Psi=B\sin\frac{2n\pi}{L}x
+\end{equation}
+\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,
+\begin{equation}
+    \Psi=A\cos\frac{(2n-1)\pi}{L}x 
+\end{equation}
+$$
+
+なお、$A,B$は*Born*の解釈によって求められる。これは$\Psi$が電子の存在確率を表している。という解釈のもとに設定される
+$$
+\begin{equation}
+\int |\Psi|^2d\boldsymbol{r}=\int \Psi\Psi^*d\boldsymbol{r}=1    
+\end{equation}
+$$
+(全空間で積分すると、必ずどこかに電子はいるから1)
+
+
+$$
+\int_{-\frac{L}{2}}^{\frac{L}{2}} A^2\cos^2\left(\frac{2n\pi}{L}x \right)d\boldsymbol{r}
+=1
+$$
+これは計算すると
+$$
+\begin{align*}
+    \int_{-\frac{L}{2}}^{\frac{L}{2}} A^2\cos^2\left(\frac{2n\pi}{L}x \right)d\boldsymbol{r}
+    &=A^2\int_0^{\frac{L}{2}}1+\cos\left(\frac{2n\pi}{L}x \right)d\boldsymbol{r}\\
+    &=\frac{L}{2}A^2\\
+    \therefore A&=\sqrt{\frac{2} {L}}
+\end{align*}
+$$
+同様に$B=\sqrt{\frac{2} {L}}$も直ちにもとまる。
+
+また、境界条件より、エネルギー$E$の条件も合わせると、波動関数は
+
+$$
+\begin{equation}
+    \left\{
+        \begin{align*}
+            \Psi&=\sqrt{\frac{2} {L}}\sin\frac{2n\pi}{L}x \\
+            E&=\frac{\hbar}{2m}\left(\frac{2n\pi}{L}\right)^2
+        \end{align*}    
+    \right.
+\end{equation}
+\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,
+\begin{equation}
+     \left\{
+        \begin{align*}
+           \Psi&=\sqrt{\frac{2} {L}}\cos\frac{(2n-1)\pi}{L}x \\
+            E&=\frac{\hbar}{2m}\left(\frac{(2n-1)\pi}{L}\right)^2
+        \end{align*}    
+    \right.
+\end{equation}
+$$
+ここで、$n \in \Z$であるため、エネルギーが飛び飛びの値しか取り得ないこともわかる。
+
+### 次にこれを変分法で解く
+変分法は以下の原理を使うアプローチ
+$$
+\langle{}\varepsilon[\Phi]\rangle{}\geq E_1
+$$
+ただし$E_1$は基底状態のエネルギー
+たとえば今、関数系$\Phi$を以下のように設定する
+
+$$
+\Phi=C_1(x-\frac{L}{2})(x+\frac{L}{2})+C_2x(x-\frac{L}{2})(x+\frac{L}{2})
+$$
+これはいうまでもなく、境界条件を満たしている。
+:::tip POINT
+変分法で設定する関数系は有限の直行系であることがほとんど。故に基底状態のエネルギーに一致することはほとんどない。
+無限の完全直行系で展開すれば一致する。
+:::
+
+エネルギー期待値のの定義から計算を行うと
+$$
+\langle{}\varepsilon[\Phi]\rangle{}=\frac{\int_{-\frac{L}{2}}^{\frac{L}{2}}\Phi^*\mathscr{H}\Phi d\boldsymbol{r}}{\int_{-\frac{L}{2}}^{\frac{L}{2}}\Phi^*\Phi d\boldsymbol{r}}
+$$
+
+$(奇関数)\times(偶関数)=(奇関数)$という性質を用いて
+
+$$
+\begin{align*}
+    (分母)
+    &=2\int_0^{\frac{L}{2}}\left(C_2x(x-\frac{L}{2})(x+\frac{L}{2})\right)^2+\left(C_1(x-\frac{L}{2})(x+\frac{L}{2})\right)^2dx\\
+    &=\int_{-\frac{L}{2}}^{\frac{L}{2}}(C_1^2+C_2^2x^2)(x-\frac{L}{2})^2(x+\frac{L}{2})^2dx\\
+\end{align*}
+$$
+
+また分子について
+$$
+\begin{align*}
+    (分子)
+    &=\int_{-\frac{L}{2}}^{\frac{L}{2}}\Phi^*(-\frac{\hbar}{2m})\frac{\partial^2}{\partial x^2}\left(C_1(x-\frac{L}{2})(x+\frac{L}{2})+C_2x(x-\frac{L}{2})(x+\frac{L}{2})\right) dx\\
+    &=-\frac{\hbar}{2m}\int_{-\frac{L}{2}}^{\frac{L}{2}}\left(C_1(x-\frac{L}{2})(x+\frac{L}{2})+C_2x(x-\frac{L}{2})(x+\frac{L}{2})\right)\left(2C_1+6C_2x\right) dx\\
+    &=-2\frac{\hbar}{2m}\int_0^{\frac{L}{2}}\left(2C_1^2(x-\frac{L}{2})(x+\frac{L}{2})+6C_2^2x^2(x-\frac{L}{2})(x+\frac{L}{2})\right)dx\\
+    &=-\frac{\hbar}{m}\int_0^{\frac{L}{2}}\left(2C_1^2(x-\frac{L}{2})(x+\frac{L}{2})+6C_2^2x^2(x-\frac{L}{2})(x+\frac{L}{2})\right)dx\\
+    &=-\frac{\hbar}{m}\left(\frac{L^3}{6}C_1^2+6C_2^2\int_0^{\frac{L}{2}}\left(x^2(x-\frac{L}{2})(x+\frac{L}{2})\right)dx\right)
+\end{align*}
+$$

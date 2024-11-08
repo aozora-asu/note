@@ -110,7 +110,7 @@ async function generateIndex() {
   </div>
   <div class="slides-container">
     ${slides
-      .sort((a, b) => b.createdDate - a.createdDate)
+      .sort((a, b) => b.updatedDate - a.updatedDate)
       .map(
         (slide) => `
         <article class="slide-card">
