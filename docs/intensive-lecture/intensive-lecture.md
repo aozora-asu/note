@@ -10,7 +10,7 @@ background: /cover.jpg
 $$
 \begin{align*}
     \boldsymbol{p} &\leftrightarrows -i\hbar\nabla \\
-    E&\leftrightarrows -\frac{\hbar}{2m}\nabla^2
+    E&\leftrightarrows -\frac{\hbar^2}{2m}\nabla^2
 \end{align*}
 $$
 :::
@@ -248,18 +248,28 @@ $$
 \langle{}\varepsilon[\Phi]\rangle{}=\frac{\sum_k|C_k|^2E_k}{\sum_k|C_k|^2}\geq \frac{\sum_k|C_k|^2E_1}{\sum_k|C_k|^2}=E_1
 $$
 
-等号成立は$E_1=E_2=E_3=\cdots$(実際にはあまりおこらない)
+等号成立は$E_1=E_2=E_3=\cdots$であることと、$\Phi=\Psi _1$であること。
+ここで、$\Psi_1$は基底状態のエネルギー$E_1$に対応する波動関数
 
-# 第三回 変分原理の利用
+# 第三回 変分原理の利用 変分法
 
-任意の関数がたとえば波動関数$\Phi=\Psi$ならば
+(再掲)
+変分原理とは以下のような定理
+
+$$
+\langle{}\varepsilon[\Phi]\rangle{}\geq E_1
+$$
+任意の関数として設定する関数$\Psi$がたとえば波動関数$\Psi$ならば
 
 $$
 \langle{}\varepsilon[\Phi]\rangle{}=\frac{\int\Phi^*\hat{H}\Phi d\mathbb{r}}{\int\Phi^*\Phi d\mathbb{r}}=\frac{\int\Psi^*\hat{H}\Psi d\mathbb{r}}{\int\Psi^*\Psi d\mathbb{r}}=E
 $$
 
 となる。が、波動関数がわかっていない時には
-パラメータである$\Phi$を変えながら、$\langle{}\varepsilon[\Phi]\rangle{}$の極小値を求めればいい
+パラメータである$\Phi$を変えながら、$\langle{}\varepsilon[\Phi]\rangle{}$の極小値を求めればいい。
+:::note
+実際は$\langle{}\varepsilon[\Phi]\rangle{}$の解は変数の数だけ(今回は$C_1$~$C_N$のN個)でてくるが、その中でも最小のエネルギー$\varepsilon_1$に対応する$\Phi$がもっとも$\Psi_1$に近い、という戦法
+:::
 
 $$
 \langle{}\varepsilon[\Phi]\rangle{}(C_1,C_2,\cdots )
@@ -271,12 +281,16 @@ $$
 \frac{\partial \varepsilon}{\partial C_1}=\frac{\partial \varepsilon}{\partial C_2}=\frac{\partial \varepsilon}{\partial C_3}=\dots=0
 $$
 
-となるような$(C_1,C_2, C_3,\cdots)$を決定すればいい
+となるような$(C_1,C_2, C_3,\cdots)$を決定すればいい。実際には$N$個の変数($C_1$~$C_N$)を用いて、近似的に求める。
 より一般に$\frac{\partial \varepsilon}{\partial c_i^*}$について考える。
 
 $$
-\Phi=\sum_iC_i\chi_i
+\Phi=\sum_i^NC_i\chi_i
 $$
+この時の$\Phi$は試行関数と呼ばれる。
+:::tip
+**有限**であることが大事
+:::
 
 これを用いて、*Hückel*近似を使わずに$\langle{}\varepsilon[\Phi]\rangle{}$を表すと以下のようになる。
 
@@ -287,36 +301,36 @@ $$
 
 $$
 \begin{equation}
-\langle{}\varepsilon[\Phi]\rangle{}=\frac{\sum_i\sum_jC_i^*H_{ij}C_j}{\sum_i\sum_jC_i^*S_{ij}C_j}
+\langle{}\varepsilon[\Phi]\rangle{}=\frac{\sum_i^N\sum_j^NC_i^*H_{ij}C_j}{\sum_i^N\sum_j^NC_i^*S_{ij}C_j}
 \end{equation}
 $$
 
 と与えられるため
 
 $$
-\frac{\partial \varepsilon}{\partial c_i^*}=\frac{(\sum_jH_{ij}C_j)(\sum_i\sum_jC_i^*S_{ij}C_j)-(\sum_i\sum_jC_i^*H_{ij}C_j)(\sum_jS_{ij}C_j)}{(\sum_i\sum_jC_i^*S_{ij}C_j)^2}=0
+\frac{\partial \varepsilon}{\partial c_i^*}=\frac{(\sum_j^NH_{ij}C_j)(\sum_i^N\sum_j^NC_i^*S_{ij}C_j)-(\sum_i^N\sum_j^NC_i^*H_{ij}C_j)(\sum_j^NS_{ij}C_j)}{(\sum_i^N\sum_j^NC_i^*S_{ij}C_j)^2}=0
 $$
 
 これは
 
 $$
-(\sum_jH_{ij}C_j)(\sum_i\sum_jC_i^*S_{ij}C_j)-(\sum_i\sum_jC_i^*H_{ij}C_j)(\sum_jS_{ij}C_j)=0
+(\sum_j^NH_{ij}C_j)(\sum_i^N\sum_j^NC_i^*S_{ij}C_j)-(\sum_i^N\sum_j^NC_i^*H_{ij}C_j)(\sum_j^NS_{ij}C_j)=0
 $$
 
 となり、さらに(4)式を使って
 
 $$
-(\sum_jH_{ij}C_j)(\sum_i\sum_jC_i^*S_{ij}C_j)-\langle{}\varepsilon[\Phi]\rangle{}(\sum_i\sum_jC_i^*S_{ij}C_j)(\sum_jS_{ij}C_j)=0
+(\sum_j^NH_{ij}C_j)(\sum_i^N\sum_j^NC_i^*S_{ij}C_j)-\langle{}\varepsilon[\Phi]\rangle{}(\sum_i^N\sum_j^NC_i^*S_{ij}C_j)(\sum_j^NS_{ij}C_j)=0
 $$
 
 $$
-(\sum_jH_{ij}C_j)-\langle{}\varepsilon[\Phi]\rangle{}(\sum_jS_{ij}C_j)=0
+(\sum_j^NH_{ij}C_j)-\langle{}\varepsilon[\Phi]\rangle{}(\sum_j^NS_{ij}C_j)=0
 $$
 
 これは以下のように書ける。
 
 $$
-\sum_j(H_{ij}-\langle{}\varepsilon[\Phi]\rangle{}S_{ij})C_j=0
+\sum_j^N(H_{ij}-\langle{}\varepsilon[\Phi]\rangle{}S_{ij})C_j=0
 $$
 
 $i=1,2,3$について、それぞれ並べて書いてみる
@@ -337,15 +351,17 @@ $$
 c_1 \\
 c_2 \\
 c_3 \\
-\vdots
+\vdots\\
+c_N
 \end{pmatrix}
 \,,\,
 \mathbb{H'}=
 \begin{pmatrix}
-H_{11}-\varepsilon S_{11} & H_{12}-\varepsilon S_{12}   & H_{13}-\varepsilon S_{13} & \cdots\\
-H_{21}-\varepsilon S_{21}   & H_{22}-\varepsilon S_{22} & H_{23}-\varepsilon S_{23} & \cdots\\
-H_{31}-\varepsilon S_{31}   & H_{32}-\varepsilon S_{32}   & \ddots &  \vdots\\
-\vdots   & \cdots   & \cdots
+H_{11}-\varepsilon S_{11} & H_{12}-\varepsilon S_{12}   & H_{13}-\varepsilon S_{13} & \cdots & H_{1N}-\varepsilon S_{1N} \\
+H_{21}-\varepsilon S_{21}   & H_{22}-\varepsilon S_{22} & H_{23}-\varepsilon S_{23} & \cdots & H_{2N}-\varepsilon S_{2N}\\
+H_{31}-\varepsilon S_{31}   & H_{32}-\varepsilon S_{32}   & H_{33}-\varepsilon S_{33} &  \cdots & H_{3N}-\varepsilon S_{3N}\\
+\vdots   & \cdots   & \cdots & \ddots  &\vdots \\
+H_{N1}-\varepsilon S_{N1}   & H_{N2}-\varepsilon S_{N2}   & H_{N3}-\varepsilon S_{N3} &  \cdots & H_{NN}-\varepsilon S_{NN}\\
 \end{pmatrix}
 $$
 
@@ -353,16 +369,17 @@ $$
 \mathbb{CH'}=\mathbb{0}
 $$
 
-これは**エネルギー期待値が極小値を持つ条件**である。$\mathbb{C}$が非自明な解を持つ条件は$det(\mathbb{H'})=0$
+これは**エネルギー期待値が極小値を持つ条件**である。$\mathbb{C}$が非自明な解を持つ条件は$det(\mathbb{H'})=0$これから$\varepsilon$は$N$個出てくる。基本的には$\varepsilon_1$に対応する試行関数$\Phi_1$が真の波動関数$\Psi_1$に一番近いものとして扱うが、実際は$\varepsilon_2,\varepsilon_3$くらいまでは真の波動関数に近似できるくらい近いこともある。
 $\chi$がシュレディンガー方程式を満たす波動関数ならば*Hückel*近似を用いれば以下のように$\mathbb{H'}$はやや簡便になる
 
 $$
 \mathbb{H'}=
 \begin{pmatrix}
-H_{11}-\varepsilon & H_{12}  & H_{13} & \cdots\\
-H_{21}   & H_{22}-\varepsilon  & H_{23} & \cdots\\
-H_{31}   & H_{32}   & \ddots &  \vdots\\
-\vdots   & \cdots   & \cdots
+H_{11}-\varepsilon & H_{12}   & H_{13} & \cdots & H_{1N} \\
+H_{21}   & H_{22}-\varepsilon & H_{23} & \cdots & H_{2N}\\
+H_{31}   & H_{32}   & H_{33}-\varepsilon &  \cdots & H_{3N}\\
+\vdots   & \cdots   & \cdots & \ddots  &\vdots \\
+H_{N1}   & H_{N2}   & H_{N3} &  \cdots & H_{NN}-\varepsilon\\
 \end{pmatrix}
 $$
 
@@ -445,7 +462,7 @@ $$
 これを満たす$\mathbb{C}$と$E$を求める問題に帰着した。before 変分法と after 変分法で、以下のような関係がある。
 
 $$
-\Psi=\sum_iC_i\chi_i \,\, , \,  H_{ij}=\int\chi_i\hat{H}\chi_jd\mathbb{r}
+\Psi=\sum_iC_i\chi_i \,\, , \,  H_{ij}=\int\chi_i^*\hat{H}\chi_jd\boldsymbol{r}
 $$
 
 (ただし、$\chi$は任意の関数系を選択する)
@@ -478,6 +495,7 @@ $$
 $\mathbb{C}$の数分だけ、結合軌道と半結合軌道が生まれる。というとこまでわかった。
 
 次回以降はどことどこの軌道が混成軌道を作るのかを決定できるようになる...らしい。(群論の知識が必要)
+群論の既約表現は偶関数、奇関数を拡張したもの
 
 ---
 
@@ -495,16 +513,16 @@ $$
 井戸の中におけるシュレディンガー方程式は以下のようになる。
 $$
 \begin{equation}
-    -\frac{\hbar}{2m}\frac{\partial^2}{\partial x^2}\Psi=E\Psi
+    -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\Psi=E\Psi
 \end{equation}
 $$
 これはただの二階常微分方程式であるため、特殊解を$\Psi_0=e^{ikx}$とおけば
 $$
-\frac{\hbar}{2m}k^2=E \,\,\,\, \therefore k=\pm \sqrt{\frac{2mE}{\hbar}}
+\frac{\hbar^2}{2m}k^2=E \,\,\,\, \therefore k=\pm \sqrt{\frac{2mE}{\hbar^2}}
 $$
 よって一般解は特殊解の線型結合であるため
 $$
-\Psi=C_1e^{i\sqrt{\frac{2mE}{\hbar}}x}+C_2e^{-i\sqrt{\frac{2mE}{\hbar}}x}
+\Psi=C_1e^{i\sqrt{\frac{2mE}{\hbar^2}}x}+C_2e^{-i\sqrt{\frac{2mE}{\hbar^2}}x}
 $$
 これはさらにオイラーの公式を使えば
 $$
@@ -512,7 +530,7 @@ $$
 $$
 これは適切に定数を置き直せば
 $$
-\Psi=A\cos\left( \sqrt{\frac{2mE}{\hbar}}x\right)+B\sin\left( \sqrt{\frac{2mE}{\hbar}}x\right)
+\Psi=A\cos\left( \sqrt{\frac{2mE}{\hbar^2}}x\right)+B\sin\left( \sqrt{\frac{2mE}{\hbar^2}}x\right)
 $$
 
 となる。
@@ -525,13 +543,13 @@ $$
 
 
 $$
-\Psi(\pm\frac{L}{2})=A\cos\left( \sqrt{\frac{2mE}{\hbar}}\frac{L}{2}\right)\pm B\sin\left( \sqrt{\frac{2mE}{\hbar}}\frac{L}{2}\right)=0
+\Psi(\pm\frac{L}{2})=A\cos\left( \sqrt{\frac{2mE}{\hbar^2}}\frac{L}{2}\right)\pm B\sin\left( \sqrt{\frac{2mE}{\hbar^2}}\frac{L}{2}\right)=0
 $$
 これら二つを足し合わせたものと、引き算したものから
 $$
 \begin{align*}
-    A\cos\left( \sqrt{\frac{2mE}{\hbar}}\frac{L}{2}\right)&=0 &\therefore & \,\,\,A=0 \,\,or\,\,  \sqrt{\frac{2mE}{\hbar}}\frac{L}{2} =\frac{2n-1}{2}\pi\\
-    B\sin\left( \sqrt{\frac{2mE}{\hbar}}\frac{L}{2}\right)&=0 &\therefore &\,\,\,B=0 \,\,or\,\,  \sqrt{\frac{2mE}{\hbar}}\frac{L}{2} =n\pi
+    A\cos\left( \sqrt{\frac{2mE}{\hbar^2}}\frac{L}{2}\right)&=0 &\therefore & \,\,\,A=0 \,\,or\,\,  \sqrt{\frac{2mE}{\hbar^2}}\frac{L}{2} =\frac{2n-1}{2}\pi\\
+    B\sin\left( \sqrt{\frac{2mE}{\hbar^2}}\frac{L}{2}\right)&=0 &\therefore &\,\,\,B=0 \,\,or\,\,  \sqrt{\frac{2mE}{\hbar^2}}\frac{L}{2} =n\pi
 \end{align*}
 $$
 $A,B$が同時に0になってしまうと、$\Psi$が物理的意味を持たないため、境界条件からは以下の二つの条件が得られる
@@ -541,7 +559,7 @@ $$
     \left\{
         \begin{align*}
             A&=0\\
-            \sqrt{\frac{2mE}{\hbar}}\frac{L}{2} &=n\pi
+            \sqrt{\frac{2mE}{\hbar^2}}\frac{L}{2} &=n\pi
         \end{align*}    
     \right.
 \end{equation}
@@ -550,7 +568,7 @@ $$
      \left\{
         \begin{align*}
             B&=0\\
-            \sqrt{\frac{2mE}{\hbar}}\frac{L}{2} &=\frac{2n-1}{2}\pi
+            \sqrt{\frac{2mE}{\hbar^2}}\frac{L}{2} &=\frac{2n-1}{2}\pi
         \end{align*}    
     \right.
 \end{equation}
@@ -586,10 +604,10 @@ $$
     \int_{-\frac{L}{2}}^{\frac{L}{2}} A^2\cos^2\left(\frac{2n\pi}{L}x \right)d\boldsymbol{r}
     &=A^2\int_0^{\frac{L}{2}}1+\cos\left(\frac{2n\pi}{L}x \right)d\boldsymbol{r}\\
     &=\frac{L}{2}A^2\\
-    \therefore A&=\sqrt{\frac{2} {L}}
+    \therefore A&=\pm\sqrt{\frac{2} {L}}
 \end{align*}
 $$
-同様に$B=\sqrt{\frac{2} {L}}$も直ちにもとまる。
+同様に$B=\pm\sqrt{\frac{2} {L}}$も直ちにもとまる。
 
 また、境界条件より、エネルギー$E$の条件も合わせると、波動関数は
 
@@ -597,8 +615,8 @@ $$
 \begin{equation}
     \left\{
         \begin{align*}
-            \Psi&=\sqrt{\frac{2} {L}}\sin\frac{2n\pi}{L}x \\
-            E&=\frac{\hbar}{2m}\left(\frac{2n\pi}{L}\right)^2
+            \Psi&=\pm\sqrt{\frac{2} {L}}\sin\frac{2n\pi}{L}x \\
+            E&=\frac{\hbar^2}{2m}\left(\frac{2n\pi}{L}\right)^2
         \end{align*}    
     \right.
 \end{equation}
@@ -606,15 +624,26 @@ $$
 \begin{equation}
      \left\{
         \begin{align*}
-           \Psi&=\sqrt{\frac{2} {L}}\cos\frac{(2n-1)\pi}{L}x \\
-            E&=\frac{\hbar}{2m}\left(\frac{(2n-1)\pi}{L}\right)^2
+           \Psi&=\pm\sqrt{\frac{2} {L}}\cos\frac{(2n-1)\pi}{L}x \\
+            E&=\frac{\hbar^2}{2m}\left(\frac{(2n-1)\pi}{L}\right)^2
         \end{align*}    
     \right.
 \end{equation}
 $$
-ここで、$n \in \Z$であるため、エネルギーが飛び飛びの値しか取り得ないこともわかる。
+ここで、$n \in \Z$であるため、エネルギーが飛び飛びの正の値しか取り得ないこともわかる。基底状態に対応する波動関数$\Psi_1$は
+$$
+\begin{align}
+           \Psi_1&=\pm\sqrt{\frac{2} {L}}\cos\frac{\pi}{L}x \\
+            E_1&=\frac{\hbar^2}{2m}\left(\frac{\pi}{L}\right)^2=\frac{h^2}{8m}\left(\frac{1}{L}\right)^2
+\end{align} 
+$$
+
+:::question
+$A,B$は正の値って限定はないの??
+:::
 
 ### 次にこれを変分法で解く
+
 変分法は以下の原理を使うアプローチ
 $$
 \langle{}\varepsilon[\Phi]\rangle{}\geq E_1
@@ -627,7 +656,7 @@ $$
 $$
 これはいうまでもなく、境界条件を満たしている。
 :::tip POINT
-変分法で設定する関数系は有限の直行系であることがほとんど。故に基底状態のエネルギーに一致することはほとんどない。
+変分法で設定する関数系は**有限の直行系**であることがほとんど。故に基底状態のエネルギーに一致することはほとんどない。
 無限の完全直行系で展開すれば一致する。
 :::
 
@@ -643,6 +672,12 @@ $$
     (分母)
     &=2\int_0^{\frac{L}{2}}\left(C_2x(x-\frac{L}{2})(x+\frac{L}{2})\right)^2+\left(C_1(x-\frac{L}{2})(x+\frac{L}{2})\right)^2dx\\
     &=\int_{-\frac{L}{2}}^{\frac{L}{2}}(C_1^2+C_2^2x^2)(x-\frac{L}{2})^2(x+\frac{L}{2})^2dx\\
+    &=C_1^2 \frac{L^5}{30}+C_2^2\int_{-\frac{L}{2}}^{\frac{L}{2}}x^2(x-\frac{L}{2})^2(x+\frac{L}{2})^2dx\\
+     &=C_1^2 \frac{L^5}{30}+2C_2^2\int_0^{\frac{L}{2}}x^6-\frac{L^2}{4}x^4+\frac{L^4}{16}x^2dx\\
+      &=C_1^2 \frac{L^5}{30}+2C_2^2\left[\frac{1}{7}x^7-\frac{L^2}{20}x^5+\frac{L^4}{48}x^3\right]_0^{\frac{L}{2}}\\
+    &=C_1^2 \frac{L^5}{30}+2C_2^2\left(\frac{1}{7}(\frac{L}{2})^7-\frac{L^2}{20}(\frac{L}{2})^5+\frac{L^4}{48}(\frac{L}{2})^3\right)\\
+    &=C_1^2 \frac{L^5}{30}+2C_2^2(\frac{L}{2})^7\left(\frac{1}{7}-\frac{1}{5}+\frac{1}{3}\right)\\
+    &=C_1^2 \frac{L^5}{30}+\frac{2}{105}C_2^2(\frac{L}{2})^7
 \end{align*}
 $$
 
@@ -650,10 +685,116 @@ $$
 $$
 \begin{align*}
     (分子)
-    &=\int_{-\frac{L}{2}}^{\frac{L}{2}}\Phi^*(-\frac{\hbar}{2m})\frac{\partial^2}{\partial x^2}\left(C_1(x-\frac{L}{2})(x+\frac{L}{2})+C_2x(x-\frac{L}{2})(x+\frac{L}{2})\right) dx\\
-    &=-\frac{\hbar}{2m}\int_{-\frac{L}{2}}^{\frac{L}{2}}\left(C_1(x-\frac{L}{2})(x+\frac{L}{2})+C_2x(x-\frac{L}{2})(x+\frac{L}{2})\right)\left(2C_1+6C_2x\right) dx\\
-    &=-2\frac{\hbar}{2m}\int_0^{\frac{L}{2}}\left(2C_1^2(x-\frac{L}{2})(x+\frac{L}{2})+6C_2^2x^2(x-\frac{L}{2})(x+\frac{L}{2})\right)dx\\
-    &=-\frac{\hbar}{m}\int_0^{\frac{L}{2}}\left(2C_1^2(x-\frac{L}{2})(x+\frac{L}{2})+6C_2^2x^2(x-\frac{L}{2})(x+\frac{L}{2})\right)dx\\
-    &=-\frac{\hbar}{m}\left(\frac{L^3}{6}C_1^2+6C_2^2\int_0^{\frac{L}{2}}\left(x^2(x-\frac{L}{2})(x+\frac{L}{2})\right)dx\right)
+    &=\int_{-\frac{L}{2}}^{\frac{L}{2}}\Phi^*(-\frac{\hbar^2}{2m})\frac{\partial^2}{\partial x^2}\left(C_1(x-\frac{L}{2})(x+\frac{L}{2})+C_2x(x-\frac{L}{2})(x+\frac{L}{2})\right) dx\\
+    &=-\frac{\hbar^2}{2m}\int_{-\frac{L}{2}}^{\frac{L}{2}}\left(C_1(x-\frac{L}{2})(x+\frac{L}{2})+C_2x(x-\frac{L}{2})(x+\frac{L}{2})\right)\left(2C_1+6C_2x\right) dx\\
+    &=-2\frac{\hbar^2}{2m}\int_0^{\frac{L}{2}}\left(2C_1^2(x-\frac{L}{2})(x+\frac{L}{2})+6C_2^2x^2(x-\frac{L}{2})(x+\frac{L}{2})\right)dx\\
+    &=-\frac{\hbar^2}{m}\int_0^{\frac{L}{2}}\left(2C_1^2(x-\frac{L}{2})(x+\frac{L}{2})+6C_2^2x^2(x-\frac{L}{2})(x+\frac{L}{2})\right)dx\\
+    &=-\frac{\hbar^2}{m}\left(-\frac{L^3}{6}C_1^2+6C_2^2\int_0^{\frac{L}{2}}\left(x^2(x-\frac{L}{2})(x+\frac{L}{2})\right)dx\right)\\
+    &=\frac{\hbar^2}{m}\frac{L^3}{6}C_1^2-\frac{\hbar^2}{m}6C_2^2\int_0^{\frac{L}{2}}x^2(x-\frac{L}{2})(x+\frac{L}{2})dx\\
+    &=\frac{\hbar^2}{m}\frac{L^3}{6}C_1^2-\frac{\hbar^2}{m}6C_2^2\int_0^{\frac{L}{2}}(x^4-\frac{L^2}{4}x^2)dx\\
+    &=\frac{\hbar^2}{m}\frac{L^3}{6}C_1^2-\frac{\hbar^2}{m}6C_2^2
+    \left[\frac{1}{5}x^5-\frac{L^2}{12}x^3\right]_0^{\frac{L}{2}}\\
+    &=\frac{\hbar^2}{m}\frac{L^3}{6}C_1^2-\frac{\hbar^2}{m}6C_2^2
+    (\frac{1}{160}-\frac{1}{96})L^5\\
+    &=\frac{\hbar^2}{m}(\frac{C_1^2}{6}+\frac{C_2^2L^2}{40})L^3
 \end{align*}
 $$
+よってエネルギー期待値は
+$$
+\langle{}\varepsilon[\Phi]\rangle{}=\frac{\frac{\hbar^2}{m}(\frac{C_1^2}{3}+\frac{C_2^2L^2}{20})}{ \frac{L^2}{15}C_1^2+\frac{4}{105}C_2^2(\frac{1}{2})^7L^4}
+$$
+これの極小値を求める。$C_1,C_2$それぞれで偏微分をとって
+$$
+\begin{align*}
+    \frac{\partial}{\partial C_1}\langle{}\varepsilon[\Phi]\rangle{}&=
+\frac{
+    \frac{\hbar^2}{m}
+    \frac{2C_1}{3}\left(\frac{L^2}{15}C_1^2+\frac{4}{105}C_2^2(\frac{1}{2})^7L^4\right)-\frac{\hbar^2}{m}(\frac{C_1^2}{3}+\frac{C_2^2L^2}{20})\frac{2L^2C_1}{15}}
+    { \left(\frac{L^2}{15}C_1^2+\frac{4}{105}C_2^2(\frac{1}{2})^7L^4\right)^2}=0\\
+    \therefore C_2&=0\\
+    \frac{\partial}{\partial C_2}\langle{}\varepsilon[\Phi]\rangle{}&=
+\frac{
+    \frac{\hbar^2}{m}
+    \frac{C_2L^2}{10}\left(\frac{L^2}{15}C_1^2+\frac{4}{105}C_2^2(\frac{1}{2})^7L^4\right)-\frac{\hbar^2}{m}(\frac{C_1^2}{3}+\frac{C_2^2L^2}{20})\frac{1}{105}C_2^2(\frac{1}{2})^4L^4}
+    { \left(\frac{L^2}{15}C_1^2+\frac{4}{105}C_2^2(\frac{1}{2})^7L^4\right)^2}=0\\
+    \therefore C_1&=0
+\end{align*}
+$$
+
+
+よって、この時のエネルギー期待値はそれぞれ
+
+$$
+\begin{equation}
+    \langle{}\varepsilon[\Phi]\rangle{}=\frac{5\hbar^2}{mL^2}
+\end{equation}
+\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,
+\begin{equation}
+    \langle{}\varepsilon[\Phi]\rangle{}=\frac{168\hbar^2}{ mL^2}
+\end{equation}
+$$
+となる。よって、最小のエネルギーは$E=\frac{5\hbar^2}{mL^2}$で、これに対応する試行関数は
+$$
+\begin{equation}
+    \Phi=C_1(x-\frac{L}{2})(x+\frac{L}{2})
+\end{equation}
+$$
+規格化条件を求めると
+$$
+\begin{align*}
+    \int_{-\frac{L}{2}}^{\frac{L}{2}}C_1^2(x-\frac{L}{2})^2(x+\frac{L}{2})^2dx&=1\\
+    C_1^2\frac{L^5}{30}&=1\\
+    \therefore C_1 &=\pm\frac{1}{L^2}\sqrt{\frac{30}{L}}
+\end{align*}
+$$
+よって
+
+$$
+\begin{align}
+          \Phi_1&=\pm\frac{1}{L^2}\sqrt{\frac{30}{L}}(x-\frac{L}{2})(x+\frac{L}{2})\\
+            E_1&=\frac{5\hbar^2}{mL^2}
+\end{align} 
+$$
+これは真の解である波動関数と近しいものとなっている
+$$
+\begin{align}
+           \Psi_1&=\pm\sqrt{\frac{2} {L}}\cos\frac{\pi}{L}x \\
+            E_1&=\frac{\hbar^2}{2m}\left(\frac{\pi}{L}\right)^2=\frac{\pi^2h^2}{2mL^2}\approx\frac{4.9348\hbar^2}{mL^2}
+\end{align} 
+$$
+
+```python {cmd=true matplotlib=true}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# パラメータの設定
+L = 2  # Lの長さを設定（任意に変更可能）
+
+# x軸の範囲を設定
+x = np.linspace(-L/2, L/2, 1000)
+
+# 厳密解Psi1の計算
+Psi1_pos = np.sqrt(2 / L) * np.cos(np.pi / L * x)
+Psi1_neg = -Psi1_pos
+
+# 変分法による近似解Phi1の計算
+Phi1_pos = np.sqrt(30 / L) * (1 / (L**2)) * (x - L/2) * (x + L/2)
+Phi1_neg = -Phi1_pos
+
+# プロット
+plt.figure(figsize=(10, 6))
+plt.plot(x, Psi1_pos, 'b', linewidth=1.5, label=r'$\Psi_1$ (positive)')
+plt.plot(x, Psi1_neg, 'b--', linewidth=1.5, label=r'$\Psi_1$ (negative)')
+plt.plot(x, Phi1_pos, 'r', linewidth=1.5, label=r'$\Phi_1$ (positive)')
+plt.plot(x, Phi1_neg, 'r--', linewidth=1.5, label=r'$\Phi_1$ (negative)')
+
+# グラフの設定
+plt.xlabel('x')
+plt.ylabel('y value')
+plt.title('Exact solution and approximate solution of variational method')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+```
+グラフを見ても、かなり良い精度
