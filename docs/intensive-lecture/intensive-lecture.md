@@ -663,7 +663,23 @@ $$
     \right.
 \end{equation}
 $$
-ここで、$n \in \Z$であるため、エネルギーが飛び飛びの正の値しか取り得ないこともわかる。基底状態に対応する波動関数$\Psi_1$は
+ここで、$n \in \Z$であるため、まとめると以下のようにも書ける
+$$
+\begin{equation}
+    \Psi_n=\left\{
+        \begin{align*}
+            &\pm\sqrt{\frac{2} {L}}\sin\frac{n\pi}{L}x \,\,\,\,\,\,\,\,\, (n\in even)\\
+            &\pm\sqrt{\frac{2} {L}}\cos\frac{n\pi}{L}x \,\,\,\,\,\,\,\,\, (n\in odd)
+        \end{align*}
+    \right.
+\end{equation}
+\,\,\,\,\,\,\,\,\,\,\,\,\,\,
+\begin{equation}
+    E_n=\frac{\hbar^2}{2m}\left(\frac{n\pi}{L}\right)^2
+\end{equation}
+$$
+
+エネルギーが飛び飛びの正の値しか取り得ないこともわかる。基底状態に対応する波動関数$\Psi_1$は
 $$
 \begin{align}
            \Psi_1&=\pm\sqrt{\frac{2} {L}}\cos\frac{\pi}{L}x \\
