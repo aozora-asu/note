@@ -27,6 +27,7 @@ background: /cover.jpg
 5. [番外編 一次元系で無限の井戸型ポテンシャルの中にいる電子](#番外編-一次元系で無限の井戸型ポテンシャルの中にいる電子)
         1. [まず直接解いてみる](#まず直接解いてみる)
         1. [次にこれを変分法で解く](#次にこれを変分法で解く)
+6. [余談 期待値の話](#余談-期待値の話)
 
 <!-- /code_chunk_output -->
 
@@ -370,9 +371,9 @@ $i=1,2,3$について、それぞれ並べて書いてみる
 
 $$
 \begin{align*}
-    C_1(H_{11}-\varepsilon S_{11})+C_2(H_{12}-\varepsilon S_{12})+C_3(H_{13}-\varepsilon S_{13})+\cdots&=0\\
-    C_1(H_{21}-\varepsilon S_{21})+C_2(H_{22}-\varepsilon S_{22})+C_3(H_{23}-\varepsilon S_{23})+\cdots&=0\\
-    C_1(H_{31}-\varepsilon S_{31})+C_2(H_{32}-\varepsilon S_{32})+C_3(H_{33}-\varepsilon S_{33})+\cdots&=0\\
+    C_1(H_{11}-\varepsilon S_{11})+C_2(H_{12}-\varepsilon S_{12})+C_3(H_{13}-\varepsilon S_{13})+\cdots+C_3(H_{1N}-\varepsilon S_{1N})&=0\\
+    C_1(H_{21}-\varepsilon S_{21})+C_2(H_{22}-\varepsilon S_{22})+C_3(H_{23}-\varepsilon S_{23})+\cdots+C_3(H_{2N}-\varepsilon S_{2N})&=0\\
+    C_1(H_{31}-\varepsilon S_{31})+C_2(H_{32}-\varepsilon S_{32})+C_3(H_{33}-\varepsilon S_{33})+\cdots+C_3(H_{3N}-\varepsilon S_{3N})&=0\\
 \end{align*}
 $$
 
@@ -668,8 +669,9 @@ $$
 \begin{equation}
     \Psi_n=\left\{
         \begin{align*}
-            &\pm\sqrt{\frac{2} {L}}\sin\frac{n\pi}{L}x \,\,\,\,\,\,\,\,\, (n\in even)\\
-            &\pm\sqrt{\frac{2} {L}}\cos\frac{n\pi}{L}x \,\,\,\,\,\,\,\,\, (n\in odd)
+            \pm\sqrt{\frac{2} {L}}\sin\frac{n\pi}{L}x& \,\,\,\,\,\,\,\,\,(n\in even, |x|<\frac{L}{2})\\
+            \pm\sqrt{\frac{2} {L}}\cos\frac{n\pi}{L}x& \,\,\,\,\,\,\,\,\, (n\in odd, |x|<\frac{L}{2})\\
+            0 &\,\,\,\,\,\,\,\,\,(other)
         \end{align*}
     \right.
 \end{equation}
@@ -847,3 +849,56 @@ plt.show()
 
 ```
 グラフを見ても、かなり良い精度
+
+# 余談 期待値の話
+
+エネルギーの期待値$\langle{}\varepsilon[\Phi]\rangle{}$とは一体なんなのか
+
+対応原理
+$$
+A \leftrightarrows \hat{A}
+$$
+このように解析力学の世界$A$から量子の世界に対応させたもの$\hat{A}$の固有値について考えてみる
+$$
+\hat{A}f_{A,a} =af_{A,a}
+$$
+
+*Born*の解釈は次の二つ
+1. 実際に観測される値は固有値である$\{a_i\}$のいずれかに限られる
+<!-- 2. $\Psi=\sum_iC_if_{A,a_i}(\boldsymbol{r})$に対して、$\dfrac{\int \Psi^*\hat{A}\Psi d\boldsymbol{r}}{\int\Psi^*\Psi d\boldsymbol{r}}=\dfrac{|c_i|^2}{\sum_i|c_i|^2}$の確率で$a_i$が観測される -->
+1. $\dfrac{|c_i|^2}{\sum_i|c_i|^2}$の確率で$a_i$が観測される 
+
+   
+$\hat{A}$はエルミート演算子と呼ばれ以下の性質を与える
+$$
+\begin{align}
+    \int f_{A,a_i}^*f_{A,a_j}d\boldsymbol{r}&=\delta_{ij}\\
+    \{a_i\}&\subset \R
+\end{align}
+$$
+
+:::tip エルミート行列
+エルミート行列とは以下のような性質を満たす正方行列$\mathbb{A}=(a_{ij})$のこと
+$$
+\begin{align}
+  \mathbb{A}^*&=\mathbb{A}\\
+  a_{ji}&= \overline{a_{ij}} 
+\end{align}
+$$
+ただし$^*$は共役転置を表す。
+対称行列の複素共役版と考えれば良い。また対角成分は必ず実数となる。
+エルミート行列は適切なユニタリ行列を持って対角化が可能である。つまり
+$$
+\mathbb{U}^{-1}\mathbb{A}\mathbb{U}=\mathbb{U}^*\mathbb{A}\mathbb{U}=(a_i\delta_{ij})
+$$
+という形にできる。
+:::
+:::tip ユニタリ行列
+ユニタリ行列とは以下のような性質を満たす正方行列$\mathbb{U}=(a_{ij})$のこと
+$$
+\begin{align}
+  \mathbb{U}^*\mathbb{U}=\mathbb{U}\mathbb{U}^*=\mathbb{I}\\
+\end{align}
+$$
+ただし$^*$は共役転置を表す。
+:::
