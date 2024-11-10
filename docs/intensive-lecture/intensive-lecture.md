@@ -866,7 +866,7 @@ $$
 *Born*の解釈は次の二つ
 1. 実際に観測される値は固有値である$\{a_i\}$のいずれかに限られる
 <!-- 2. $\Psi=\sum_iC_if_{A,a_i}(\boldsymbol{r})$に対して、$\dfrac{\int \Psi^*\hat{A}\Psi d\boldsymbol{r}}{\int\Psi^*\Psi d\boldsymbol{r}}=\dfrac{|c_i|^2}{\sum_i|c_i|^2}$の確率で$a_i$が観測される -->
-1. $\dfrac{|c_i|^2}{\sum_i|c_i|^2}$の確率で$a_i$が観測される 
+1. $f=\sum_ic_if_{A,a_i}(\boldsymbol{r})$に対して、 $\dfrac{|c_i|^2}{\sum_i|c_i|^2}$の確率で$a_i$が観測される 
 
    
 $\hat{A}$はエルミート演算子と呼ばれ以下の性質を与える
@@ -877,28 +877,28 @@ $$
 \end{align}
 $$
 
-:::tip エルミート行列
-エルミート行列とは以下のような性質を満たす正方行列$\mathbb{A}=(a_{ij})$のこと
+なお、これはエルミート演算子の定義から直ちに導かれる。
+:::tip エルミート演算子
+エルミート演算子$\hat{A}$とは、いかのような性質を満たす演算子
 $$
-\begin{align}
-  \mathbb{A}^*&=\mathbb{A}\\
-  a_{ji}&= \overline{a_{ij}} 
-\end{align}
+\int\psi_2(\boldsymbol{r})^*\hat{A}\psi_1(\boldsymbol{r})d\boldsymbol{r}=\int\left\{\hat{A}\psi_2(\boldsymbol{r})\right\}^* \psi_1(\boldsymbol{r})d\boldsymbol{r}
 $$
-ただし$^*$は共役転置を表す。
-対称行列の複素共役版と考えれば良い。また対角成分は必ず実数となる。
-エルミート行列は適切なユニタリ行列を持って対角化が可能である。つまり
-$$
-\mathbb{U}^{-1}\mathbb{A}\mathbb{U}=\mathbb{U}^*\mathbb{A}\mathbb{U}=(a_i\delta_{ij})
-$$
-という形にできる。
+ここで、$\psi$は任意のスカラー関数
 :::
-:::tip ユニタリ行列
-ユニタリ行列とは以下のような性質を満たす正方行列$\mathbb{U}=(a_{ij})$のこと
+
+この解釈を元に期待値について考えてみる。期待値を$\overline{\varepsilon}$とおいて、以下のような形で定義してみる
+
 $$
-\begin{align}
-  \mathbb{U}^*\mathbb{U}=\mathbb{U}\mathbb{U}^*=\mathbb{I}\\
-\end{align}
+\overline{\varepsilon}=\frac{\int f^* \hat{A}fd\boldsymbol{r}}{\int f^*fd\boldsymbol{r}}
 $$
-ただし$^*$は共役転置を表す。
-:::
+とすると
+$$
+\begin{align*}
+    \overline{\varepsilon}
+    &=\frac{\int \left(\sum_ic_if_{A,a_i}(\boldsymbol{r})\right)^* \hat{A}\sum_ic_if_{A,a_i}(\boldsymbol{r})d\boldsymbol{r}}{\int \left(\sum_ic_if_{A,a_i}(\boldsymbol{r})\right)^*\sum_ic_if_{A,a_i}(\boldsymbol{r})d\boldsymbol{r}}\\
+    &=\frac{\int \sum_ic_i^*f_{A,a_i}^*(\boldsymbol{r}) \hat{A}\sum_ic_if_{A,a_i}(\boldsymbol{r})d\boldsymbol{r}}{\int \sum_ic_i^*f_{A,a_i}^*(\boldsymbol{r})\sum_ic_if_{A,a_i}(\boldsymbol{r})d\boldsymbol{r}}\\
+    &=\frac{\int \sum_jc_j^*f_{A,a_j}^*(\boldsymbol{r}) \sum_ia_ic_if_{A,a_i}(\boldsymbol{r})d\boldsymbol{r}}{\int \sum_jc_j^*f_{A,a_j}^*(\boldsymbol{r})\sum_ic_if_{A,a_i}(\boldsymbol{r})d\boldsymbol{r}}\\
+    &=\dfrac{|c_i|^2}{\sum_i|c_i|^2} (\because (25))
+\end{align*}
+$$
+天下りではあるが、これにより期待値の表現が妥当なものとして得られる。
