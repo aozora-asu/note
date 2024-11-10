@@ -878,7 +878,7 @@ $$
 $$
 
 なお、これはエルミート演算子の定義から直ちに導かれる。
-:::tip エルミート演算子
+:::note エルミート演算子
 エルミート演算子$\hat{A}$とは、いかのような性質を満たす演算子
 $$
 \int\psi_2(\boldsymbol{r})^*\hat{A}\psi_1(\boldsymbol{r})d\boldsymbol{r}=\int\left\{\hat{A}\psi_2(\boldsymbol{r})\right\}^* \psi_1(\boldsymbol{r})d\boldsymbol{r}
@@ -898,7 +898,7 @@ $$
     &=\frac{\int \left(\sum_ic_if_{A,a_i}(\boldsymbol{r})\right)^* \hat{A}\sum_ic_if_{A,a_i}(\boldsymbol{r})d\boldsymbol{r}}{\int \left(\sum_ic_if_{A,a_i}(\boldsymbol{r})\right)^*\sum_ic_if_{A,a_i}(\boldsymbol{r})d\boldsymbol{r}}\\
     &=\frac{\int \sum_ic_i^*f_{A,a_i}^*(\boldsymbol{r}) \hat{A}\sum_ic_if_{A,a_i}(\boldsymbol{r})d\boldsymbol{r}}{\int \sum_ic_i^*f_{A,a_i}^*(\boldsymbol{r})\sum_ic_if_{A,a_i}(\boldsymbol{r})d\boldsymbol{r}}\\
     &=\frac{\int \sum_jc_j^*f_{A,a_j}^*(\boldsymbol{r}) \sum_ia_ic_if_{A,a_i}(\boldsymbol{r})d\boldsymbol{r}}{\int \sum_jc_j^*f_{A,a_j}^*(\boldsymbol{r})\sum_ic_if_{A,a_i}(\boldsymbol{r})d\boldsymbol{r}}\\
-    &=\dfrac{|c_i|^2}{\sum_i|c_i|^2} (\because (25))
+    &=a_i (\because (25))
 \end{align*}
 $$
 天下りではあるが、これにより期待値の表現が妥当なものとして得られる。

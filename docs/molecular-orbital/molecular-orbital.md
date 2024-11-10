@@ -40,7 +40,7 @@ css: windicss
 
 
 ---
-## 多原子系のシュレディンガー方程式
+## 多原子系のハミルトニアン
 ハミルトニアンは一般的に以下のように与えられる。
 これは、多原子分子について、複数の原子核と、それぞれを回る電子の全てどうしの相互作用を含んでいる
 $$
@@ -53,7 +53,7 @@ $$
   \underbrace{+\sum_a\sum_{b>a}\frac{Z_aZ_b}{R_{ab}}}_{核-核}
 \end{equation}
 $$
-$M_a, Z_a$は原子核の質量と核荷電, $K$: 運動エネルギー Kinetic energy
+$M_a, Z_a$は原子核の質量と核荷電, $K$: 運動エネルギー $Kinetic$ $energy$
 
 :::note Born-Oppenheimer近似
 核の運動エネルギーを無視する近似
@@ -134,13 +134,92 @@ $$
 
 ---
 
-## スレーター行列
+## スレーター行列式を使った波動関数の表示
 
+$2n$電子系の波動関数は、スレーター行列式を用いれば以下のように書ける
+$$
+\begin{equation}
+  \Psi=\frac{1}{\sqrt{2n!}}\left| \begin{matrix}
+  \phi_1(1)\alpha(1) & \phi_1(2)\alpha(2) & \phi_1(3)\alpha(3) & \cdots &\phi_1(2n)\alpha(2n)\\
+  \phi_1(1)\beta(1) & \phi_1(2)\beta(2) & \phi_1(3)\beta(3) & \cdots &\phi_1(2n)\beta(2n)\\
+  \phi_2(1)\alpha(1) & \phi_2(2)\alpha(2) & \phi_2(3)\alpha(3) & \cdots &\phi_2(2n)\alpha(2n)\\
+  \vdots & \vdots & \vdots & \ddots &\vdots\\
+  \phi_n(1)\beta(1) & \phi_n(2)\beta(2) & \phi_n(3)\beta(3) & \cdots &\phi_n(2n)\beta(2n)\\
+\end{matrix}\right|
+=\frac{1}{\sqrt{2n!}}\left|\phi_1(1)\bar{\phi_1}(2)\phi_2(3)\cdots\bar{\phi_n}(2n)\right|
+\end{equation}
+$$
+ただし$\bar{\phi}$は$\beta$スピンを持っていることを表している。
+
+:::note スレーター行列式
 スレーター行列式は、電子状態を表すために使われる一つの表現形式
 一般に、$N$個の電子が$N$個の軌道${\chi_i}$にはいる時の電子状態(全波動関数)$\Phi$が以下のように記述されるというもの
 $$
-\Psi=\frac{1}{\sqrt{N!}}\det{s}
+\Psi\colonequals \ket{\chi_1,\chi_2\cdots,\chi_N}=\frac{1}{\sqrt{N!}}\left| \begin{matrix}
+  \chi_1(x_1) & \chi_2(x_1) & \cdots & \chi_N(x_1)\\
+  \chi_1(x_2) & \chi_2(x_2) & \cdots & \chi_N(x_2)\\
+  \vdots & \vdots & \ddots & \vdots \\
+  \chi_1(x_N) & \chi_2(x_N) & \cdots & \chi_N(x_N)\\
+\end{matrix}\right|
 $$
+ここで、$x_i$は$i$番目の電子を表している。
+:::
+:::tip この行列表現形式の1番嬉しいところ
+以下の二つの現象と操作が対応しているところ
+$$
+\begin{align}
+  &\begin{align*}
+    &\textbf{2つ電子の位置を入れ変えると}\\
+    &\textbf{波動関数は逆符号になる}
+  \end{align*}
+  &\leftrightarrows \,\,\,\,\,\,\,\,\,\,\,\,&
+  \begin{align*}
+    &\textbf{行列の行 or 列を入れ替えると}\\
+    &\textbf{-1倍になる}
+  \end{align*}\\
+  &\begin{align*}
+    &\textbf{任意の2つの粒子が同じ座標を持つと}\\
+    &\textbf{0(パウリの排他原理)}
+  \end{align*}
+  &\leftrightarrows \,\,\,\,\,\,\,\,\,\,\,\,&
+  \begin{align*}
+    &\textbf{任意の2つの行、または列が同じ時は}\\
+    &\textbf{0になる(余因子展開しようとすればわかる)}
+  \end{align*}\\
+  &\begin{align*}
+    &\textbf{全ての粒子は区別できない。}
+  \end{align*}
+  &\leftrightarrows \,\,\,\,\,\,\,\,\,\,\,\,&
+  \begin{align*}
+    &\textbf{全ての置換パターンが考慮される}\\
+  \end{align*}
+\end{align}
+$$
+:::
+
+:::question
+なんでこんな表し方していいの??
+:::
+
+変分原理
+$$
+\begin{equation}
+  \frac{\partial E}{\partial \Psi}=0
+\end{equation}
+$$
+これを満たすような$\{\phi_i\}$を決定すればいいのだが、その前に$E$を求める。
+
+## エネルギーの決定
+
+いま、$\Psi$が実数関数であることを仮定しているため、エネルギーは以下のように書ける
+$$
+E=\int\Psi^*\mathscr{H}\Psi d\boldsymbol{r}=\int \frac{1}{\sqrt{2n!}}\left|\phi_1(1)\bar{\phi_1}(2)\phi_2(3)\cdots\bar{\phi_n}(2n)\right|
+\left\{\sum_i^{2n}\mathscr{H}_{core}(i)+\sum_i^{2n}\sum_{j>i}\frac{1}{r_{ij}}\right\}
+\frac{1}{\sqrt{2n!}}\left|\phi_1(1)\bar{\phi_1}(2)\phi_2(3)\cdots\bar{\phi_n}(2n)\right|
+d\boldsymbol{r}
+$$
+
+## 番外編
 
 :::tip エルミート行列
 エルミート行列とは以下のような性質を満たす正方行列$\mathbb{A}=(a_{ij})$のこと
