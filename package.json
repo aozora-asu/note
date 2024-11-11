@@ -10,7 +10,8 @@
   "dependencies": {
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*",
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "marked": "^15.0.0"
   },
   "devDependencies": {
     "@slidev/cli": "^0.50.0-beta.5",

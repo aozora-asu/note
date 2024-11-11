@@ -138,16 +138,17 @@ $$
 
 $2n$電子系の波動関数は、スレーター行列式を用いれば以下のように書ける
 $$
-\begin{equation}
-  \Psi=\frac{1}{\sqrt{2n!}}\left| \begin{matrix}
+\begin{align*}
+  \Psi
+&=\frac{1}{\sqrt{2n!}}\left| \begin{matrix}
   \phi_1(1)\alpha(1) & \phi_1(2)\alpha(2) & \phi_1(3)\alpha(3) & \cdots &\phi_1(2n)\alpha(2n)\\
   \phi_1(1)\beta(1) & \phi_1(2)\beta(2) & \phi_1(3)\beta(3) & \cdots &\phi_1(2n)\beta(2n)\\
   \phi_2(1)\alpha(1) & \phi_2(2)\alpha(2) & \phi_2(3)\alpha(3) & \cdots &\phi_2(2n)\alpha(2n)\\
   \vdots & \vdots & \vdots & \ddots &\vdots\\
   \phi_n(1)\beta(1) & \phi_n(2)\beta(2) & \phi_n(3)\beta(3) & \cdots &\phi_n(2n)\beta(2n)\\
-\end{matrix}\right|
-=\frac{1}{\sqrt{2n!}}\left|\phi_1(1)\bar{\phi_1}(2)\phi_2(3)\cdots\bar{\phi_n}(2n)\right|
-\end{equation}
+\end{matrix}\right|\\
+&=\frac{1}{\sqrt{2n!}}\left|\phi_1(1)\bar{\phi_1}(2)\phi_2(3)\cdots\bar{\phi_n}(2n)\right|
+\end{align*}
 $$
 ただし$\bar{\phi}$は$\beta$スピンを持っていることを表している。
 

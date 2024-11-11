@@ -41,14 +41,32 @@ githubPages:
 ---
 
 # 要約範囲 目次
+
+<KeyboardAnimation :textItems="[
+  { className: 'moji' },
+  { className: 'nyuryoku' },
+  { className: 'fu' },
+  { className: 'animation' }
+]">
+  <template #text-0>春</template>
+  <template #reading-0>はる</template>
+  <template #text-1>花見</template>
+  <template #reading-1>はなみ</template>
+  <template #text-2>桜</template>
+  <template #reading-2>さくら</template>
+  <template #text-3>満開</template>
+  <template #reading-3>まんかい</template>
+</KeyboardAnimation>
+
+
 ***
 
 P142((イ)から)-151(第3節前まで)
 
-0. 米国の原子力発電
-1. 欧州・アジアの原子力発電
-2. 核燃料サイクルの現状
-3. 再生可能エネルギーについて
+1. 米国の原子力発電
+2. 欧州・アジアの原子力発電
+3. 核燃料サイクルの現状
+4. 再生可能エネルギーについて
 
 ---
 
@@ -85,6 +103,7 @@ class: 'text-white'
 :interval="600"
 class="text-2xl opacity-50">
 ❄</RandomFalls>
+
 
 # Thank You
 
