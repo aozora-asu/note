@@ -479,7 +479,7 @@ $$
 
 
 
-## 閉殻電子構造を持つ$2n$個の電子系 LCAO-SCF 方程式
+## 閉殻電子構造を持つ$2n$個の電子系 LCAO-SCF 方程式 Self-Consistent Field法
 変分原理ではない、エネルギー最小値の求め方。
 $MO$$\phi_i$をエネルギーの低い順序,$\phi_1,\phi_2,\cdots,\phi_n$に$2$個ずつの電子をスピンを反対向きにして詰めていった閉殻電子構造を持つ$2n$個の電子系を問題として扱う。
 
@@ -813,7 +813,7 @@ $$
 $$
 E=2\sum_{i=1}^{n}\varepsilon_i
 $$
-という結論は得られてる
+という結論は得られてる。$\{\phi_i\}$がまだ決定されてないからってこと？？
 :::
 
 ### LCAO近似でMO$\{\phi_i\}$をAO$\{\chi_i\}$で表す
@@ -829,13 +829,21 @@ $$
 
 エネルギーは
 $$
-\begin{align}
+\begin{align*}
 E
 &=2\sum_{i=1}^n\int\phi_iH_{eff}\phi_id\tau\\
 &=2\sum_{i=1}^n\int \sum_{r=1}^mc_{ri}\chi_rH_{eff}\sum_{s=1}^mc_{si}\chi_sd\tau\\
 &=2\sum_{i=1}^n\sum_{r=1}^m\sum_{s=1}^mc_{ri}c_{si}\int \chi_rH_{eff}\chi_sd\tau\\
-\end{align}
+&=2\sum_{i=1}^n\sum_{r=1}^m\sum_{s=1}^mc_{ri}c_{si}H_{rs}\\
+\end{align*}
 $$
+
+:::question
+
+$\{c_{ri}\}$が決定できるような式得られてないけど、、、、
+:::
+
+## 非制限 SCF法
 
 ## 番外編
 
