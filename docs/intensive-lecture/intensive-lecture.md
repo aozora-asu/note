@@ -293,10 +293,10 @@ $$
 $$
 \langle{}\varepsilon[\Phi]\rangle{}\geq E_1
 $$
-任意の関数として設定する関数$\Psi$がたとえば波動関数$\Psi$ならば
+任意の関数として設定する関数$\Phi$がたとえば波動関数$\Psi$ならば
 
 $$
-\langle{}\varepsilon[\Phi]\rangle{}=\frac{\int\Phi^*\hat{H}\Phi d\mathbb{r}}{\int\Phi^*\Phi d\mathbb{r}}=\frac{\int\Psi^*\hat{H}\Psi d\mathbb{r}}{\int\Psi^*\Psi d\mathbb{r}}=E
+\langle{}\varepsilon[\Phi]\rangle{}=\frac{\int\Phi^*\hat{H}\Phi d\boldsymbol{r}}{\int\Phi^*\Phi d\boldsymbol{r}}=\frac{\int\Psi^*\hat{H}\Psi d\boldsymbol{r}}{\int\Psi^*\Psi d\boldsymbol{r}}=E
 $$
 
 となる。が、波動関数がわかっていない時には
@@ -707,7 +707,7 @@ $$
 $$
 これはいうまでもなく、境界条件を満たしている。
 :::tip POINT
-変分法で設定する関数系は**有限の直行系**であることがほとんど。故に基底状態のエネルギーに一致することはほとんどない。
+変分法で設定する関数系は**有限の直行系**であることがほとんど。故に$\Phi$が真の波動関数$\Psi$に一致することはほとんどない。
 無限の完全直行系で展開すれば一致する。
 :::
 

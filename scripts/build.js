@@ -45,10 +45,13 @@ async function buildSlides() {
         );
 
         // PDFの生成
-        execSync(`npx slidev export slides.md --output slides.pdf`, {
-          stdio: "inherit",
-          encoding: "utf-8",
-        });
+        execSync(
+          `npx slidev export slides.md --output slides.pdf --with-playground`,
+          {
+            stdio: "inherit",
+            encoding: "utf-8",
+          }
+        );
 
         // サムネイル用にPNGをエクスポート（最初のスライドのみ）
         execSync(`npx slidev export slides.md --format png --range 1`, {
