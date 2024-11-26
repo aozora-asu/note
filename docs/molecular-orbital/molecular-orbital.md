@@ -73,7 +73,7 @@ $$
 \begin{equation}
     \mathscr{H'}=
   \underbrace{-\frac{1}{2}\sum_i\nabla_i^2}_{電子 K}
-  \underbrace{-\frac{1}{2}\sum_a\frac{1}{M_a}\nabla_a}_{原子核 K}
+  \underbrace{-\frac{1}{2}\sum_a\frac{1}{M_a}\nabla_a^2}_{原子核 K}
   \underbrace{-\sum_i\sum_a\frac{Z_a}{r_{ia}}}_{核-電子}
   \underbrace{+\sum_i\sum_{j>i}\frac{1}{r_{ij}}}_{電子-電子}
   \underbrace{+\sum_a\sum_{b>a}\frac{Z_aZ_b}{R_{ab}}}_{核-核}
@@ -423,6 +423,9 @@ $$
 \end{align*}
 $$
 
+:::question
+ここからの変形できない
+:::
 
 $$
 \begin{equation}
@@ -678,7 +681,7 @@ $$
 これらを用いると　
 
 $$
-\int\phi_i^*\varepsilon_i\phi_id\tau=\int\phi_i^*\left\{H_{core}+\sum_j2(J_j-K_j)\right\}\phi_id\tau
+\int\phi_i^*\varepsilon_i\phi_id\tau=\int\phi_i^*\left\{H_{core}+\sum_j(2J_j-K_j)\right\}\phi_id\tau
 $$
 
 
@@ -697,7 +700,7 @@ $$
 
 この式は、$2n$電子系のエネルギー$E$がこのように表される時、$\delta E=0$となり、これを満たす$\{\phi_i\}$で展開した波動関数が求めるべき真の波動関数であるということを意味している
 
-$n$個の$MO \{\phi_i\}$それぞれを$m$個の基底となる$AO\{\chi_i\}$の線型結合で表す時、$\phi_i=\sum_{r=1}^mC_{ri}\chi_r$と表され
+$n$個の$MO \{\phi_i\}$それぞれを$m$個の基底となる$AO\{\chi_i\}$の線型結合で表す時、$\phi_i=\sum_{r=1}^mc_{ri}\chi_r$と表され
 
 $$
 \begin{align}
@@ -723,25 +726,126 @@ $$
 すると、$I_i$は以下のように書ける
 $$
 \begin{align}
-  I_i&=\int\phi_iH_{core}\phi_id\tau=\int(\sum_rc_{ri}\chi_r)H_{core}(\sum_sc_{si}\chi_s)d\tau\\
-  &=\sum_r\sum_sc_{ri}c_{si}H_{rs}\\
+  I_i&=\int\phi_iH_{core}\phi_id\tau=\int(\sum_rc_{ri}\chi_r)H_{core}(\sum_sc_{si}\chi_s)d\tau\notag\\
+  &=\sum_r\sum_sc_{ri}c_{si}H_{rs}\notag\\
+  &=\begin{pmatrix}
+  c_{1i} & c_{2i} & \cdots & c_{mi} 
+  \end{pmatrix}
+  \begin{pmatrix}
+  H_{11} & H_{12} & \cdots & H_{1m}\\
+  H_{21} & H_{22} & \cdots & H_{2m}\\
+  \cdots & \cdots & \ddots & \cdots\\
+  H_{m1} & H_{m2} & \cdots & H_{mm}\\
+  \end{pmatrix}
+  \begin{pmatrix}
+  c_{1i} \\ 
+  c_{2i} \\
+  \vdots \\
+  c_{mi} 
+  \end{pmatrix}\notag\\
   &=\boldsymbol{c}_i^\dag\mathbb{H}\boldsymbol{c}_i
 \end{align}
 $$
+これより
+$$
+\begin{align}
+\int\phi_iH_{core}\phi_id\tau&=\boldsymbol{c}_i^\dag\mathbb{H}\boldsymbol{c}_i\notag\\
+\int\delta\phi_iH_{core}\phi_id\tau&=\delta\boldsymbol{c}_i^\dag\mathbb{H}\boldsymbol{c}_i\\
+\end{align}
+$$
+ここで、$\delta c_i^\dag=\begin{pmatrix}\delta c_{1i} & \delta c_{2i} & \cdots & \delta c_{mi}\end{pmatrix}$である
 
 これを導入すると$\delta E'$は
 
+$$
+\begin{align}
+\delta E'
+&=4\sum_{i=1}^n\int\delta\phi_i\left\{\left[H_{core}+ \sum_{j=1}^n\left(2 J_j - K_j \right)\right]\phi_i-\sum_{j=1}^n\varepsilon_{ij}\phi_j\right\}d\tau\notag\\
+&=4\sum_{i=1}^n\left\{\int\delta\phi_i\left[H_{core}+ \sum_{j=1}^n\left(2 J_j - K_j \right)\right]\phi_i d\tau-\sum_{j=1}^n\varepsilon_{ij}\int\delta\phi_i\phi_jd\tau\right\}\notag\\
+&=4\sum_{i=1}^n\delta c_i^\dag\left(\mathbb{F}c_i-\sum_{j=1}^n\varepsilon_{ij}\mathbb{S}c_j\right)d\tau\\
+\end{align}
+$$
+と書き表される。なお$\mathbb F=(F_{rs}),\mathbb S=(S_{rs})$は$\mathbb{H}$を敷衍したように以下のように定義される。
+$$
+\begin{align}
+  F_{rs}&=\int\chi_r\left\{H_{core}+ \sum_{j=1}^n\left(2 J_j - K_j \right)\right\}\chi_sd\tau\\
+  S_{rs}&=\int\chi_r\chi_sd\tau
+\end{align}
+$$
+また、簡便のため以下のような記法を導入する
+$$
+(rs|tu)=\int\chi_r\chi_s\left(\frac{1}{r_{12}}\right)\chi_t\chi_ud\tau
+$$
+すると
+
+$$
+\begin{align*}
+  J_j(1)\phi_i(1)&=\int\phi_j(2)\phi_j(2)\left(\frac{1}{r_{12}}\right)d\tau(2)\phi_i(1)\\
+  J_j(1)\sum_{r=1}^mc_{ri}\chi_r(1)\sum_{r=1}^mc_{ri}\chi_r(1)&=\int\sum_{r=1}^mc_{rj}\chi_r(2)\sum_{r=1}^mc_{rj}\chi_r(2)\left(\frac{1}{r_{12}}\right)d\tau(2)\sum_{r=1}^mc_{ri}\chi_r(1)\sum_{r=1}^mc_{ri}\chi_r(1)\\
+  \sum_{r=1}^m\sum_{r=1}^mc_{ri}c_{ri}\chi_rJ_j \chi_r  &=\sum_{r=1}^m\sum_{r=1}^m\sum_{r=1}^m\sum_{r=1}^mc_{rj}c_{rj}c_{ri}c_{ri}\int \chi_r \chi_r \left(\frac{1}{r_{12}}\right) d\tau \chi_r \chi_r \\
+\end{align*}
+$$
+$$
+\begin{align*}
+  K_j(1)\phi_i(1)=\int\phi_j(2)\phi_i(2)\left(\frac{1}{r_{12}}\right)d\tau(2)\phi_j(1)
+\end{align*}
+$$
+
+
+$$
+\begin{align}
+   F_{rs}
+   &=\int\chi_r\left\{H_{core}+ \sum_{j=1}^n\left(2 J_j - K_j \right)\right\}\chi_sd\tau\\
+   &=\int\chi_rH_{core}\chi_ss\tau + \sum_{j=1}^n\left(2 \int \chi_rJ_j\chi_s d\tau - \int\chi_rK_j\chi_sd\tau \right)\\
+   &=H_{rs} + \sum_{j=1}^n\left(2 \int \chi_rJ_j\chi_s d\tau - \int\chi_rK_j\chi_sd\tau \right)\\
+   &=H_{rs} + \sum_{j=1}^n\left(2 (jj|sr) - (js|jr) \right)\\
+\end{align}
+$$
+
+:::question
+ここからの変形できない
+:::
+
+:::question
+クーロン演算子、交換演算子は$MO$にしか成立せず、$AO$には適用できない？？
+:::
+
+$\delta E'=0$となる条件を求めると
+$$
+\begin{align}
+\mathbb{F}\boldsymbol{c}_i-\sum_{j=1}^n\varepsilon_{ij}\mathbb{S}\boldsymbol{c}_j&=0\notag\\
+\mathbb{F}\boldsymbol{c}_i-\varepsilon_i\mathbb{S}\boldsymbol{c}_i&=0\notag\\
+\left(\mathbb{F}-\varepsilon_i\mathbb{S}\right)\boldsymbol{c}_i&=0\\
+\end{align}
+$$
+これを***Hartree-Fock*の式**と呼ぶ。これは固有値$\varepsilon$固有ベクトル$\boldsymbol{c}$の固有値問題に帰着する。
+$$
+|\mathbb{F}|=\left|
+\begin{matrix} 
+F_{11}-S_{11}\varepsilon & F_{12}-S_{12}\varepsilon & \cdots & F_{1m}-S_{1m}\varepsilon\\
+F_{21}-S_{21}\varepsilon & F_{22}-S_{22}\varepsilon & \cdots & F_{2m}-S_{2m}\varepsilon\\
+\cdots & \cdots & \ddots & \cdots\\
+F_{m1}-S_{m1}\varepsilon & F_{m2}-S_{m2}\varepsilon & \cdots & F_{mm}-S_{mm}\varepsilon\\
+\end{matrix}\right|=0
+$$
 
 
 
 
+数値計算をする上では
+$\{\boldsymbol{c}_i\}\rightarrow\mathbb{F}\rightarrow\varepsilon_i\rightarrow\{\boldsymbol{c}_i\}\cdots$と繰り返していき、$\varepsilon_i,\{\boldsymbol{c}_i\}$が変化しなくなるまで行う。
+この手法を**SCF(Self-Consistent Field)法**という。
+
+:::question
+$\{\boldsymbol{c}_i\}$同じもの出てくるんじゃないの？？
+:::
 
 
+```mermaid
+graph TD
 
 
-
-
-
+```
 
 ## 1電子ハミルトニアン
 
@@ -843,7 +947,33 @@ $$
 $\{c_{ri}\}$が決定できるような式得られてないけど、、、、
 :::
 
-## 非制限 SCF法
+## 開殻構造を持つ分子に対する非制限 SCF法
+非制限SCF法では$\alpha$スピンを持つ電子と$\beta$スピンを持つ電子は2組の全く独立した分子起動の組$(\phi_i^\alpha,\phi_i^\beta)$を占有すると考えられる。
+
+$\alpha$スピンを持つ電子$m$個と$\beta$スピンを持つ電子$n$個からなる$(m+n)$電子系の波動関数は次のスレーター行列式で書かれる。
+$$
+\Psi=|\phi_1^\alpha(1)\phi_2^\alpha(2)\cdots\phi_m^\alpha(m)\bar{\phi}_1^\beta(1)\bar{\phi}_2^\beta(2)\cdots\bar{\phi}_n^\beta(n)|
+$$
+前項と同様に、$LCAO$近似にて、$MO\{\phi_i\}$は$AO\{\chi_i\}$で展開できるとすると、
+$$
+\begin{align}
+\phi_i^\alpha=\sum_rc_{ri}^\alpha\chi_r\\
+\phi_i^\beta=\sum_rc_{ri}^\beta\chi_r\\
+\end{align}
+$$
+前項と同じように、エネルギーが最小となるような$\{c_{ri}^\alpha\},\{c_{ri}^\beta\}$を設定したい。
+
+:::warning
+この時同じように*Lagrange*の未定乗数法を使うのだが、スピンの異なる$MO$間の直交条件は制限されていない点に気をつけなければならない。
+つまり、拘束条件として与えられているのは
+$$
+\begin{align}
+  S_{ij}^\alpha&=\int\phi_i^\alpha\phi_j^\alpha d\tau=\delta_{ij}\\
+  S_{ij}^\beta&=\int\phi_i^\beta\phi_j^\beta d\tau=\delta_{ij}\\
+\end{align}
+$$
+これのみである。
+:::
 
 ## 番外編
 
