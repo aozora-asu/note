@@ -35,7 +35,7 @@ onSlideLeave(() => {
       $slidev.nav.currentPage !== 1 &&
       $slidev.nav.currentPage !== $slidev.nav.total
     "
-    class="absolute top-0 left-0 px-2 font-size-4 opacity-60"
+    class="absolute top-0 left-0 px-4 font-size-4 opacity-60"
   >
     <p>2022/12/02</p>
   </header>

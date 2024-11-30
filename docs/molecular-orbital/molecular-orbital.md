@@ -67,8 +67,7 @@ $4\pi\varepsilon_0,e,m_e,\hbar=1$
 (SI)単位系に対して、(a.u.)と表記する
 :::
 
-ハミルトニアンは一般的に以下のように与えられる。
-これは、多原子分子について、複数の原子核と、それぞれを回る電子の全てどうしの相互作用を含んでいる
+対応原理$p=-i\hbar\nabla$を作用させると、ハミルトニアンは一般的に以下のように与えられる。
 $$
 \begin{equation}
     \mathscr{H'}=
@@ -81,6 +80,10 @@ $$
 $$
 $M_a, Z_a$は原子核の質量と核荷電, $K$: 運動エネルギー $Kinetic$ $energy$
 
+
+
+
+以下では核の運動エネルギーを無視する**Born-Oppenheimer近似**を用いる。
 :::note Born-Oppenheimer近似
 核の運動エネルギーを無視する近似
 電子に比べると、核(陽子, 中性子)の質量が1840倍も大きいため、電子が核周りを運動する際に核は全く動かない、と捉えても良い、という近似
@@ -88,9 +91,6 @@ $M_a, Z_a$は原子核の質量と核荷電, $K$: 運動エネルギー $Kinetic
 ハンマー投げをする際に、鉄球の回転によって人間の回転が少し歪む、という現象を無視する、みたいなイメージ。(これは遠心力と角運動量保存によるもの)
 :::
 
----
-
-以下では核の運動エネルギーを無視する。
 核同士の相互作用は**定数**となるため、ハミルトニアンの線形性より、
 $$
 \begin{equation*}
@@ -117,12 +117,14 @@ $$
 $$
 つまり核の相互作用項を右辺に押し付けて、核に関する情報を全て取り除くと、ハミルトニアン$\mathscr{H}$以下のようになる。
 $$
-\begin{equation}
-    \mathscr{H}=
+\begin{align}
+    \mathscr{H}&=
   \underbrace{-\frac{1}{2}\sum_i\nabla_i^2}_{電子 K}
   \underbrace{-\sum_i\sum_a\frac{Z_a}{r_{ia}}}_{核-電子}
-  \underbrace{+\sum_i\sum_{j>i}\frac{1}{r_{ij}}}_{電子-電子}
-\end{equation}
+  \underbrace{+\sum_i\sum_{j>i}\frac{1}{r_{ij}}}_{電子-電子}\notag\\
+  &=\sum_i\mathscr{H}_{core}(i)+\sum_i\sum_{j>i}\frac{1}{r_{ij}}\\
+  \mathscr{H}_{core}(i)&=-\frac{1}{2}\nabla^2_i-\sum_a\frac{Z_a}{r_{ia}}
+\end{align}
 $$
 $$
 \begin{equation}
@@ -132,7 +134,6 @@ $$
 $E$: 電子のエネルギー, $\Psi$: 電子の座標
 これは固定された原子核の場における電子に関するシュレディンガー方程式となる
 
----
 :::question
 ハミルトニアンの核-電子, 電子-電子の項も一応定数(?)だから右辺に押し付けられないの??
 $$
@@ -145,9 +146,16 @@ $\rightarrow$実際には演算子だからダメ
 The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
 -->
 
----
+
 今、さらに注目する電子の数を外側の$2n$個に絞るとする。すると注目していない電子たちと原子核がまた新たな原子核を作っているように見える。内部の電子は原子核とともに分子骨格を作っていると考えるのである。
 すると一つの分子中の$2n$個の電子たちの系のハミルトニアンは以下のように書ける
+
+$$
+\begin{align}
+    \mathscr{H}&=-\frac{1}{2}\sum_i^N\nabla_i^2-\sum_i^N\sum_a^N\frac{Z_a}{r_{ia}}+\sum_i^N\sum_{j>i}^N\frac{1}{r_{ij}}
+\end{align}
+$$
+
 $$
 \begin{align}
   \mathscr{H}(1,2,\cdots,2n)&=\sum_i^{2n}\mathscr{H}_{core}(i)+\sum_i^{2n}\sum_{j>i}\frac{1}{r_{ij}}\\

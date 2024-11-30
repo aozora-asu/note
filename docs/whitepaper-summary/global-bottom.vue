@@ -25,10 +25,10 @@ onSlideLeave(() => {
       $slidev.nav.currentPage !== 1 &&
       $slidev.nav.currentPage !== $slidev.nav.total
     "
-    class="absolute bottom-0 right-0 font-size-5 w-full text-right opacity-70"
+    class="absolute bottom-0 right-0 font-size-5 w-full text-right"
   >
     <div class="px-4">
-      {{ $slidev.nav.currentPage }} / {{ $slidev.nav.total }}
+      {{ $slidev.nav.currentPage - 1 }} / {{ $slidev.nav.total - 2 }}
     </div>
     <div
       class="bg-blue-500 h-2"
