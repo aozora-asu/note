@@ -1,5 +1,23 @@
 <template>
   <div>
+    <!-- スライドが非アクティブなときは、wordをそのまま表示する -->
+    <div v-if="!isActive" class="static_text">
+      <span v-for="(section, index) in words" :key="index">
+        <!-- セクション名を表示 -->
+        <span v-if="typeof section == 'object'">
+          <span v-if="Array.isArray(section)">
+            {{ section[section.length - 1] }}
+          </span>
+          <span v-else>
+            {{ Object.keys(section)[0] }}
+          </span>
+        </span>
+        <span v-if="typeof section == 'string'">
+          {{ section }}
+        </span>
+      </span>
+    </div>
+    <!-- スライドがアクティブなときは、タイピングアニメーションを表示 -->
     <div v-if="isActive" ref="typingContainer" class="typing_text"></div>
     <slot v-else></slot>
   </div>
@@ -22,15 +40,16 @@ const props = defineProps({
 
 const isActive = useIsSlideActive();
 const typingContainer = ref(null);
-
+const sleep = (time) => new Promise((r) => setTimeout(r, time));
 // タイピングアニメーションを開始する関数
-const startTyping = () => {
+const startTyping = async () => {
   const targets = document.getElementsByClassName("typing_text");
   const speed = props.speed; // 修正: thisではなくpropsから取得
   const word = props.words; // 修正: thisではなくpropsから取得
 
   if (!targets || targets.length === 0 || !Array.isArray(word) || isNaN(speed))
     return;
+  await sleep(800);
 
   Array.from(targets).forEach((target) => {
     let elapsed = 0;
@@ -104,31 +123,12 @@ const startTyping = () => {
   });
 };
 
-// onMounted(() => {
-//   if (isActive.value) {
-//     setTimeout(startTyping, 40); // スライドが表示されたときにタイピングを開始
-//   }
-// });
-
-// watch(isActive, (newActiveState) => {
-//   if (newActiveState) {
-//     setTimeout(startTyping, 40); // スライドが表示された時に再度タイピングを開始
-//   }
-// });
-
 // スライドが表示されたときにタイピングを開始
 onSlideEnter(() => {
   if (isActive.value) {
     setTimeout(startTyping, 40);
   }
 });
-
-// スライドが非表示になったときにコンテンツをクリア
-// onSlideLeave(() => {
-//   if (typingContainer.value) {
-//     typingContainer.value.innerHTML = "";
-//   }
-// });
 </script>
 
 <style scoped>
@@ -152,8 +152,9 @@ onSlideEnter(() => {
   min-height: 2em;
   padding-right: 0.4em;
   position: relative;
-  font-size: 33px;
-  font-weight: bold;
+  font-size: 35px;
+  color: #5d8392;
+  font-family: serif;
 }
 
 .typing_text::after {
@@ -165,5 +166,13 @@ onSlideEnter(() => {
   top: 7.5%;
   right: 0;
   animation: flash 0.7s ease-in-out infinite both;
+}
+
+.static_text {
+  display: inline-block;
+  min-height: 2em;
+  font-size: 35px;
+  color: #5d8392;
+  font-family: serif;
 }
 </style>

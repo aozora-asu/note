@@ -8,6 +8,7 @@
     "dev:single": "slidev"
   },
   "dependencies": {
+    "@slidev/theme-apple-basic": "^0.25.1",
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*",
     "gray-matter": "^4.0.3",
