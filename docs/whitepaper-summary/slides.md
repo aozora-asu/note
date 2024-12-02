@@ -514,3 +514,6 @@ class: text-center font-serif bg-opacity-0
 
 ***
 </div>
+
+
+日本の処理とイギリスのCfD制度の導入モチベーション
