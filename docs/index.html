@@ -1,210 +1,223 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slide note</title>
-  <style>
-    /* 全体レイアウト */
-    body {
-      font-family: Hiragino Sans;
-      background-color: #f6f8fa;
-      padding: 2rem;
-      margin: 0;
-    }
-    a {
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .header {
-      text-align: left;
-      margin-bottom: 2rem;
-    }
-    .slides-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      max-width: 1200px;
-      width: 100%;
-    }
-    .slide-card {
-      position: relative;
-      background: white;
-      border: 1px solid #e1e4e8;
-      border-radius: 6px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .slide-card:hover {
-      transform: translateY(5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    }
-    .slide-thumbnail {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-    .slide-title {
-      font-size: 1.1rem;
-      font-weight: bold;
-      margin: 0.5rem 1rem;
-      color: #0366d6;
-    }
-    .slide-meta, .slide-description {
-      font-size: 0.9rem;
-      color: #586069;
-      text-align: left;
-    }
-    .slide-meta {
-      margin-bottom: 0.5rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="header">
-    <h1>Slide notes</h1>
-  </div>
-  <div class="slides-container">
-    
-        <article class="slide-card">
-          <a href="/note/whitepaper-summary/dist/"><img src="/note/whitepaper-summary/thumbnail.png" class="slide-thumbnail" alt="エネルギー白書(R5)"></a>
-          <a href="/note/whitepaper-summary/dist/" class="slide-title">エネルギー白書(R5)</a>
-          <div class="slide-meta">
-            作成日: 2024年11月4日 0:26
-            <br>
-            更新日: 2024年12月2日 14:32
-            <br>
-            <a href="/note/whitepaper-summary/whitepaper-summary.pdf">スライドpdfリンク</a>
-          </div>
-          
-        </article>
-      
-        <article class="slide-card">
-          <a href="/note/molecular-orbital/molecular-orbital.html"><img src="/note/molecular-orbital/thumbnail.png" class="slide-thumbnail" alt="分子軌道法"></a>
-          <a href="/note/molecular-orbital/molecular-orbital.html" class="slide-title">分子軌道法</a>
-          <div class="slide-meta">
-            作成日: 2024年11月6日 14:24
-            <br>
-            更新日: 2024年11月26日 14:29
-            <br>
-            <a href="/note/molecular-orbital/molecular-orbital.pdf">スライドpdfリンク</a>
-          </div>
-          
-        </article>
-      
-        <article class="slide-card">
-          <a href="/note/tight-binding/dist/"><img src="/note/tight-binding/thumbnail.png" class="slide-thumbnail" alt="\tight-binding"></a>
-          <a href="/note/tight-binding/dist/" class="slide-title">\tight-binding</a>
-          <div class="slide-meta">
-            作成日: 2024年11月22日 12:15
-            <br>
-            更新日: 2024年11月22日 12:47
-            <br>
-            <a href="/note/tight-binding/tight-binding.pdf">スライドpdfリンク</a>
-          </div>
-          
-        </article>
-      
-        <article class="slide-card">
-          <a href="/note/group/dist/"><img src="/note/group/thumbnail.png" class="slide-thumbnail" alt="群論まとめ"></a>
-          <a href="/note/group/dist/" class="slide-title">群論まとめ</a>
-          <div class="slide-meta">
-            作成日: 2024年11月3日 17:34
-            <br>
-            更新日: 2024年11月22日 11:59
-            <br>
-            <a href="/note/group/group.pdf">スライドpdfリンク</a>
-          </div>
-          
-        </article>
-      
-        <article class="slide-card">
-          
-          <a href="/note/tasks/tasks.html" class="slide-title">集中講義</a>
-          <div class="slide-meta">
-            作成日: 2024年11月13日 11:10
-            <br>
-            更新日: 2024年11月19日 14:01
-            <br>
-            
-          </div>
-          
-        </article>
-      
-        <article class="slide-card">
-          
-          <a href="/note/network/network.html" class="slide-title">network</a>
-          <div class="slide-meta">
-            作成日: 2024年11月11日 2:31
-            <br>
-            更新日: 2024年11月17日 23:58
-            <br>
-            
-          </div>
-          
-        </article>
-      
-        <article class="slide-card">
-          
-          <a href="/note/network/network.html" class="slide-title">network</a>
-          <div class="slide-meta">
-            作成日: 2024年11月9日 14:37
-            <br>
-            更新日: 2024年11月16日 0:46
-            <br>
-            
-          </div>
-          
-        </article>
-      
-        <article class="slide-card">
-          <a href="/note/intensive-lecture/intensive-lecture.html"><img src="/note/intensive-lecture/thumbnail.png" class="slide-thumbnail" alt="集中講義"></a>
-          <a href="/note/intensive-lecture/intensive-lecture.html" class="slide-title">集中講義</a>
-          <div class="slide-meta">
-            作成日: 2024年11月9日 3:14
-            <br>
-            更新日: 2024年11月11日 21:36
-            <br>
-            <a href="/note/intensive-lecture/intensive-lecture.pdf">スライドpdfリンク</a>
-          </div>
-          
-        </article>
-      
-        <article class="slide-card">
-          <a href="/note/wasedule-info/dist/"><img src="/note/wasedule-info/thumbnail.png" class="slide-thumbnail" alt="wasedule"></a>
-          <a href="/note/wasedule-info/dist/" class="slide-title">wasedule</a>
-          <div class="slide-meta">
-            作成日: 2024年11月9日 15:47
-            <br>
-            更新日: 2024年11月10日 17:00
-            <br>
-            <a href="/note/wasedule-info/wasedule-info.pdf">スライドpdfリンク</a>
-          </div>
-          
-        </article>
-      
-        <article class="slide-card">
-          <a href="/note/IPCC-AR6-summary/dist/"><img src="/note/IPCC-AR6-summary/thumbnail.png" class="slide-thumbnail" alt="IPCC AR6 Synthesis Report (2023) Summary"></a>
-          <a href="/note/IPCC-AR6-summary/dist/" class="slide-title">IPCC AR6 Synthesis Report (2023) Summary</a>
-          <div class="slide-meta">
-            作成日: 2024年11月3日 20:38
-            <br>
-            更新日: 2024年11月3日 23:19
-            <br>
-            <a href="/note/IPCC-AR6-summary/IPCC-AR6-summary.pdf">スライドpdfリンク</a>
-          </div>
-          
-        </article>
-      
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide note</title>
+    <style>
+      /* 全体レイアウト */
+      body {
+        font-family: Hiragino Sans;
+        background-color: #f6f8fa;
+        padding: 2rem;
+        margin: 0;
+      }
+      a {
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .header {
+        text-align: left;
+        margin-bottom: 2rem;
+      }
+      .slides-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        max-width: 1200px;
+        width: 100%;
+      }
+      .slide-card {
+        position: relative;
+        background: white;
+        border: 1px solid #e1e4e8;
+        border-radius: 6px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .slide-card:hover {
+        transform: translateY(5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      }
+      .slide-thumbnail {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+      .slide-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin: 0.5rem 1rem;
+        color: #0366d6;
+      }
+      .slide-meta,
+      .slide-description {
+        font-size: 0.9rem;
+        color: #586069;
+        text-align: left;
+      }
+      .slide-meta {
+        margin-bottom: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Slide notes</h1>
+    </div>
+    <div class="slides-container">
+      <article class="slide-card">
+        <a href="/note/tight-binding/dist/"
+          ><img
+            src="/note/tight-binding/thumbnail.png"
+            class="slide-thumbnail"
+            alt="\tight-binding"
+        /></a>
+        <a href="/note/tight-binding/dist/" class="slide-title"
+          >Tight-Binding</a
+        >
+        <div class="slide-meta">
+          作成日: 2024年11月22日 12:15
+          <br />
+          更新日: 2024年12月10日 2:54
+          <br />
+          <a href="/note/tight-binding/tight-binding.pdf">スライドpdfリンク</a>
+        </div>
+      </article>
+
+      <article class="slide-card">
+        <a href="/note/whitepaper-summary/dist/"
+          ><img
+            src="/note/whitepaper-summary/thumbnail.png"
+            class="slide-thumbnail"
+            alt="エネルギー白書(R5)"
+        /></a>
+        <a href="/note/whitepaper-summary/dist/" class="slide-title"
+          >エネルギー白書(R5)</a
+        >
+        <div class="slide-meta">
+          作成日: 2024年11月4日 0:26
+          <br />
+          更新日: 2024年12月2日 14:32
+          <br />
+          <a href="/note/whitepaper-summary/whitepaper-summary.pdf"
+            >スライドpdfリンク</a
+          >
+        </div>
+      </article>
+
+      <article class="slide-card">
+        <a href="/note/molecular-orbital/molecular-orbital.html"
+          ><img
+            src="/note/molecular-orbital/thumbnail.png"
+            class="slide-thumbnail"
+            alt="分子軌道法"
+        /></a>
+        <a
+          href="/note/molecular-orbital/molecular-orbital.html"
+          class="slide-title"
+          >分子軌道法</a
+        >
+        <div class="slide-meta">
+          作成日: 2024年11月6日 14:24
+          <br />
+          更新日: 2024年11月26日 14:29
+          <br />
+          <a href="/note/molecular-orbital/molecular-orbital.pdf"
+            >スライドpdfリンク</a
+          >
+        </div>
+      </article>
+
+      <article class="slide-card">
+        <a href="/note/group/dist/"
+          ><img
+            src="/note/group/thumbnail.png"
+            class="slide-thumbnail"
+            alt="群論まとめ"
+        /></a>
+        <a href="/note/group/dist/" class="slide-title">群論まとめ</a>
+        <div class="slide-meta">
+          作成日: 2024年11月3日 17:34
+          <br />
+          更新日: 2024年11月22日 11:59
+          <br />
+          <a href="/note/group/group.pdf">スライドpdfリンク</a>
+        </div>
+      </article>
+
+      <article class="slide-card">
+        <a href="/note/tasks/tasks.html" class="slide-title">集中講義</a>
+        <div class="slide-meta">
+          作成日: 2024年11月13日 11:10
+          <br />
+          更新日: 2024年11月19日 14:01
+          <br />
+        </div>
+      </article>
+
+      <article class="slide-card">
+        <a href="/note/network/network.html" class="slide-title">network</a>
+        <div class="slide-meta">
+          作成日: 2024年11月11日 2:31
+          <br />
+          更新日: 2024年11月17日 23:58
+          <br />
+        </div>
+      </article>
+
+      <article class="slide-card">
+        <a href="/note/intensive-lecture/intensive-lecture.html"
+          ><img
+            src="/note/intensive-lecture/thumbnail.png"
+            class="slide-thumbnail"
+            alt="集中講義"
+        /></a>
+        <a
+          href="/note/intensive-lecture/intensive-lecture.html"
+          class="slide-title"
+          >集中講義</a
+        >
+        <div class="slide-meta">
+          作成日: 2024年11月9日 3:14
+          <br />
+          更新日: 2024年11月11日 21:36
+          <br />
+          <a href="/note/intensive-lecture/intensive-lecture.pdf"
+            >スライドpdfリンク</a
+          >
+        </div>
+      </article>
+
+      <article class="slide-card">
+        <a href="/note/IPCC-AR6-summary/dist/"
+          ><img
+            src="/note/IPCC-AR6-summary/thumbnail.png"
+            class="slide-thumbnail"
+            alt="IPCC AR6 Synthesis Report (2023) Summary"
+        /></a>
+        <a href="/note/IPCC-AR6-summary/dist/" class="slide-title"
+          >IPCC AR6 Synthesis Report (2023) Summary</a
+        >
+        <div class="slide-meta">
+          作成日: 2024年11月3日 20:38
+          <br />
+          更新日: 2024年11月3日 23:19
+          <br />
+          <a href="/note/IPCC-AR6-summary/IPCC-AR6-summary.pdf"
+            >スライドpdfリンク</a
+          >
+        </div>
+      </article>
+    </div>
+  </body>
 </html>
-    
