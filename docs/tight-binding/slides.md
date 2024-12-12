@@ -7,16 +7,15 @@ info: |
   ## tight-binding
   Presentation slides for tight-binding.
 transition: slide-left
-title: \tight-binding
+title: Tight-Binding Model
 mdc: true
 githubPages:
   ogp: true
 lineNumbers: true
 aspectRatio: 16/9
+download: true
 exportFilename: ''
 favicon: https://cdn.jsdelivr.net/gh/slidevjs/slidev/assets/favicon.png
-css: windicss
-
 ---
 
 # Tight-Binding Model

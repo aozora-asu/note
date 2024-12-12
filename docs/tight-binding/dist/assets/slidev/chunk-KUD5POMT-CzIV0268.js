@@ -1,0 +1,1 @@
+import{r as f,af as o}from"../index-Bnd_Zen2.js";function u(i,n){if(!n||n==="all"||n==="*")return f(1,i+1);if(n==="none")return[];const e=[];for(const s of n.split(/[,;]/g))if(!s.includes("-"))e.push(+s);else{const[p,r]=s.split("-",2);e.push(...f(+p,r?+r+1:i+1))}return o(e).filter(s=>s<=i).sort((s,p)=>s-p)}export{u as p};
