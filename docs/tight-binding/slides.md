@@ -1,7 +1,7 @@
 ---
 theme: seriph
 background: /cover.jpg
-class: text-left
+class: text-center
 highlighter: shiki
 info: |
   ## tight-binding
@@ -20,28 +20,162 @@ favicon: https://cdn.jsdelivr.net/gh/slidevjs/slidev/assets/favicon.png
 
 # Tight-Binding Model
 
+### H$_3$Li$_36$角形のエネルギーバンド図
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
+<p class="text-xl">
+1Y22F152 <br>
+矢澤駿
+</p>
+
+<div class="pt-3">
+  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
+    next page<carbon:arrow-down class="inline"/>
+  </span>
+</div>
+
+<div class="abs-br m-6 flex gap-2">
+  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
+    <carbon:edit />
+  </button>
+  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub" title="Open in GitHub"
+    class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
+    <carbon-logo-github />
+  </a>
+</div>
 
 ---
 
-# Tight-Binding Model(強結合近似モデル)とは
-
+# Tight-Binding Model(強結合近似モデル)
+***
 
 電子バンド計算の際に用いられる近似の一つで、系の波動関数を各原子の場所に位置する孤立原子に対する波動関数の重ね合わせにより近似する手法
 
-要は分子の形に注目して、その分子のエネルギー準位を、それを構成する部分に分けて結合(混成)の様式を考える手法のこと
+要は分子の形に注目して、その分子のエネルギー準位を、それを構成する部分に分けて結合(混成)の様式を考える手法のことで、なぜそのエネルギーの位置にそのような波動関数のバンドが出るのかに解釈を与えるもの。
 
-やがては全てを1原子同士の結合(混成)に還元させることが目的。また、なぜそのエネルギーの位置にそのような波動関数のバンドが出るのかに解釈を与えるもの。
+やがては全ての分子を1原子の軌道(基底)同士の結合(混成)に還元させることが目的。また、
+
 
 ## 混成の条件
 
 1. **同じ規約表現にある波動関数が混成する**
 2. **近しいエネルギーの波動関数が混成する**
 
-(2. は結果論的じゃない？混成後のエネルギーバンドについて、より近いエネルギーにある分子の影響を多く受けるってことだから)
+今回の目的
+
+H$_3$Li$_3$$6$角形分子のエネルギーの計算とそのバンド図がどこから起因するものなのかを調べる
+
+---
+
+# 計算理論
+***
+
+
+**LCAO近似**<br>
+$n$原子分子の波動関数$\boldsymbol{\Psi}_n$はそれぞれ個々の原子軌道$\{\chi_i\}$で以下のように近似されるとする。
+$$
+\boldsymbol{\Psi}_n=
+\begin{pmatrix}
+  C_1 & C_2 & \cdots & C_n
+\end{pmatrix}
+\begin{pmatrix}
+  \chi_1 \\
+  \chi_2 \\
+  \vdots \\
+  \chi_n
+\end{pmatrix}
+$$
+
+この波動関数の**未知定数**$\{C_i\}$と取りうる**エネルギー**を決定したい。
+
+**変分法**<br>
+変分法を用いると、この近似した波動関数を用いてエネルギー期待値の最小値を求める。
+$$
+\braket{\varepsilon}[\boldsymbol{\Psi}]=\frac{\int\boldsymbol{\Psi}^*\mathscr H\boldsymbol{\Psi}d\boldsymbol{r}}{\int\boldsymbol{\Psi}^*\boldsymbol{\Psi}d\boldsymbol{r}}
+$$
+
+
+---
+
+# 計算理論(続き)
+***
+
+エネルギー期待値に最小値を与える条件がヒュッケル行列$\mathbb H$を用いて以下のように与えられる。
+$$
+\mathbb{H}\mathbb{C}=\varepsilon \mathbb{C}
+$$
+
+$$
+\mathbb H=\begin{pmatrix}
+  \alpha & t & 0 & \cdots & 0 & t \\
+  t & \alpha & t & \cdots & 0 & 0  \\
+  0 & t & \alpha & \cdots & 0 &  0\\
+  \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+  0 & 0 & 0 & \cdots & \alpha & t \\
+  t & 0 & 0 & \cdots & t & \alpha \\
+\end{pmatrix}
+$$
+ただしここで**最近接近似**を取り入れた。
+これは**固有値**が$\varepsilon$**固有雨ベクトル**が$\mathbb C$となる固有値問題となる。
+
+---
+
+# 計算理論(続き)
+***
+
+今回は水素の結合長$0.7414\AA$を基準として正$6$角形を作る。
+ハリソンの方法と、固体物性表の値よりon-site energyとtransfer energyは以下のようになる
+<div class="flex">
+<div>
+
+|   | $\alpha$ | t |
+|:-:| :------: |:-:|
+| H(1s)  | -13.6 |d |
+| Li(2s) | -5.48 |d |
+
+</div>
+
+</div>
+
+
+$$
+
+$$
+---
+
+# 簡約
+***
+どのような固有ベクトル(規約表現)が出てくるかは**点群**とそれのもとで決める**基底**によって**簡約する**こと決まる<br>
+
+水素$6$角形$H_6$分子の場合、点群は$D_{6h}$、基底は$1s(\times6)$である。
+よってこのもとで$1s$軌道を基底とした水素$6$角形分子を簡約する。
+$$
+\begin{align*}
+  D_{6h}=D_6\times C_i
+  &=\{E,2C_6,2C_3,C_2,3C_2',3C_2''\}\times\{E,i\}\\
+  &=\{E,2C_6,2C_3,C_2,3C_2',3C_2'',i,2S_3,2S_6,\sigma_h,3\sigma_d,3\sigma_v\}
+\end{align*}
+$$
+$\Gamma$は規約表現$A_i$がいくつ出てくるかを表していて、以下の式に従って求められる。
+$$
+\Gamma=\sum_iA_i=\sum_i\frac{1}{h}\sum\chi(R)\chi_i(R)
+$$
+
+---
+
+| $D_{6h}$ | $E$ | $2C_6$ | $2C_3$ |$C_2$ | $3C_2'$ | $3C_2''$ | $i$ | $2S_3$ | $2S_6$ | $\sigma_h$ | $3\sigma_d$ | $3\sigma_v$|
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| $\chi(R)$ | $6$ | $0$ | $0$ | $0$ | $2$ | $0$ | $0$ | $0$ | $0$ | $6$ | $2$ | $0$|
+
+
+ヒュッケル行列は
+
+
+
+
+
+
+
+
 
 ---
 
@@ -60,9 +194,8 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 ---
 
-# 正$3$角形分子を計算してみる
-
-最近接近似を用いればヒュッケル行列$\mathbb{H}$は以下のように書ける
+# 正$3$角形分子の計算
+***
 $$
 \mathbb{H}=\begin{pmatrix}
   \alpha & t & t \\
@@ -85,6 +218,8 @@ $$
   1\\1\\1
 \end{pmatrix}\right\}
 $$
+
+
 
 --- 
 
