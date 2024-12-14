@@ -3,9 +3,6 @@ theme: seriph
 background: /cover.jpg
 class: text-center
 highlighter: shiki
-info: |
-  ## tight-binding
-  Presentation slides for tight-binding.
 transition: slide-left
 title: Tight-Binding Model
 mdc: true
@@ -18,9 +15,12 @@ exportFilename: ''
 favicon: https://cdn.jsdelivr.net/gh/slidevjs/slidev/assets/favicon.png
 ---
 
+
+
+
 # Tight-Binding Model
 
-### H$_3$Li$_36$角形のエネルギーバンド図
+### H$_3$Li$_36$角形分子のエネルギー準位図
 
 <p class="text-xl">
 1Y22F152 <br>
@@ -45,35 +45,98 @@ favicon: https://cdn.jsdelivr.net/gh/slidevjs/slidev/assets/favicon.png
 
 ---
 
-# Tight-Binding Model(強結合近似モデル)
-***
 
-電子バンド計算の際に用いられる近似の一つで、系の波動関数を各原子の場所に位置する孤立原子に対する波動関数の重ね合わせにより近似する手法
+<KeyboardAnimation :words="toc1" :speed="80">
+</KeyboardAnimation>
 
-要は分子の形に注目して、その分子のエネルギー準位を、それを構成する部分に分けて結合(混成)の様式を考える手法のことで、なぜそのエネルギーの位置にそのような波動関数のバンドが出るのかに解釈を与えるもの。
+<script setup>
+import KeyboardAnimation from './components/KeyboardAnimation.vue';
 
-やがては全ての分子を1原子の軌道(基底)同士の結合(混成)に還元させることが目的。また、
+const toc1 = [
+  {
+    計算:[
+      ["k","け"],
+      ["い"],
+      ["s","さ"],
+      ["n","ん"]
+    ]
+  },
+  {
+    理論: [
+      ['r',  'り'],
+      ['r', "ろ"],
+      ['n',  'ん'],
+    ],
+  },
+  "-",
+  "-",
+"-",
+  "-",
+  {
+    ヒュッケル法: [
+      ['h',  'y',"ひゅ"],
+      ['k',"k","e","っけ"],
+      ['r',"る"],
+      ['h',"ほ"],
+      ['う'],
+    ],
+  }
+];
+const toc2 = [
+  {
+    計算:[
+      ["k","け"],
+      ["い"],
+      ["s","さ"],
+      ["n","ん"]
+    ]
+  },
+  {
+    理論: [
+      ['r',  'り'],
+      ['r', "ろ"],
+      ['n',  'ん'],
+    ],
+  },
+  "-",
+  "-",
+"-",
+  "-",
+  {
+    ヒュッケル法: [
+      ['h',  'y',"ひゅ"],
+      ['k',"k","e","っけ"],
+      ['r',"る"],
+      ['h',"ほ"],
+      ['う'],
+    ],
+  },
+  "(",
+  {
+    続き: [
+      ['t',  'つ'],
+      ['z',"ず"],
+      ['k',"き"],
+    ],
+  },
+  ")"
+];
+</script>
 
+___
 
-## 混成の条件
-
-1. **同じ規約表現にある波動関数が混成する**
-2. **近しいエネルギーの波動関数が混成する**
-
-今回の目的
-
-H$_3$Li$_3$$6$角形分子のエネルギーの計算とそのバンド図がどこから起因するものなのかを調べる
-
----
-
-# 計算理論
-***
-
-
-**LCAO近似**<br>
-$n$原子分子の波動関数$\boldsymbol{\Psi}_n$はそれぞれ個々の原子軌道$\{\chi_i\}$で以下のように近似されるとする。
+一般にシュレディンガー方程式はハミルトニアン$\mathscr H$を用いて以下のように書ける
 $$
-\boldsymbol{\Psi}_n=
+\mathscr H\Psi=E\Psi
+$$
+また**変分原理**より、任意の関数$\boldsymbol{\Phi}$を用いてエネルギー期待値は以下のように書ける
+$$
+\braket{\varepsilon}[\boldsymbol{\Phi}]=\frac{\int\boldsymbol{\Phi}^*\mathscr H\boldsymbol{\Phi}d\boldsymbol{r}}{\int\boldsymbol{\Phi}^*\boldsymbol{\Phi}d\boldsymbol{r}}
+$$
+
+今回は、**LCAO近似**を用いて、$\boldsymbol{\Phi}$を、$n$原子分子のそれぞれ個々の原子軌道$\{\chi_i\}$の線型結合和$\boldsymbol{\Phi}_n$とする
+$$
+\boldsymbol{\Phi}=\boldsymbol{\Phi}_n=\sum_i^nc_i\chi_i=
 \begin{pmatrix}
   C_1 & C_2 & \cdots & C_n
 \end{pmatrix}
@@ -82,120 +145,45 @@ $$
   \chi_2 \\
   \vdots \\
   \chi_n
-\end{pmatrix}
+\end{pmatrix}=\mathbb C\Chi
 $$
 
-この波動関数の**未知定数**$\{C_i\}$と取りうる**エネルギー**を決定したい。
-
-**変分法**<br>
-変分法を用いると、この近似した波動関数を用いてエネルギー期待値の最小値を求める。
-$$
-\braket{\varepsilon}[\boldsymbol{\Psi}]=\frac{\int\boldsymbol{\Psi}^*\mathscr H\boldsymbol{\Psi}d\boldsymbol{r}}{\int\boldsymbol{\Psi}^*\boldsymbol{\Psi}d\boldsymbol{r}}
-$$
-
+**変分法**でこのエネルギ期待値に最小値を与えるような**未知定数**$\{C_i\}$とその時の**エネルギー**を決定する
 
 ---
 
-# 計算理論(続き)
-***
-
-エネルギー期待値に最小値を与える条件がヒュッケル行列$\mathbb H$を用いて以下のように与えられる。
+# 計算理論--ヒュッケル法(続き)
+___
+**Lagrange**の未定乗数法を用いるとこのエネルギー期待値に最小値を与える条件がヒュッケル行列$\mathbb H$を用いて以下のように与えられた
 $$
 \mathbb{H}\mathbb{C}=\varepsilon \mathbb{C}
 $$
 
 $$
 \mathbb H=\begin{pmatrix}
-  \alpha & t & 0 & \cdots & 0 & t \\
-  t & \alpha & t & \cdots & 0 & 0  \\
-  0 & t & \alpha & \cdots & 0 &  0\\
-  \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-  0 & 0 & 0 & \cdots & \alpha & t \\
-  t & 0 & 0 & \cdots & t & \alpha \\
+  H_{11} & H_{12} & \cdots & H_{1(n-1)} & H_{1n} \\
+  H_{21} & H_{22} & \cdots & H_{2(n-1)} & H_{2n}  \\
+  \vdots & \vdots & \ddots & \vdots & \vdots \\
+  H_{(n-1)1} & H_{(n-1)2} & \cdots & H_{(n-1)(n-1)} & H_{(n-1)n} \\
+  H_{n1} & H_{n2} & \cdots & H_{n(n-1)} & H_{nn} \\
 \end{pmatrix}
 $$
-ただしここで**最近接近似**を取り入れた。
-これは**固有値**が$\varepsilon$**固有雨ベクトル**が$\mathbb C$となる固有値問題となる。
-
+これは**固有値**が$\varepsilon$**固有ベクトル**が$\mathbb C$となる固有値問題となる。
+また$\alpha,t$を以下のように定めておく
+$$
+\alpha=H_{ii}=\int\chi_i\mathscr H\chi_id\boldsymbol{r},\qquad t_{ij}=H_{ij}=\int\chi_i\mathscr H\chi_jd\boldsymbol{r}\qquad(i\ne j)
+$$
+ここで$t$は**軌道の種類**と、**原子間の距離**が同じ時は等しい値を取るものとする
 ---
 
-# 計算理論(続き)
-***
+# ヒュッケル法における正$3$角形分子の計算
+___
+とらえる**描像**は以下の正$3$角形である。便宜上ナンバリングも行う。
+<img src="/triangle-abstract.drawio.svg"></img>
 
-今回は水素の結合長$0.7414\AA$を基準として正$6$角形を作る。
-ハリソンの方法と、固体物性表の値よりon-site energyとtransfer energyは以下のようになる
-<div class="flex">
-<div>
+ただしここで**最近接近似**を取り入れ、最も近くに位置する軌道の相互作用エネルギーのみを有効としまた、全ての原子が同じ種類の軌道であるとする
 
-|   | $\alpha$ | t |
-|:-:| :------: |:-:|
-| H(1s)  | -13.6 |d |
-| Li(2s) | -5.48 |d |
-
-</div>
-
-</div>
-
-
-$$
-
-$$
----
-
-# 簡約
-***
-どのような固有ベクトル(規約表現)が出てくるかは**点群**とそれのもとで決める**基底**によって**簡約する**こと決まる<br>
-
-水素$6$角形$H_6$分子の場合、点群は$D_{6h}$、基底は$1s(\times6)$である。
-よってこのもとで$1s$軌道を基底とした水素$6$角形分子を簡約する。
-$$
-\begin{align*}
-  D_{6h}=D_6\times C_i
-  &=\{E,2C_6,2C_3,C_2,3C_2',3C_2''\}\times\{E,i\}\\
-  &=\{E,2C_6,2C_3,C_2,3C_2',3C_2'',i,2S_3,2S_6,\sigma_h,3\sigma_d,3\sigma_v\}
-\end{align*}
-$$
-$\Gamma$は規約表現$A_i$がいくつ出てくるかを表していて、以下の式に従って求められる。
-$$
-\Gamma=\sum_iA_i=\sum_i\frac{1}{h}\sum\chi(R)\chi_i(R)
-$$
-
----
-
-| $D_{6h}$ | $E$ | $2C_6$ | $2C_3$ |$C_2$ | $3C_2'$ | $3C_2''$ | $i$ | $2S_3$ | $2S_6$ | $\sigma_h$ | $3\sigma_d$ | $3\sigma_v$|
-| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| $\chi(R)$ | $6$ | $0$ | $0$ | $0$ | $2$ | $0$ | $0$ | $0$ | $0$ | $6$ | $2$ | $0$|
-
-
-ヒュッケル行列は
-
-
-
-
-
-
-
-
-
----
-
-## 規約表現を振るコツ
-
-
-規約表現はその分子が属する「点群」と、「その点群の対称操作による位相の状態の変化」から与えられるもの。
-ポイントは、
-- **同じエネルギー固有値を持つ波動関数(の基底ベクトル)に対して振っていく**こと
-- **基底ベクトルが直行性を満たしてない**と規約表現が触れない
-  - (必要であれば、同じエネルギー固有値に対する固有ベクトルの線型結合はまた、同じエネルギーに対する固有ベクトルとなることを用いる)
-
-また混成前の分子に規約表現を振る際、注意するべき点は
-- 混成後の分子の形に対して、混成前の分子それぞれの位置関係が変わらないような対称操作を集めた点群の規約表現を振るとよいということ
-
-
----
-
-# 正$3$角形分子の計算
-***
+$(i,j)$成分に$i$番目の軌道と$j$番目の軌道の相互作用を対応させると、ヒュッケル行列は以下のように書ける
 $$
 \mathbb{H}=\begin{pmatrix}
   \alpha & t & t \\
@@ -204,136 +192,319 @@ $$
 \end{pmatrix}
 $$
 
-これの固有値とそれに対応する固有ベクトルを解くと
-$$
-\varepsilon=\alpha- t,\alpha- t,\alpha+ 2t,\qquad 
-\{\mathbb{C}\}
-=\left\{\begin{pmatrix}
-  -1\\0\\1
-\end{pmatrix},
-\begin{pmatrix}
-  -1\\1\\0
-\end{pmatrix},
-\begin{pmatrix}
-  1\\1\\1
-\end{pmatrix}\right\}
-$$
-
-
-
---- 
-
-エネルギーバンド図は以下のようになる
-<img src="./public/triangleMolcular.svg" class="h-100"></img>
-
-このエネルギーバンドがどこから起因するものなのかを考えるのがtight-bindingの本懐
-
 ---
 
-## 規約表現を振る
+<div class="flex">
+<div class="pr-5">
+固有値とそれに対応する固有ベクトルを解くと
+$$
+\begin{align*}
+    \varepsilon&=\alpha- t,\alpha- t,\alpha+ 2t \\
+    \{\mathbb{C}\}
+    &=\left\{\frac{1}{\sqrt2}\begin{pmatrix}
+    -1\\0\\1
+    \end{pmatrix},
+    \frac{1}{\sqrt2}
+    \begin{pmatrix}
+    -1\\1\\0
+    \end{pmatrix},
+    \frac{1}{\sqrt3}
+    \begin{pmatrix}
+    1\\1\\1
+    \end{pmatrix}\right\}
+\end{align*}
+$$
 
-この三角形の分子が1つの直線分子と1つの単原子から混成してできたものとして考える。(実際はどのように混成させてもいい)
-今回は混成前の分子(1つの直線分子と1つの単原子)は$C_{2v}$で規約表現を振る。
+</div>
+<div>
+エネルギー準位図は以下のようになる
+<img src="/triangleMolcular.drawio.svg" class="h-100"></img>
+</div>
 
-
-最終的には以下のようなバンド図が考えられる
-
-<img src="./public/triangle-molcular-final.svg" class="h-70"></img>
-
-結合-反結合を作らないバンドはそのまま出ることがわかる
-
+</div>
 ---
 
-# 正$6$角形の分子について計算してみる
+# ヒュッケル法における正$6$角形の分子の計算
+___
 
 <div class="flex">
   <div>
 
-ヒュッケル行列を直接解いて固有値固有ベクトルを求めてみる。最近接近似を用いればヒュッケル行列$\mathbb{H}$は以下のように書ける
+三角形の時と同様に、**最近接近似**を導入したもとで、$(i,j)$成分を軌道$\chi_i,\chi_j$の相互作用に対応させた
+ヒュッケル行列と、その固有値とそれに対応する固有ベクトルは右の通りである。
+
+**描像**
+
+<img src="/hexagon-abstract.drawio.svg" class="w-60"></img>
+
+  </div>
+<div>
+
 $$
-\mathbb{H}=\begin{pmatrix}
+\begin{align*}
+  \mathbb{H}
+  &=\begin{pmatrix}
   \alpha & t & 0 & 0 & 0 & t \\
   t & \alpha & t & 0 & 0 & 0 \\
   0 & t & \alpha & t & 0 & 0 \\
   0 & 0 & t & \alpha & t & 0 \\
   0 & 0 & 0 & t & \alpha & t \\
   t & 0 & 0 & 0 & t & \alpha \\
-\end{pmatrix}
-$$
-
-  </div>
-<div>
-
-
-これの固有値とそれに対応する固有ベクトルは
-$$
-\varepsilon=\alpha-2t,\alpha-t,\alpha-t,\alpha+t,\alpha+t,\alpha+2t
-$$
-$$
-\{\mathbb{C}\}
-=\left\{
-\begin{pmatrix}
-  -1\\1\\-1\\1\\-1\\1
-\end{pmatrix},
-\begin{pmatrix}
-  -1\\0\\1\\-1\\0\\1
-\end{pmatrix},\begin{pmatrix}
-  -1\\1\\0\\-1\\1\\0
-\end{pmatrix},\begin{pmatrix}
-  1\\0\\-1\\-1\\0\\1
-\end{pmatrix},\begin{pmatrix}
-  -1\\-1\\0\\1\\1\\0
-\end{pmatrix},\begin{pmatrix}
-  1\\1\\1\\1\\1\\1
-\end{pmatrix}
-\right\}
+  \end{pmatrix}\\
+  \varepsilon
+  &=\alpha-2t,\alpha-t,\alpha-t,\alpha+t,\alpha+t,\alpha+2t\\
+  \{\mathbb{C}\}
+  &=\left\{
+    \frac{1}{\sqrt6}
+  \begin{pmatrix}
+    -1\\1\\-1\\1\\-1\\1
+  \end{pmatrix},
+  \frac{1}{2}
+  \begin{pmatrix}
+    -1\\0\\1\\-1\\0\\1
+  \end{pmatrix},
+  \frac{1}{2}
+  \begin{pmatrix}
+    -1\\1\\0\\-1\\1\\0
+  \end{pmatrix},
+  \frac{1}{2}
+  \begin{pmatrix}
+    1\\0\\-1\\-1\\0\\1
+  \end{pmatrix},
+  \frac{1}{2}
+  \begin{pmatrix}
+    -1\\-1\\0\\1\\1\\0
+  \end{pmatrix},
+  \frac{1}{\sqrt6}
+  \begin{pmatrix}
+    1\\1\\1\\1\\1\\1
+  \end{pmatrix}
+  \right\}
+\end{align*}
 $$
 </div>
 </div>
+
+
 ---
 
 これをエネルギー準位図に描画すると以下のようになる
 
-<img src="./public/hexagon-molucular-pre.drawio.svg" class="h-100"></img>
+<img src="/hexagon-molcular-pre.drawio.svg" class="h-100"></img>
 
 ---
 
-## Tight-Binding Modelにしたがって考えてみる
+# Tight-Binding Model(強結合近似モデル)
+___
 
-せっかく三角形のバンド図を求めているから、正三角形($D_{3h}$)を構成分子として正六角形を考えてみる
+電子バンド計算の際に用いられる近似の一つで、系の波動関数を各原子の場所に位置する孤立原子に対する波動関数の重ね合わせにより近似する手法
 
-三角形をずらして重ねた形が正六角形になると考えると、$D_{3h}$で規約表現を振れることがわかる
+要は分子の形に注目して、その分子のエネルギー準位を、それを構成する部分に分けて結合(混成)の様式を考える手法のことで、なぜそのエネルギーの位置にそのようなエネルギーの準位が出るのかに解釈を与えるもの
 
-
-<img src="./public/hexagon-molcular-final.drawio.svg" class="h-80"></img>
-
----
-
-# 番外編 指標表の作り方
-
-指標表は、点群に一対一対応している
-## 例として$D_{7h}$の指標表を作る
-
-### STEP1. 対称操作を列挙する
-
-$$
-D_{7h}=\{E,2C_7,2C_7^2,2C_7^3,7C_2,\sigma_h,2S_7,2S_7^3,2S_7^5,7\sigma_v\}
-$$
-
-あるいは$D_{7h}=D_7\times C_s$として得ても良い
-$$
-D_7=\{E,C_7,C_7^2,C_7^3,C_7^4,C_7^5,C_7^6,C_2,C_2',C_2'',C_2''',C_2^{iv},C_2^{v},C_2^{vi}\}
-$$
-
-あるいは要素数を数えて$N(D_7)=14,N(C_s)=2$より、$N(D_{7h})=28$と確認してもいい
+やがては全ての分子を1原子の軌道(基底)同士の結合(混成)に還元させることが目的
 
 
-**参考文献**
-- [点群のまとめと座標表](https://www.iwanami.co.jp/files/moreinfo/0051900/PG.pdf)
+## 混成の条件
+
+1. **同じ既約表現にある波動関数が混成する**
+2. **近しいエネルギーの波動関数が混成する**
+
+今回の目的
+
+**Tight-Binding Model**を用いて、H$_3$Li$_3$$6$角形分子のエネルギーの計算とその準位図がどこから起因するものなのかを調べる
 
 ---
 
-## STEP2.
+# 計算理論--Tight-Binding
+___
 
-ここまで書いて、、、指標表を作るのは難しいみたいです。調べた方が早いらしいので諦め
-キーワード：剰余類、部分群
+$\alpha$(on-site energy)と$t_{ij}$(transfer energy)は固体物性表の値とハリソンの方法による計算によって与えられる。
+今回は水素分子の結合長$0.7414[\AA]$を基準としてそれを1辺とする正$6$角形分子を考える。
+(引用元: \[1\])
+また、その中でも以下のような水素原子とリチウム原子がたがい違いに配置されている分子を考える
+<img src="/H3Li3-abstract.drawio.svg"></img>
+
+まず、固体元素表の値から,HとLiのon-site energy, $\alpha$の値が求められる
+
+<div class="flex">
+<div>
+
+|   | $\alpha$ |
+|:-:| :------: |
+| H | -13.6 |
+| Li | -5.48 |
+
+</div>
+</div>
+---
+
+# 計算理論--Tight-Binding(続き)
+___
+
+
+$t$はハリソンの方法を用いることで、2つの軌道と、そのそれぞれの軌道の種類から以下のように与えられる
+$$
+t_{ijp}=\eta_{ijp}\frac{\hbar^2}{md^2}
+$$
+
+今回、H,Liともに$s$軌道を考えているため、
+
+ハリソン定数は$\eta_{ijp}=\eta_{ss\sigma}=-1.40[-]$と決定されさらに電子の質量と核間距離とディラック定数に関して
+
+$m=9.11\times10^{-31}[kg],\quad d=0.7414[\AA],\quad \hbar=1.05\times10^{-34}[J・s]$とすると以下のように求められる
+
+$$
+t_{ss\sigma}=-1.4\frac{1.05^2\times10^{-68}}{9.11\times10^{-31}\times 0.7414^2\times10^{-20}}=-3.08\times10^{-18}\qquad [\frac{J^2・s^2}{kg・m^2}]
+$$
+これはさらに、$[\frac{J^2}{N・m}]=[J]$と$1eV=1.60\times10^{-19}[J]$より
+
+$$
+t_{ss\sigma}=\frac{-3.08\times10^{-18}}{1.60\times10^{-19}}=-19.3\qquad [eV]
+$$
+
+---
+
+# 簡約
+___
+どのような**既約表現**が出てくるかは**点群**とそれのもとで**基底**を定めた分子を**簡約する**こと決まる<br>
+以下の$\Gamma$は既約表現$i$の個数$A_i$の和を表していてこのように求められる
+$$
+\Gamma=\sum_iA_i=\sum_i\frac{1}{h}\sum_R\chi(R)\chi_i(R)
+$$
+ただし、$R$:対称操作, $\chi$:基底が張る表現行列の指標, $\chi_i$:規約表現の指標, $h$:対称操作の数である
+
+点群と基底で分子を簡約することで、どのような既約表現がいくつ出てくるかを事前に知れるため大変有用である<br>
+
+今回、$6$角形のリチウム水素H$_3$Li$_3$分子の場合、点群は$D_{3h}$、基底は$1s(\times6)$である。よってこのもとで$1s$軌道を基底としたリチウム水素分子を簡約する
+$$
+\begin{align*}
+  D_{3h}=\{E,2C_3,3C_2,\sigma_h,2S_3,3\sigma_v\}
+\end{align*}
+$$
+
+
+
+---
+
+# 簡約(続き)
+___
+
+<div class="flex">
+<div class=pr-5>
+
+便宜上以下のようにH$_3$Li$_3$に対して番号を振る
+
+<img src="/Li3H3.drawio.svg" class="h-30"></img>
+
+また一例として、$C_2$に対する表現行列の例は以下のようになる
+$$
+\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 & 0  \\
+0 & 0 & 1 & 0 & 0 & 0  \\
+0 & 1 & 0 & 0 & 0 & 0  \\
+0 & 0 & 0 & 1 & 0 & 0  \\
+0 & 0 & 0 & 0 & 0 & 1  \\
+0 & 0 & 0 & 0 & 1 & 0  \\
+\end{pmatrix}
+\begin{pmatrix}
+H_1\\H_2\\H_3\\Li_1\\Li_2\\Li_3
+\end{pmatrix}
+=\begin{pmatrix}
+H_1\\H_2\\H_3\\Li_1\\Li_2\\Li_3
+\end{pmatrix}
+$$
+
+</div>
+
+<div>
+
+よって$\chi(C_2)=2$となる。よくみると、($H_1$~$H_3$)と($Li_1$~$Li_3$)に分かれた*Block-out*行列の形をしている。
+
+これから敷衍すると、ちょうど$D_{3h}$で$1s(\times 3)$の時の$\chi(R)$の2倍であるとわかる
+
+よって$\chi(R)$は以下のようになる
+
+| $D_{3h}$ | $E$ | $2C_3$ | $3C_2$ | $\sigma_h$ | $2S_3$ | $3\sigma_v$|
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| $\chi(R)$ | $3\times2$ | $0$ | $1\times2$ | $3\times2$ |0|  $1\times2$  |
+
+
+
+</div>
+</div>
+
+---
+
+簡約計算過程
+
+$E,C_2\sigma_h,\sigma_v$についてのみ計算すれば良いということを踏まえて
+$$
+\begin{align*}
+
+A(a_1')&=\frac{1}{12}(1\times1\times6+2\times1\times0+3\times1\times2+1\times1\times6+2\times1\times0+3\times1\times2)=2\\
+A(a_2')&=\frac{1}{12}(1\times6-1\times6+1\times6-1\times6)=0\\
+A(e')&=\frac{1}{12}(2\times6+0\times6+2\times6+0\times6)=2\\
+A(a_1'')&=\frac{1}{12}(1\times6+1\times6-1\times6-1\times6)=0\\
+A(a_2'')&=\frac{1}{12}(1\times6-1\times6-1\times6+1\times6)=0\\
+A(e'')&=\frac{1}{12}(2\times6+0\times6-2\times6+0\times6)=0\\
+
+\end{align*}
+$$
+よって
+$$
+\Gamma=2a_1'+2e'
+$$
+
+---
+
+# 正$6$角形をTight-Binding Modelに従って考える
+___
+
+
+<div class="flex">
+<img src="/hexagon-molcular-final.drawio.svg" class="h-100"></img>
+<div>
+簡約結果のと比べてみても
+$$
+\Gamma=2e'+2a_1'
+$$
+現れる規約表現が一致していることがわかる。
+<img src="/Li3H3.drawio.svg">
+</div>
+
+</div>
+
+---
+
+# 考察--分かったことわからなかったこと
+___
+
+- 縮退している点で、ヒュッケル法で求めた固有ベクトルではうまく既約表現が振れなかった
+  - $\rightarrow$同じエネルギー固有値に対する固有ベクトルの線型結合もまた、同じエネルギーに対する固有ベクトルになる、という性質を生かして、基底を直行する形に直すと規約表現が振りやすくなった
+- 反結合性軌道の波動関数の規約表現が$A$表現になった, $A$表現は全対称だから不思議に思った。
+  - $\rightarrow B$表現がない点群もあるから全然不思議なことではないが、珍しいと思った
+
+---
+
+# 参考文献
+___
+1. 日本科学会編 科学便覧 基礎編II 丸善株式会社
+2. 中崎昌雄 分子の対称と群論  東京化学同人
+3.  [点群のまとめと座標表](https://www.iwanami.co.jp/files/moreinfo/0051900/PG.pdf) 
+4.  [SI単位換算表](https://www.ohm.jp/media/tech_cooling205.pdf)
+   
+
+
+<!-- # 既約表現を振るコツ
+
+___
+
+既約表現はその分子が属する「点群」と、「その点群の対称操作による位相の状態の変化」から与えられるもの。
+ポイントは、
+
+- **基底ベクトルが直行性を満たしてない**と既約表現が触れない
+  - (必要であれば、同じエネルギー固有値に対する固有ベクトルの線型結合はまた、同じエネルギーに対する固有ベクトルとなることを用いる)
+
+また混成前の分子に既約表現を振る際、注意するべき点は
+- 混成後の分子の形に対して、混成前の分子それぞれの位置関係が変わらないような対称操作を集めた点群の既約表現を振るとよいということ -->
+

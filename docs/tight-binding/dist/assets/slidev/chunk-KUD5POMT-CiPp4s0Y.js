@@ -1,1 +1,0 @@
-import{r as o,ak as t}from"../index-4Ro9Olmf.js";function u(i,n){if(!n||n==="all"||n==="*")return o(1,i+1);if(n==="none")return[];const e=[];for(const s of n.split(/[,;]/g))if(!s.includes("-"))e.push(+s);else{const[p,r]=s.split("-",2);e.push(...o(+p,r?+r+1:i+1))}return t(e).filter(s=>s<=i).sort((s,p)=>s-p)}export{u as p};

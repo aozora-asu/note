@@ -22,10 +22,7 @@ onSlideLeave(() => {
 </script>
 <template>
   <header
-    v-if="
-      $slidev.nav.currentPage !== 1 &&
-      $slidev.nav.currentPage !== $slidev.nav.total
-    "
+    v-if="$slidev.nav.currentPage !== $slidev.nav.total"
     class="absolute top-0 left-0 font-size-5 w-full"
   >
     <div
@@ -36,7 +33,13 @@ onSlideLeave(() => {
         transition: 'width 0.3s ease',
       }"
     ></div>
-    <p class="absolute top-0 right-5">Tight-Binding Model</p>
+    <p v-if="$slidev.nav.currentPage - 1 < 7" class="absolute top-0 right-5">
+      Hückel Method
+    </p>
+    <p v-if="$slidev.nav.currentPage - 1 >= 7" class="absolute top-0 right-5">
+      Tight-Binding Model
+    </p>
+
     <p class="absolute top-0 left-5">2022/12/14</p>
   </header>
 </template>
