@@ -43,6 +43,7 @@ css: windicss
 ## 多原子系のハミルトニアン
 
 多原子系のハミルトニアンを導入する。
+### 古典的全エネルギー
 古典的な全エネルギーは以下のように書ける
 
 $$
@@ -67,7 +68,8 @@ $4\pi\varepsilon_0,e,m_e,\hbar=1$
 (SI)単位系に対して、(a.u.)と表記する
 :::
 
-対応原理$p=-i\hbar\nabla$を作用させると、ハミルトニアンは一般的に以下のように与えられる。
+### 対応原理を適用
+対応原理$p=-i\hbar\nabla,E\rightarrow \mathscr H$を作用させると、ハミルトニアンは一般的に以下のように与えられる。
 $$
 \begin{equation}
     \mathscr{H'}=
@@ -383,53 +385,38 @@ $$
 :::
 
 ### $G$の計算
-次に$G$を求める。以下に新しい$\phi_i$の表記を定めておく
-$$
-\begin{align}
-  \Phi_1&=\phi_1\\
-  \Phi_2&=\bar{\phi}_1\\
-  \Phi_3&=\phi_2\\
-  \Phi_4&=\bar{\phi}_2\\
-\end{align}
-$$
-すると、以下のように書き表せる。
-$$
-G=\frac{1}{4!}\int|\phi_1(1)\bar{\phi}_1(2)\phi_2(3)\bar{\phi}_2(4)|\left\{\sum_i^{4}\sum_{j>i}\frac{1}{r_{ij}}\right\}\left|\phi_1(1)\bar{\phi_1}(2)\phi_2(3)\bar{\phi_2}(4)\right|
-d\boldsymbol{r}
-$$
+次に$G$を求める。
+
 $$
 \begin{align*}
-  G=&\frac{1}{4!}\sum_{\sigma' \in \mathfrak{S}_4}\sum_{\sigma \in \mathfrak{S}_4}\int sgn(\sigma')\Phi_{\sigma'(1)}(1)\Phi_{\sigma'(2)}(2)\Phi_{\sigma'(3)}(3)\Phi_{\sigma'(4)}(4)\\
-  &\times\left\{\sum_i^{4}\sum_{j>i}\frac{1}{r_{ij}}\right\}sgn(\sigma)\Phi_{\sigma(1)}(1)\Phi_{\sigma(2)}(2)\Phi_{\sigma(3)}(3)\Phi_{\sigma(4)}(4)d\boldsymbol{r}\\
-  =&\frac{1}{4!}\sum_{\sigma' \in \mathfrak{S}_4}\sum_{\sigma \in \mathfrak{S}_4}sgn(\sigma)sgn(\sigma')\int \Phi_{\sigma'(1)}(1)\Phi_{\sigma'(2)}(2)\Phi_{\sigma'(3)}(3)\Phi_{\sigma'(4)}(4)\\
-  &\times\left\{\frac{1}{r_{12}}+\frac{1}{r_{13}}+\frac{1}{r_{14}}+\frac{1}{r_{23}}+\frac{1}{r_{24}}+\frac{1}{r_{34}}\right\}\Phi_{\sigma(1)}(1)\Phi_{\sigma(2)}(2)\Phi_{\sigma(3)}(3)\Phi_{\sigma(4)}(4)d\boldsymbol{r}\\
+G&=\frac{1}{4!}\int|\phi_1(1)\bar{\phi}_1(2)\phi_2(3)\bar{\phi}_2(4)|\left\{\sum_i^{4}\sum_{j>i}\frac{1}{r_{ij}}\right\}\left|\phi_1(1)\bar{\phi_1}(2)\phi_2(3)\bar{\phi_2}(4)\right|
+d\boldsymbol{r}\\
+&\begin{split}
+=&\frac{1}{4!}\int\sum_{\sigma' \in \mathfrak{S}_4}sgn(\sigma')\phi_1(\sigma'(1))\bar{\phi}_1(\sigma'(2))\phi_2(\sigma'(3))\bar{\phi}_2(\sigma'(4))\\
+&\times\left\{\sum_i^{4}\sum_{j>i}\frac{1}{r_{ij}}\right\}\left\{\sum_{\sigma \in \mathfrak{S}_4}sgn(\sigma)\phi_1(\sigma(1))\bar{\phi}_1(\sigma(2))\phi_2(\sigma(3))\bar{\phi}_2(\sigma(4))\right\}d\boldsymbol{r}\\
+\end{split}\\
+&\begin{split}
+=&\frac{1}{4!}\sum_i^{4}\sum_{j>i}\sum_{\sigma' \in \mathfrak{S}_4}\sum_{\sigma \in \mathfrak{S}_4}sgn(\sigma)sgn(\sigma')\int\phi_1(\sigma'(1))\bar{\phi}_1(\sigma'(2))\phi_2(\sigma'(3))\bar{\phi}_2(\sigma'(4))\\
+&\times\left(\frac{1}{r_{ij}}\right)\phi_1(\sigma(1))\bar{\phi}_1(\sigma(2))\phi_2(\sigma(3))\bar{\phi}_2(\sigma(4))d\boldsymbol{r}\\
+\end{split}\\
+&\begin{split}
+=&\frac{1}{4!}\frac{1}{4}\sum_{\sigma'' \in \mathfrak{S}_4}\sum_{\sigma' \in \mathfrak{S}_4}\sum_{\sigma \in \mathfrak{S}_4}sgn(\sigma)sgn(\sigma')\int\phi_1(\sigma'(1))\bar{\phi}_1(\sigma'(2))\phi_2(\sigma'(3))\bar{\phi}_2(\sigma'(4))\\
+&\times\left(\frac{1}{r_{\sigma''(1)\sigma''(2)}}\right)\phi_1(\sigma(1))\bar{\phi}_1(\sigma(2))\phi_2(\sigma(3))\bar{\phi}_2(\sigma(4))d\boldsymbol{r}\\
+\end{split}\\
 \end{align*}
 $$
+
+
 ここで例えば$\frac{1}{r_{12}}$が掛かる項を見れば
 $$
-\begin{align*}
-  g_{12}=&\sum_{\sigma' \in \mathfrak{S}_4}\sum_{\sigma \in \mathfrak{S}_4}sgn(\sigma)sgn(\sigma')\int \Phi_{\sigma'(1)}(1)\Phi_{\sigma'(2)}(2)\Phi_{\sigma'(3)}(3)\Phi_{\sigma'(4)}(4)\left(\frac{1}{r_{12}}\right)\Phi_{\sigma(1)}(1)\Phi_{\sigma(2)}(2)\Phi_{\sigma(3)}(3)\Phi_{\sigma(4)}(4)d\boldsymbol{r}\\
-  =&\sum_{\sigma' \in \mathfrak{S}_4}\sum_{\sigma \in \mathfrak{S}_4}sgn(\sigma)sgn(\sigma')\int \Phi_{\sigma'(1)}(1)\Phi_{\sigma'(2)}(2)\Phi_{\sigma'(3)}(3)\Phi_{\sigma'(4)}(4)\Phi_{\sigma(3)}(3)\Phi_{\sigma(4)}(4)\left(\frac{1}{r_{12}}\right)\Phi_{\sigma(1)}(1)\Phi_{\sigma(2)}(2)d\boldsymbol{r}\\
-  =&\sum_{\sigma' \in \mathfrak{S}_4}\sum_{\sigma \in \mathfrak{S}_4}sgn(\sigma)sgn(\sigma')\int \Phi_{\sigma'(1)}(1)\Phi_{\sigma'(2)}(2)\left(\frac{1}{r_{12}}\right)\Phi_{\sigma(1)}(1)\Phi_{\sigma(2)}(2)d\tau(1,2)\cdot \int\Phi_{\sigma'(3)}(3)\Phi_{\sigma'(4)}(4)\Phi_{\sigma(3)}(3)\Phi_{\sigma(4)}(4)d\tau(3,4)
-\end{align*}
-$$
-これは$\sigma'(3)=\sigma(3)$かつ$\sigma'(4)=\sigma(4)$の時に0でない値を持つ。
-$$
-\begin{align*}
-  g_{12}=&\sum_{\sigma \in \mathfrak{S}_4}sgn(\sigma)sgn(\sigma)\int \Phi_{\sigma(1)}(1)\Phi_{\sigma(2)}(2)\left(\frac{1}{r_{12}}\right)\Phi_{\sigma(1)}(1)\Phi_{\sigma(2)}(2)d\tau(1,2)\\
-  &+\sum_{\sigma \in \mathfrak{S}_4}sgn(\sigma)sgn(\sigma)\int \Phi_{\sigma(2)}(1)\Phi_{\sigma(1)}(2)\left(\frac{1}{r_{12}}\right)\Phi_{\sigma(2)}(1)\Phi_{\sigma(1)}(2)d\tau(1,2)\\
-  =&2\sum_{\sigma \in \mathfrak{S}_4}\int \Phi_{\sigma(1)}(1)\Phi_{\sigma(2)}(2)\left(\frac{1}{r_{12}}\right)\Phi_{\sigma(1)}(1)\Phi_{\sigma(2)}(2)d\tau(1,2)\\
-  =&2K_{12}
-\end{align*}
+\begin{split}
+g_{12}=&\frac{1}{4!}\sum_i^{4}\sum_{j>i}\sum_{\sigma' \in \mathfrak{S}_4}\sum_{\sigma \in \mathfrak{S}_4}sgn(\sigma)sgn(\sigma')\int\phi_1(\sigma'(1))\bar{\phi}_1(\sigma'(2))\phi_2(\sigma'(3))\bar{\phi}_2(\sigma'(4))\\
+&\times\left(\frac{1}{r_{ij}}\right)\phi_1(\sigma(1))\bar{\phi}_1(\sigma(2))\phi_2(\sigma(3))\bar{\phi}_2(\sigma(4))d\boldsymbol{r}\\
+\end{split}
 $$
 
 
-$$
-\begin{align*}
-  G=&\frac{1}{4!}\sum_{\sigma \in \mathfrak{S}_4}\int \Phi_{\sigma(1)}(1)\Phi_{\sigma(2)}(2)\Phi_{\sigma(3)}(3)\Phi_{\sigma(4)}(4)\\
-  &\times\left\{\frac{1}{r_{12}}+\frac{1}{r_{13}}+\frac{1}{r_{14}}+\frac{1}{r_{23}}+\frac{1}{r_{24}}+\frac{1}{r_{34}}\right\}\Phi_{\sigma(1)}(1)\Phi_{\sigma(2)}(2)\Phi_{\sigma(3)}(3)\Phi_{\sigma(4)}(4)d\boldsymbol{r}\\
-\end{align*}
-$$
+
 
 :::question
 ここからの変形できない
@@ -788,16 +775,38 @@ $$
 
 $$
 \begin{align*}
-  J_j(1)\phi_i(1)&=\int\phi_j(2)\phi_j(2)\left(\frac{1}{r_{12}}\right)d\tau(2)\phi_i(1)\\
-  J_j(1)\sum_{r=1}^mc_{ri}\chi_r(1)\sum_{r=1}^mc_{ri}\chi_r(1)&=\int\sum_{r=1}^mc_{rj}\chi_r(2)\sum_{r=1}^mc_{rj}\chi_r(2)\left(\frac{1}{r_{12}}\right)d\tau(2)\sum_{r=1}^mc_{ri}\chi_r(1)\sum_{r=1}^mc_{ri}\chi_r(1)\\
-  \sum_{r=1}^m\sum_{r=1}^mc_{ri}c_{ri}\chi_rJ_j \chi_r  &=\sum_{r=1}^m\sum_{r=1}^m\sum_{r=1}^m\sum_{r=1}^mc_{rj}c_{rj}c_{ri}c_{ri}\int \chi_r \chi_r \left(\frac{1}{r_{12}}\right) d\tau \chi_r \chi_r \\
+  J_j(1)\chi_s(1)&=\int\phi_j(2)\phi_j(2)\left(\frac{1}{r_{12}}\right)d\tau(2)\chi_s(1)\\
+  &=\int\sum_{p=1}^mc_{pj}\chi_p(2)\sum_{p=1}^mc_{pj}\chi_p(2)\left(\frac{1}{r_{12}}\right)d\tau(2)\chi_s(1)\\
+  &=\sum_{p=1}^m\sum_{q=1}^m\int c_{pj}\chi_p(2)c_{qj}\chi_q(2)\left(\frac{1}{r_{12}}\right)d\tau(2)\chi_s(1)\\
+  &=\sum_{p=1}^m\sum_{q=1}^mc_{pj}c_{qj}\int \chi_p(2)\chi_q(2)\left(\frac{1}{r_{12}}\right)d\tau(2)\chi_s(1)\\
 \end{align*}
 $$
+
 $$
 \begin{align*}
-  K_j(1)\phi_i(1)=\int\phi_j(2)\phi_i(2)\left(\frac{1}{r_{12}}\right)d\tau(2)\phi_j(1)
+  \int\chi_r(1)J_j(1)\chi_s(1)d\tau(1)
+  &=\sum_{p=1}^m\sum_{q=1}^mc_{pi}c_{qi}\int \chi_p(2)\chi_q(2)\left(\frac{1}{r_{12}}\right)\chi_r(1)\chi_s(1)d\tau(1,2)\\
+  &=\sum_{p=1}^m\sum_{q=1}^mc_{pi}c_{qi}(rs|pq)\\
 \end{align*}
 $$
+
+$$
+\begin{align*}
+  K_j(1)\chi_s(1)&=\int\phi_j(2)\chi_s(2)\left(\frac{1}{r_{12}}\right)d\tau(2)\phi_j(1)\\
+  &=\int\sum_{p=1}^mc_{pj}\chi_p(2)\chi_s(2)\left(\frac{1}{r_{12}}\right)d\tau(2)\sum_{p=1}^mc_{pj}\chi_p(1)\\
+  &=\sum_{p=1}^m\sum_{q=1}^m\int c_{pj}\chi_p(2)\chi_s(2)\left(\frac{1}{r_{12}}\right)d\tau(2)c_{qj}\chi_q(1)\\
+  &=\sum_{p=1}^m\sum_{q=1}^mc_{pj}c_{qj}\int \chi_p(2)\chi_s(2)\left(\frac{1}{r_{12}}\right)d\tau(2)\chi_q(1)\\
+\end{align*}
+$$
+
+$$
+\begin{align*}
+  \int\chi_r(1)K_j(1)\chi_s(1)d\tau(1)
+  &=\sum_{p=1}^m\sum_{q=1}^mc_{pj}c_{qj}\int \chi_p(2)\chi_s(2)\left(\frac{1}{r_{12}}\right)\chi_r(1)\chi_q(1)d\tau(1,2)\\
+  &=\sum_{p=1}^m\sum_{q=1}^mc_{pj}c_{qj}(rq|ps)\\
+\end{align*}
+$$
+
 
 
 $$
@@ -806,17 +815,11 @@ $$
    &=\int\chi_r\left\{H_{core}+ \sum_{j=1}^n\left(2 J_j - K_j \right)\right\}\chi_sd\tau\\
    &=\int\chi_rH_{core}\chi_ss\tau + \sum_{j=1}^n\left(2 \int \chi_rJ_j\chi_s d\tau - \int\chi_rK_j\chi_sd\tau \right)\\
    &=H_{rs} + \sum_{j=1}^n\left(2 \int \chi_rJ_j\chi_s d\tau - \int\chi_rK_j\chi_sd\tau \right)\\
-   &=H_{rs} + \sum_{j=1}^n\left(2 (jj|sr) - (js|jr) \right)\\
+   &=H_{rs} + \sum_{j=1}^n\sum_{p=1}^m\sum_{q=1}^mc_{pj}c_{qj}\left(2 (rs|pq) - (rq|ps) \right)\\
 \end{align}
 $$
 
-:::question
-ここからの変形できない
-:::
 
-:::question
-クーロン演算子、交換演算子は$MO$にしか成立せず、$AO$には適用できない？？
-:::
 
 $\delta E'=0$となる条件を求めると
 $$
@@ -828,7 +831,7 @@ $$
 $$
 これを***Hartree-Fock*の式**と呼ぶ。これは固有値$\varepsilon$固有ベクトル$\boldsymbol{c}$の固有値問題に帰着する。
 $$
-|\mathbb{F}|=\left|
+|\mathbb{F}-\varepsilon_i\mathbb{S}|=\left|
 \begin{matrix} 
 F_{11}-S_{11}\varepsilon & F_{12}-S_{12}\varepsilon & \cdots & F_{1m}-S_{1m}\varepsilon\\
 F_{21}-S_{21}\varepsilon & F_{22}-S_{22}\varepsilon & \cdots & F_{2m}-S_{2m}\varepsilon\\
@@ -841,19 +844,15 @@ $$
 
 
 数値計算をする上では
-$\{\boldsymbol{c}_i\}\rightarrow\mathbb{F}\rightarrow\varepsilon_i\rightarrow\{\boldsymbol{c}_i\}\cdots$と繰り返していき、$\varepsilon_i,\{\boldsymbol{c}_i\}$が変化しなくなるまで行う。
+$\{\boldsymbol{c}_i\}\rightarrow\mathbb{F}(\boldsymbol{c})\rightarrow\varepsilon_i\rightarrow\{\boldsymbol{c}_i\}\cdots$と繰り返していき、$\varepsilon_i,\{\boldsymbol{c}_i\}$が変化しなくなるまで行う。
 この手法を**SCF(Self-Consistent Field)法**という。
 
 :::question
 $\{\boldsymbol{c}_i\}$同じもの出てくるんじゃないの？？
+$\rightarrow$出てこない。$\mathbb F$が$\{c_i\}$の関数になっているから
 :::
 
 
-```mermaid
-graph TD
-
-
-```
 
 ## 1電子ハミルトニアン
 
@@ -983,7 +982,176 @@ $$
 これのみである。
 :::
 
-## 番外編
+
+
+
+## 有効核電荷の話
+
+$M$原子核,$N$電子系のハミルトニアンを書き改める
+$$
+\begin{align}
+    \mathscr{H}
+  &=\sum_i^N\mathscr{H}_{core}(i)+\sum_i^N\sum_{j>i}^N\frac{1}{r_{ij}}\\
+  \mathscr{H}_{core}(i)&=-\frac{1}{2}\nabla^2_i-\sum_a^M\frac{Z_a}{r_{ia}}
+\end{align}
+$$
+が以下のように書き改めることができるように定式化を行う。
+$$
+\begin{align}
+  \mathscr{H}(1,2,\cdots,2n)&=\sum_i^{2n}\mathscr{H}_{core}(i)+\sum_i^{2n}\sum_{j>i}^{2n}\frac{1}{r_{ij}}\\
+  \mathscr{H}_{core}(i)&=-\frac{1}{2}\nabla_i^2-\sum_a^M(\frac{Z_a^*}{r_{ia}})
+\end{align}
+$$
+
+
+$$
+ \mathscr{H}=
+  -\sum_i^N\left\{\frac{1}{2}\nabla^2_i+\sum_a^M\frac{Z_a}{r_{ia}}\right\}+\sum_i^N\sum_{j>i}^N\frac{1}{r_{ij}}
+$$
+
+まず、外殻電子の番号付けを$i$で行い、内殻電子の番号付けを$j$で行う。まずこれを$2n$と$N-2n$に分ける
+
+$$
+\begin{split}
+ \mathscr{H}=
+ &-\sum_i^{2n}\left\{\frac{1}{2}\nabla^2_i+\sum_a^M\frac{Z_a}{r_{ia}}\right\}-\sum_j^{N-2n}\left\{\frac{1}{2}\nabla^2_j+\sum_a^M\frac{Z_a}{r_{ja}}\right\}\\
+  &+\sum_i^{2n}\sum_{i'>i}^{2n}\frac{1}{r_{ii'}}+\sum_i^{2n}\sum_{j'}^N\frac{1}{r_{ij'}}+\sum_j^{N-2n}\sum_{j'>j}^{N-2n}\frac{1}{r_{jj'}}
+\end{split}
+$$
+
+
+
+
+### $\mathscr H_{core}$について
+
+まずこの$N-2n$電子は原子核をなしているとみることができるため、**Born-Oppenheimer近似**より$\nabla_j^2=0$とできる。この時、$r_{ja}$は限りなく0に近づくが、発散を抑えるために、これを後々核電荷に押し込める。また、$r_{ja},r_{jj'}$は定数となることに注意する
+
+$$
+\begin{split}
+ \mathscr{H}=
+ &-\sum_i^{2n}\left\{\frac{1}{2}\nabla^2_i+\sum_a^M\frac{Z_a}{r_{ia}}\right\}-\sum_j^{N-2n}\sum_a^M\frac{Z_a}{r_{ja}}\\
+  &+\sum_i^{2n}\sum_{i'>i}^{2n}\frac{1}{r_{ii'}}+\sum_i^{2n}\sum_{j'}^N\frac{1}{r_{ij'}}+\sum_j^{N-2n}\sum_{j'>j}^{N-2n}\frac{1}{r_{jj'}}
+\end{split}
+$$
+
+$$
+\begin{equation*}
+  \left(
+   -\sum_i^{2n}\left\{\frac{1}{2}\nabla^2_i+\sum_a^M\frac{Z_a}{r_{ia}}\right\}+\sum_i^{2n}\sum_{i'>i}^{2n}\frac{1}{r_{ii'}}+\sum_i^{2n}\sum_{j'}^N\frac{1}{r_{ij'}}
+  \right)\Psi=
+  \left(
+    E'-\sum_a^M\sum_{b>a}^M\frac{Z_aZ_b}{R_{ab}}  +\sum_j^{N-2n}\sum_a^M\frac{Z_a}{r_{ja}}-\sum_j^{N-2n}\sum_{j'>j}^{N-2n}\frac{1}{r_{jj'}}\right)
+ \Psi
+\end{equation*}
+$$
+つまり新しいハミルトニアン$\mathscr H_{new}$は以下のようにかける
+$$
+\begin{align*}
+  \mathscr H_{new}
+  &=-\sum_i^{2n}\left\{\frac{1}{2}\nabla^2_i+\sum_a^M\frac{Z_a}{r_{ia}}\right\}+\sum_i^{2n}\sum_{i'>i}^{2n}\frac{1}{r_{ii'}}+\sum_i^{2n}\sum_{j'}^N\frac{1}{r_{ij'}}\\
+  &=\sum_i^{2n}\left\{\underbrace{-\frac{1}{2}\nabla^2_i-\sum_a^M\frac{Z_a}{r_{ia}}+\sum_{j'}^N\frac{1}{r_{ij'}}}_{\mathscr H_{core}}\right\}+\sum_i^{2n}\sum_{i'>i}^{2n}\frac{1}{r_{ii'}}
+\end{align*}
+$$
+
+よって比較を行うことで$Z_a,Z_a^*$に以下のような関係が現れることがわかる
+$$
+\sum_a^M\frac{Z_a}{r_{ia}}-\sum_{j'}^N\frac{1}{r_{ij'}}=\sum_a^M\frac{Z_a^*}{r_{ia}}
+$$
+
+$a$番目の原子核の骨格をなす電子の数を$n_a$とおくと、$\sum_a^Mn_a=N$
+
+
+$$
+\sum_a^M\frac{Z_a}{r_{ia}}-\sum_a^M\sum_{j'}^{n_a}\frac{1}{r_{ij'}}=\sum_a^M\frac{Z_a^*}{r_{ia}}
+$$
+
+$$
+\frac{Z_a}{r_{ia}}-\sum_{j'}^{n_a}\frac{1}{r_{ij'}}=\frac{Z_a^*}{r_{ia}}
+$$
+
+よって
+$$
+Z_a^*=Z_a-r_{ia}\sum_{j'}^{n_a}\frac{1}{r_{ij'}}
+$$
+
+:::question
+右辺も一致するような変形は確認しなくていいの？、それとも別の形になるの？
+$$
+\sum_a^M\sum_{b>a}^M\frac{Z_aZ_b}{R_{ab}}  -\sum_j^{N-2n}\sum_a^M\frac{Z_a}{r_{ja}}+\sum_j^{N-2n}\sum_{j'>j}^{N-2n}\frac{1}{r_{jj'}}=\sum_a^M\sum_{b>a}^M\frac{Z_a^*Z_b^*}{R_{ab}}
+$$
+
+:::
+
+
+
+
+
+## **Hartree-Fock**方程式の正凖化
+
+$$
+\begin{align}
+  J_j\phi_i&=\int\phi_j\phi_j\left(\frac{1}{r_{12}}\right)d\tau\phi_i\\
+  K_j\phi_i&=\int\phi_j\phi_i\left(\frac{1}{r_{12}}\right)d\tau\phi_j\\
+  H_{core}(i)&=-\frac{1}{2}\nabla^2_i-\sum_a\frac{Z_a}{r_{ia}}
+\end{align}
+$$
+$$
+\begin{equation}
+\left[H_{core}+ \sum_{j=1}^n\left(2 J_j[\phi_j] - K_j[\phi_j] \right)\right]\phi_i=\sum_{j=1}^n\varepsilon_{ij}\phi_j
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\left[H_{core}+ \sum_{j=1}^n\left(2 J_j - K_j \right)\right]
+\begin{pmatrix}
+\phi_1\\
+\phi_2\\
+\vdots\\
+\phi_n
+\end{pmatrix}
+=\begin{pmatrix}
+\varepsilon_{11} & \varepsilon_{12} & \cdots & \varepsilon_{1n}\\
+\varepsilon_{21} & \varepsilon_{22} & \cdots & \varepsilon_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+\varepsilon_{n1} & \varepsilon_{n2} & \cdots & \varepsilon_{nn}
+\end{pmatrix}
+\begin{pmatrix}
+\phi_1\\
+\phi_2\\
+\vdots\\
+\phi_n
+\end{pmatrix}
+\end{equation}
+$$
+
+これを$\boldsymbol{\varepsilon}=(\varepsilon_{ij}),\boldsymbol{\phi}=(\phi_i)$を用いて行列表示された以下の式
+$$
+\begin{equation}
+\mathscr F([\boldsymbol{\phi}])\boldsymbol{\phi}=\boldsymbol{\varepsilon}\boldsymbol{\phi}
+\end{equation}
+$$
+
+これを適切にユニタリ変換することで、以下のような式に書き換えられることを示す。
+$$
+\begin{equation}
+\left[H_{core}+ \sum_{j=1}^n\left(2 J_j - K_j \right)\right]\phi_i=\varepsilon_{i}\phi_i
+\end{equation}
+$$
+
+これを$\boldsymbol{\varepsilon}_D=(\delta_{ij}\varepsilon_{ij})$を用いて行列表示された以下の式
+
+
+
+$$
+\begin{equation}
+\mathscr F([\boldsymbol{\phi}])\boldsymbol{\phi}=\boldsymbol{\varepsilon}_D\boldsymbol{\phi}
+\end{equation}
+$$
+
+### ユニタリ変換
+
+まず、**ユニタリ変換**とは。その前にまず**エルミート行列**から
 
 :::note エルミート行列
 エルミート行列とは以下のような性質を満たす正方行列$\mathbb{A}=(a_{ij})$のこと
@@ -1010,3 +1178,126 @@ $$
 $$
 ただし$^*$は共役転置を表す。
 :::
+
+規格直交基底$\{\phi_i\}$から、規格直交基底$\{\psi_i\}$への変換を考えてみる。
+$$
+\psi_i=\sum_ru_{ri}\phi_r
+$$
+
+:::question
+
+任意の関数系$\psi$に変換したいなら厳密には$\{\phi_i\}$の完全性が必要？？
+:::
+
+$\braket{\psi_i|\psi_j}=\braket{\phi_i|\phi_j}=\delta_{ij}$
+
+$$
+\begin{align*}
+\braket{\psi_i|\psi_j}
+&=\braket{\sum_ru_{ri}\phi_r|\sum_su_{sj}\phi_s}\\
+&=\sum_ru_{ri}^*\sum_su_{sj}\braket{\phi_r|\phi_s}\\
+&=\sum_r\sum_su_{ri}^*u_{sj}\braket{\phi_r|\phi_s}\\
+&=\sum_r\sum_su_{ri}^*u_{sj}\delta_{rs}\\
+&=\sum_r u_{ri}^*u_{rj}\\
+\end{align*}
+$$
+つまり、$\{u_{ri}\}$について、以下の式が成り立つ
+$$
+\begin{equation}
+\sum_r u_{ri}^*u_{rj}=\delta_{ij}
+\end{equation}
+$$
+
+これはちょうど$\mathbb U=(u_{ij})$がユニタリ行列となるということを意味している。
+つまり、ユニタリ変換とは、ある規格直交基底から他の規格直交基底を作る変換を表している。
+
+### $\mathscr F$がエルミート演算子になることの証明
+
+エルミート演算子の線型結合もまた、エルミート演算子になる
+$$
+\mathscr F^*=\mathscr F
+$$
+
+### $\boldsymbol{\varepsilon}$がエルミート行列となることの証明
+
+$\varepsilon_{ij}$は、$\mathscr F$の期待値である
+
+$$
+\varepsilon_{ij}=\braket{\phi_i|\mathscr F|\phi_j}=\int\phi_i^*\mathscr F\phi_jd\tau
+$$
+
+$$
+\begin{align*}
+\int\phi_i^*\mathscr F\phi_jd\tau&=\left(\int\phi_j^*\mathscr F\phi_id\tau\right)^*\\
+\varepsilon_{ij}&=(\varepsilon_{ji})^*
+\end{align*}
+$$
+
+### $\mathscr F$が基底変換(ユニタリ変換)において不変なことの証明
+
+
+
+これより、$\mathscr F$の変換を行う
+
+$$
+\begin{align*}
+\mathscr F[\phi]&=H_{core}+ \sum_{j=1}^n\left(2 J_j[\phi_j] - K_j[\phi_j] \right)
+\end{align*}
+$$
+
+
+
+
+$J=\sum_j J_j\phi_i,K=\sum_j K_j\phi_i$とおく
+
+$$
+\begin{align*}
+J[\phi]\psi_i
+&=\sum_jJ_j[\phi_j]\psi_i\\
+&=\sum_j\int\phi_j(2)\phi_j(2)\left(\frac{1}{r_{12}}\right)d\tau_2\psi_i(1)\\
+&=\sum_j\int\sum_ru_{rj}\psi_r\sum_su_{sj}\psi_s\left(\frac{1}{r_{12}}\right)d\tau\psi_i\\
+&=\int\sum_r\sum_s\delta_{rs}\psi_r\psi_s\left(\frac{1}{r_{12}}\right)d\tau\psi_i\\
+&=\sum_r\int\psi_r\psi_r\left(\frac{1}{r_{12}}\right)d\tau\psi_i\\
+&=\sum_j\int\psi_j\psi_j\left(\frac{1}{r_{12}}\right)d\tau\psi_i\\
+&=\sum_jJ_j[\psi_j]\psi_i\\
+&=J[\psi]\psi_i\\
+\end{align*}
+$$
+
+
+$$
+\begin{align*}
+K[\phi]\psi_i
+&=\sum_jK_j[\phi_j]\psi_i\\
+&=\sum_j\int\phi_j(2)\psi_i(2)\left(\frac{1}{r_{12}}\right)d\tau_2\phi_j(1)\\
+&=\sum_j\int\sum_ru_{rj}\psi_r\psi_i\left(\frac{1}{r_{12}}\right)d\tau\sum_tu_{tj}\psi_t\\
+&=\sum_j\sum_r\sum_t\int u_{rj}u_{tj}\psi_r\psi_i\left(\frac{1}{r_{12}}\right)d\tau \psi_t\\
+&=\sum_r\sum_t\int \delta_{rt}\psi_r\psi_i\left(\frac{1}{r_{12}}\right)d\tau \psi_t\\
+&=\sum_r\int \psi_r\psi_i\left(\frac{1}{r_{12}}\right)d\tau \psi_r\\
+&=\sum_j\int \psi_j\psi_i\left(\frac{1}{r_{12}}\right)d\tau \psi_j\\
+&=\sum_j\int\psi_j(2)\psi_i(2)\left(\frac{1}{r_{12}}\right)d\tau_2\psi_j(1)\\
+&=\sum_jK_j[\psi_j]\psi_i\\
+&=K[\psi]\psi_i
+\end{align*}
+$$
+
+
+
+
+### $\boldsymbol{\varepsilon}$がユニタリ変換によって対角化されることの証明
+
+$$
+\begin{equation}
+\mathscr F\phi_i=\sum_{j=1}^n\varepsilon_{ij}\phi_j
+\end{equation}
+$$
+これを変形する
+$$
+\begin{align*}
+\mathscr F\boldsymbol{\phi}&=\boldsymbol{\varepsilon}\boldsymbol{\phi}\\
+\mathbb U^*\mathscr F\mathbb U\mathbb U^*\boldsymbol{\phi}&=\mathbb U^*\boldsymbol{\varepsilon}\mathbb U\mathbb U^*\boldsymbol{\phi}\\
+(\mathbb U^*\mathscr F\mathbb U)\mathbb U^*\boldsymbol{\phi}&=(\mathbb U^*\boldsymbol{\varepsilon}\mathbb U)\mathbb U^*\boldsymbol{\phi}\\
+\mathscr F\boldsymbol{\psi}&=\boldsymbol{\varepsilon}_D\boldsymbol{\psi}\\
+\end{align*}
+$$
+
