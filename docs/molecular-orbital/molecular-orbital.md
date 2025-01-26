@@ -1015,7 +1015,7 @@ $$
 \begin{split}
  \mathscr{H}=
  &-\sum_i^{2n}\left\{\frac{1}{2}\nabla^2_i+\sum_a^M\frac{Z_a}{r_{ia}}\right\}-\sum_j^{N-2n}\left\{\frac{1}{2}\nabla^2_j+\sum_a^M\frac{Z_a}{r_{ja}}\right\}\\
-  &+\sum_i^{2n}\sum_{i'>i}^{2n}\frac{1}{r_{ii'}}+\sum_i^{2n}\sum_{j'}^N\frac{1}{r_{ij'}}+\sum_j^{N-2n}\sum_{j'>j}^{N-2n}\frac{1}{r_{jj'}}
+  &+\sum_i^{2n}\sum_{i'>i}^{2n}\frac{1}{r_{ii'}}+\sum_i^{2n}\sum_{j'}^{N-2n}\frac{1}{r_{ij'}}+\sum_j^{N-2n}\sum_{j'>j}^{N-2n}\frac{1}{r_{jj'}}
 \end{split}
 $$
 
@@ -1030,14 +1030,14 @@ $$
 \begin{split}
  \mathscr{H}=
  &-\sum_i^{2n}\left\{\frac{1}{2}\nabla^2_i+\sum_a^M\frac{Z_a}{r_{ia}}\right\}-\sum_j^{N-2n}\sum_a^M\frac{Z_a}{r_{ja}}\\
-  &+\sum_i^{2n}\sum_{i'>i}^{2n}\frac{1}{r_{ii'}}+\sum_i^{2n}\sum_{j'}^N\frac{1}{r_{ij'}}+\sum_j^{N-2n}\sum_{j'>j}^{N-2n}\frac{1}{r_{jj'}}
+  &+\sum_i^{2n}\sum_{i'>i}^{2n}\frac{1}{r_{ii'}}+\sum_i^{2n}\sum_{j'}^{N-2n}\frac{1}{r_{ij'}}+\sum_j^{N-2n}\sum_{j'>j}^{N-2n}\frac{1}{r_{jj'}}
 \end{split}
 $$
 
 $$
 \begin{equation*}
   \left(
-   -\sum_i^{2n}\left\{\frac{1}{2}\nabla^2_i+\sum_a^M\frac{Z_a}{r_{ia}}\right\}+\sum_i^{2n}\sum_{i'>i}^{2n}\frac{1}{r_{ii'}}+\sum_i^{2n}\sum_{j'}^N\frac{1}{r_{ij'}}
+   -\sum_i^{2n}\left\{\frac{1}{2}\nabla^2_i+\sum_a^M\frac{Z_a}{r_{ia}}\right\}+\sum_i^{2n}\sum_{i'>i}^{2n}\frac{1}{r_{ii'}}+\sum_i^{2n}\sum_{j'}^{N-2n}\frac{1}{r_{ij'}}
   \right)\Psi=
   \left(
     E'-\sum_a^M\sum_{b>a}^M\frac{Z_aZ_b}{R_{ab}}  +\sum_j^{N-2n}\sum_a^M\frac{Z_a}{r_{ja}}-\sum_j^{N-2n}\sum_{j'>j}^{N-2n}\frac{1}{r_{jj'}}\right)
@@ -1048,17 +1048,17 @@ $$
 $$
 \begin{align*}
   \mathscr H_{new}
-  &=-\sum_i^{2n}\left\{\frac{1}{2}\nabla^2_i+\sum_a^M\frac{Z_a}{r_{ia}}\right\}+\sum_i^{2n}\sum_{i'>i}^{2n}\frac{1}{r_{ii'}}+\sum_i^{2n}\sum_{j'}^N\frac{1}{r_{ij'}}\\
+  &=-\sum_i^{2n}\left\{\frac{1}{2}\nabla^2_i+\sum_a^M\frac{Z_a}{r_{ia}}\right\}+\sum_i^{2n}\sum_{i'>i}^{2n}\frac{1}{r_{ii'}}+\sum_i^{2n}\sum_{j'}^{N-2n}\frac{1}{r_{ij'}}\\
   &=\sum_i^{2n}\left\{\underbrace{-\frac{1}{2}\nabla^2_i-\sum_a^M\frac{Z_a}{r_{ia}}+\sum_{j'}^N\frac{1}{r_{ij'}}}_{\mathscr H_{core}}\right\}+\sum_i^{2n}\sum_{i'>i}^{2n}\frac{1}{r_{ii'}}
 \end{align*}
 $$
 
 よって比較を行うことで$Z_a,Z_a^*$に以下のような関係が現れることがわかる
 $$
-\sum_a^M\frac{Z_a}{r_{ia}}-\sum_{j'}^N\frac{1}{r_{ij'}}=\sum_a^M\frac{Z_a^*}{r_{ia}}
+\sum_a^M\frac{Z_a}{r_{ia}}-\sum_{j'}^{N-2n}\frac{1}{r_{ij'}}=\sum_a^M\frac{Z_a^*}{r_{ia}}
 $$
 
-$a$番目の原子核の骨格をなす電子の数を$n_a$とおくと、$\sum_a^Mn_a=N$
+$a$番目の原子核の骨格をなす電子の数を$n_a$とおくと、$\sum_a^Mn_a=N-2n$
 
 
 $$
@@ -1074,10 +1074,23 @@ $$
 Z_a^*=Z_a-r_{ia}\sum_{j'}^{n_a}\frac{1}{r_{ij'}}
 $$
 
+今ここで、近似的に$r_{ia}=r_{ij'}$と見做せるため、
+$$
+Z_a^*=Z_a-n_a
+$$
+
 :::question
-右辺も一致するような変形は確認しなくていいの？、それとも別の形になるの？
+右辺も一致するような変形は確認しなくていいの？
 $$
 \sum_a^M\sum_{b>a}^M\frac{Z_aZ_b}{R_{ab}}  -\sum_j^{N-2n}\sum_a^M\frac{Z_a}{r_{ja}}+\sum_j^{N-2n}\sum_{j'>j}^{N-2n}\frac{1}{r_{jj'}}=\sum_a^M\sum_{b>a}^M\frac{Z_a^*Z_b^*}{R_{ab}}
+$$
+導出 
+
+$$
+\begin{align*}
+&\sum_a^M\sum_{b>a}^M\frac{Z_aZ_b}{R_{ab}}  -\sum_j^{N-2n}\sum_a^M\frac{Z_a}{r_{ja}}+\sum_j^{N-2n}\sum_{j'>j}^{N-2n}\frac{1}{r_{jj'}}\\
+&=\sum_a^M\sum_{b>a}^M\frac{Z_aZ_b}{R_{ab}}  -\sum_a^{M}\sum_j^{n_a}\sum_a^M\frac{Z_a}{r_{ja}}+\sum_a^{M}\sum_j^{n_a}\sum_a^{M}\sum_{j'>j}^{n_a}\frac{1}{r_{jj'}}\\
+\end{align*}
 $$
 
 :::
@@ -1299,5 +1312,55 @@ $$
 (\mathbb U^*\mathscr F\mathbb U)\mathbb U^*\boldsymbol{\phi}&=(\mathbb U^*\boldsymbol{\varepsilon}\mathbb U)\mathbb U^*\boldsymbol{\phi}\\
 \mathscr F\boldsymbol{\psi}&=\boldsymbol{\varepsilon}_D\boldsymbol{\psi}\\
 \end{align*}
+$$
+
+## ラグランジュの未定乗数法について
+
+### そもそも他変数関数の極値はどのようにすればもとまるか
+
+まず、簡単化のため、$f(x,y)$において拘束条件がない時の極値を求める。これは単純に
+
+$$
+\nabla f=\boldsymbol 0
+$$
+これを満たす$(x,y)$が極値の候補となる。
+
+次に$g(x,y)=0$という拘束条件がある場合を考える。
+$g(x,y)=0$が$y=h(x)$という形にできる時、$f(h(x))=0$の極値を求める問題に帰着する。これは1変数関数の極値問題になるため
+$$
+\frac{df(h(x))}{dx}=\frac{df}{dx}\frac{dh}{dx}=0
+$$
+これを解けば良い
+
+よって、$g(x,y)$の接戦ベクトルを$\boldsymbol{t}=\nabla g$
+$$
+$$
+
+
+条件付きの極値を求めるときに使うMethod
+$g(c_1,c_2,\cdots,c_n)=0$を満たす下での$f(c_1,c_2,\cdots,c_n)$に極値を与える$(c_1,c_2,\cdots,c_n)$は
+$$
+L(c_1,c_2,\cdots,c_n,\lambda)=f(c_1,c_2,\cdots,c_n)-\lambda g(c_1,c_2,\cdots,c_n)
+$$
+とおいた時に
+$$
+\frac{\partial L}{\partial \lambda}=\frac{\partial L}{\partial c_i}=0\qquad(1\leqq i\leqq n)
+$$
+を満たす。という手法。
+
+
+極値条件を行列っぽく書いてみると
+
+$$
+\begin{equation}
+\begin{pmatrix}
+\frac{\partial L}{\partial c_1}\\
+\frac{\partial L}{\partial c_2}\\
+\vdots\\
+\frac{\partial L}{\partial c_n}\\
+\end{pmatrix}
+=\nabla L
+=\boldsymbol{0}
+\end{equation}
 $$
 
